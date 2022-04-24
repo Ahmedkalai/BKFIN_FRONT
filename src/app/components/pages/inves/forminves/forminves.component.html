@@ -1,0 +1,91 @@
+<app-header></app-header>
+<div class="overlapsec"></div>
+<breadcrumb #parent>
+  <div class="sub-header p-relative">
+    <div class="overlay overlay-bg-black"></div>
+    <div class="pattern"></div>
+    <div class="section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+
+              <div class="sub-header-content p-relative">
+                <h1 class="text-custom-white lh-default fw-600">Investissement Management</h1>
+                <ul class="custom">
+                  <li><a class="text-custom-white">Home</a></li>
+                  <li >
+
+                      <a>Investissement Management</a>
+                  </li>
+
+                </ul>
+              </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</breadcrumb>
+
+
+<!-- Start User Details -->
+<section class="section-padding-bottom user-info-details">
+  <div class="container">
+    <div class="row">
+      <div class="offset-lg-2 col-lg-8">
+        <div class="user-info-tabs">
+          <div class="step-tab-inner">
+            <div class="heading text-center">
+              <h4 class="text-custom-black fw-600">Create New Investissement</h4>
+            </div>
+            <form (ngSubmit) = "onSubmit()">
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-group">
+                    <label class="text-custom-black fs-14 fw-600">Name Investor</label>
+                    <input type="text" class ="form-control" #nameInvestesment="ngModel"  [(ngModel)] = "Inves.nameInvestesment" name = "nameInvestesment">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="text-custom-black fs-14 fw-600">SecondName</label>
+                    <input type="text" class ="form-control" #secondnnameInvestesment="ngModel" [(ngModel)] = "Inves.secondnnameInvestesment" name = "secondnnameInvestesment">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="text-custom-black fs-14 fw-600">CIN</label>
+                    <input type="number" class ="form-control" #cinInvestesment="ngModel"  [(ngModel)] = "Inves.cinInvestesment" name = "cinInvestesment">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="text-custom-black fs-14 fw-600">Email</label>
+                      <input type="text" class ="form-control" #mailInvestesment="ngModel" [(ngModel)] = "Inves.mailInvestesment" name = "mailInvestesment">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="text-custom-black fs-14 fw-600">Profession</label>
+                      <input type="text" class ="form-control" #professionInvestesment="ngModel" [(ngModel)] = "Inves.professionInvestesment" name = "professionInvestesment">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="text-custom-black fs-14 fw-600">Amount Investissement</label>
+                      <input type="number" class ="form-control" #amoutInvestesment="ngModel" [(ngModel)] = "Inves.amoutInvestesment" name = "amoutInvestesment">
+                    </div>
+                  </div>
+               </div>
+              <button  class = "btn btn-success btn-lg btn-block" type ="submit" style="margin-left: 10px" >Submit</button>
+            </form>
+            <button (click) = "goToFundList()"  class = "btn btn-info btn-lg btn-block" style="margin-left: 10px" >Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+ </div>
+</section>
+
+<app-footer></app-footer>

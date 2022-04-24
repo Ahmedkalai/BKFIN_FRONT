@@ -2,12 +2,19 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FormfundComponent } from './components/pages/fund/formfund/formfund.component';
 import { FundComponent } from './components/pages/fund/listfund/fund.component';
+import { DetailinvesComponent } from './components/pages/inves/detailinves/detailinves.component';
+import { ForminvesComponent } from './components/pages/inves/forminves/forminves.component';
+import { InvesComponent } from './components/pages/inves/listinves/inves.component';
 
 const routes: Routes = [
    
   { path: '', loadChildren: () => import('./components/pages/home/home.module').then(m => m.HomeModule), data: { breadcrumb: 'Homepage' } },
   { path : 'Fund', component: FundComponent}, 
   { path : 'AddFund', component: FormfundComponent}, 
+  { path : 'Inves', component: InvesComponent}, 
+  { path : 'AddInves', component: ForminvesComponent}, 
+  { path : 'DetailsInves', component: DetailinvesComponent}, 
+  
   { path: 'home-v2', loadChildren: () => import('./components/pages/hometwo/hometwo.module').then(m => m.HometwoModule), data: { breadcrumb: 'Homepage' } }, 
   { path: 'about', loadChildren: () => import('./components/pages/about/about.module').then(m => m.AboutModule), data: { breadcrumb: 'About Us' } }, 
   { path: 'blog', loadChildren: () => import('./components/pages/blog/blog.module').then(m => m.BlogModule), data: { breadcrumb: 'Blog Grid' } }, 

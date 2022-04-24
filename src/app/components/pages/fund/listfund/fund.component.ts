@@ -12,26 +12,39 @@ import { FundService } from 'src/service/fund.service';
 export class FundComponent implements OnInit {
   listFunds:any;
   form:boolean=false;
-  fund!:Fund;
+  Fund!:Fund;
   closeResult!:string;
  /* Funds: Fund[] = []; */
-constructor(private fundService: FundService , private router: Router ){}
+constructor(private FundService: FundService , private router: Router ){}
 ngOnInit(): void {
   this.getAllFunds();
 
-  this.fund ={
+  this.Fund ={
       idFund:null,
       amountFund: null,
       tauxFund:null,
-      tauxGain:null
+      tauxGain:null,
+      investesment:null
     }
 }
 
 getAllFunds() {
-  this.fundService.getAllFunds().subscribe(res => this.listFunds = res)
+  this.FundService.getAllFunds().subscribe(res => this.listFunds = res)
   }
+
+deleteFund(idFund:any){
+    this.FundService.deleteProduct(idFund).subscribe(()=> this.getAllFunds());
+  }
+
 goToaddfund(){
   this.router.navigate(['AddFund']);
   }
+
+addFund(){
+    this.FundService.addFund(this.Fund).subscribe(()=> this.getAllFunds());
+  }
+goToaddInves(){
+  this.router.navigate(['AddInves']);
+}
 
 }

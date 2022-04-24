@@ -1,0 +1,150 @@
+<app-header></app-header>
+<breadcrumb #parent>
+  <div class="sub-header p-relative">
+    <div class="overlay overlay-bg-black"></div>
+    <div class="pattern"></div>
+    <div class="section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+
+              <div class="sub-header-content p-relative">
+                <h1 class="text-custom-white lh-default fw-600">Investissement</h1>
+                <ul class="custom">
+                  <li><a class="text-custom-white">Home</a></li>
+                  <li >
+
+                      <a>Investissement Management</a>
+                  </li>
+
+                </ul>
+              </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</breadcrumb>
+
+<!-- start Loan Calculator -->
+<section class="section-padding pb-0 exp-cal2">
+  <div class="container">
+      <div class="section-header">
+          <div class="section-heading">
+              <h4 class="text-white fw-800">Rate Investissement Calculator</h4>
+              <div class="section-description">
+                  <p class="text-light-white">Simulates rates for a better Investissement  </p>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="offset-lg-2 col-lg-8 ">
+              <div class="exp-cal2-loan">
+                  <div class="row">
+                      <div class="col-md-5">
+                          <p class="fw-600 text-center">Investissement Amount</p>
+                          <div class="exp-cal2-input">
+                              <input placeholder="" maxlength="10" name="calculator" type="number" value="100"
+                                  id="num1">
+                          </div>
+                          <p class="fw-600 mt-2 fs-13">please enter amount sup to 7000DT</p>
+                      </div>
+                      <div class="col-md-2 align-self-center">
+                          <div class=exp-cal-icon>
+                              <button type="button" id="calculate"><i class="fa fa-angle-right"></i>
+                              </button>
+                          </div>
+                      </div>
+                      <div class="col-md-5">
+                          <p class="fw-600 text-center exp-cal2-content">Investissement Rate</p>
+                          <div class="ex-calculate-value">
+                              <input type="text" name="sum" id="sum" value="0,02%" readonly> <a href="#">How do we
+                                  calculate this?</a>
+                          </div>
+                      </div>
+                      <div class="col-lg-12 text-center"> 
+                        <button onclick="Rate(Inves.idInvestesment)"
+                              class="btn-first btn-submit-fill ">Find the Rate</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<!-- End Loan Calculator -->
+
+<div class="section-padding lw-tab-section p-relative">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="lw-mega-tab">
+            <ul ngbNav #navplans="ngbNav" class="nav lw-nav-tabs">
+              <li [ngbNavItem]="1">
+                
+                <h3 style="margin-bottom: 20px" >Investissement Management</h3> 
+                 
+                 
+                  <button (click) = "PDF()" class = "btn btn-success"  type ="button" style="margin-left: 10px" style="margin-bottom: 10px" >Export List To PDF</button>
+                
+                
+                <div class="table-responsive">
+                  <table class="lw-tab-table">
+                    <tr class="lw-table-row-1">
+                        <th>Investissement Identifier</th>
+                        <th>CIN</th>
+                        <th>Name</th>
+                        <th>Second Name</th>
+                        <th>Email</th>
+                        <th>Profesion</th>
+                        <th>Amout</th>
+                        <th>Rate</th>
+                        <th>Final Amount</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr *ngFor="let Inves of listinves">
+                        <td class="lw-table-data-2"  class="center">
+                            {{Inves.idInvestesment}}
+                          </td>
+                      <td class="lw-table-data-2"  class="center">
+                        {{Inves.cinInvestesment}}
+                    </td>
+                      <td class="lw-table-data-3" class="center">
+                        {{Inves.nameInvestesment }}
+                      </td>
+                      <td class="lw-table-data-4" class="center">
+                        {{Inves.secondnnameInvestesment }}
+                      </td>
+                      <td class="lw-table-data-4" class="center">
+                        {{Inves.mailInvestesment }}
+                      </td>
+                      <td class="lw-table-data-4" class="center">
+                        {{Inves.professionInvestesment }}
+                      </td>
+                      <td class="lw-table-data-4" class="center">
+                        {{Inves.amoutInvestesment }}
+                      </td>
+                      <td class="lw-table-data-4" class="center">
+                        {{Inves.tauxInves }}
+                      </td>
+                      <td class="lw-table-data-4" class="center">
+                        {{Inves.finalAmount }}
+                      </td>
+                      
+                      <td class="lw-table-data-3" class="center">
+                        
+                        <button (click) = "CalculateAmoutOfInves(Inves.idInvestesment)" type ="button" class = "btn btn-info" >Calculate Final Amount</button>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<app-footer></app-footer>

@@ -14,7 +14,7 @@
                   <li><a class="text-custom-white">Home</a></li>
                   <li >
 
-                      <a>Apply for loan</a>
+                      <a>Fund Management</a>
                   </li>
 
                 </ul>
@@ -26,26 +26,61 @@
     </div>
   </div>
 </breadcrumb>
-<div class="section-padding lw-tab-section p-relative">
+
+<!-- Start User Details -->
+<section class="section-padding-bottom user-info-details">
+  <div class="container">
+    <div class="row">
+      <div class="offset-lg-3 col-lg-6">
+        
+          
+            
+            <form style="margin-top: 20px">
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-group">
+                    <label class="text-custom-black fs-14 fw-600">Amout</label>
+                    <input type="number" class ="form-control" #amountFund="ngModel"  [(ngModel)] = "Fund.amountFund" name = "amountFund">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="text-custom-black fs-14 fw-600">Rate</label>
+                    <input type="number" class ="form-control" #tauxFund="ngModel" [(ngModel)] = "Fund.tauxFund" name = "tauxFund">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="text-custom-black fs-14 fw-600">Win Rate</label>
+                    <input type="number" class ="form-control" #tauxGain="ngModel"  [(ngModel)] = "Fund.tauxGain" name = "tauxGain">
+                  </div>
+                </div>
+               </div>
+            </form>
+      </div>
+    </div>
+ </div>
+</section>
+
+<div  class="section-padding lw-tab-section p-relative"> 
     <div class="container">
       <div class="row">
         <div class="col-12">
           <div class="lw-mega-tab">
             <ul ngbNav #navplans="ngbNav" class="nav lw-nav-tabs">
               <li [ngbNavItem]="1">
-                <a ngbNavLink>
-                  Gestion Fund
-                  <button (click) = "goToaddfund()"  class = "btn btn-success"  type ="submit" >Add New Fund</button>
-                </a>
+                
+                 <h3 style="margin-bottom: 20px" >Fund Management</h3> 
+                  <button (click) = "addFund()"  class = "btn btn-success"  type ="submit" style="margin-left: 10px" style="margin-bottom: 10px" >Add New Fund</button>
                 
                 <div class="table-responsive">
                   <table class="lw-tab-table">
                     <tr class="lw-table-row-1">
-                        <th>Fund identifier</th>
+                        <th>Fund Identifier</th>
                         <th>Amount</th>
                         <th>Rate</th>
                         <th>Win Rate</th>
-                        <th> Actions </th>
+                        <th>Actions </th>
                     </tr>
                     <tr *ngFor="let Fund of listFunds">
                         <td class="lw-table-data-2"  class="center">
@@ -61,9 +96,10 @@
                       {{Fund.tauxGain}}
                       </td>
                       <td class="lw-table-data-3" class="center">
-                        <button  class = "btn btn-success" type ="submit" >View Details Fund</button>
-                        <button  class = "btn btn-success" type ="submit" >Update</button>
-                        <button  class = "btn btn-success" type ="submit" >Delete</button>
+                       
+                        <button  (click) = "goToaddInves()" class = "btn btn-success"  type ="submit"  >Add Investissement </button>
+                        <button  class = "btn btn-info" type ="submit" >View Details Fund</button>
+                        <button type ="button" class = "btn btn-danger" (click)="deleteFund(Fund.idFund)">Delete Fund</button>
                       </td>
                     </tr>
                   </table>
@@ -75,4 +111,5 @@
       </div>
     </div>
   </div>
+
 <app-footer></app-footer>
