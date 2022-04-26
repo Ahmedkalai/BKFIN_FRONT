@@ -1,0 +1,61 @@
+<app-header></app-header>
+<breadcrumb #parent>
+    <div class="sub-header p-relative">
+      <div class="overlay overlay-bg-black"></div>
+      <div class="pattern"></div>
+      <div class="section-padding">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+  
+                <div class="sub-header-content p-relative">
+                  <h1 class="text-custom-white lh-default fw-600">Notification</h1>
+                </div>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </breadcrumb>
+  <div class="section-padding lw-tab-section p-relative">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="lw-mega-tab">
+            <ul ngbNav #navplans="ngbNav" class="nav lw-nav-tabs">
+              <li [ngbNavItem]="1">
+               
+                <div class="table-responsive">
+                  <table class="lw-tab-table">
+                    <tr class="lw-table-row-1">
+                      <th>Date</th>
+                      <th>Object</th>
+                      <th>Id Credit</th>
+
+                      
+  
+                    </tr>
+                    <tr *ngFor='let p of listNotificationss'>
+                      <td class="lw-table-data-2">
+                        {{p.dateNotif}}
+                      </td>
+                      <td class="lw-table-data-2">
+                        {{p.object}}
+                      </td>
+                      <td class="lw-table-data-2">
+                        {{p.credit}}
+                      </td>
+                      
+                    </tr>
+  
+                  </table>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+             <app-footer></app-footer>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Reclamation } from 'src/Model/Reclamation';
+import { ReclamationService } from 'src/Services/reclamation.service';
 
 @Component({
   selector: 'app-content',
@@ -6,8 +9,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./content.component.css']
 })
 export class ContentComponent implements OnInit {
+  reclamation: Reclamation = new Reclamation();
 
-  constructor() { }
+  constructor(private employeeService: ReclamationService,
+    private router: Router) { }
   contactinfo = [
     {
       icon: "fas fa-phone-alt",
@@ -31,5 +36,23 @@ export class ContentComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  saveEmployee(){
+    this.employeeService.addReclamation(this.reclamation,1).subscribe( data =>{
+      console.log(data);
+      console.log("done")
+      //this.goToEmployeeList();
+    },
+    error => console.log(error));
+    
+  }
+  goToEmployeeList(){
+    this.router.navigate(['/rec']);
+  }
+  onSubmit(){
+    console.log(this.reclamation);
+    this.saveEmployee();
+  }
+
 
 }
