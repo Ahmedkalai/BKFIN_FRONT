@@ -1,0 +1,41 @@
+<app-header></app-header>
+<div class="overlapsec"></div>
+<div *ngIf="buttons">
+  <breadcrumb #parent>
+    <div class="sub-header p-relative">
+      <div class="overlay overlay-bg-black"></div>
+      <div class="pattern"></div>
+      <div class="section-padding">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+
+              <div class="sub-header-content p-relative">
+                <h1 class="text-custom-white lh-default fw-600">Credit</h1>
+                <ul class="custom">
+                  <li><a class="text-custom-white">Home</a></li>
+                  <li >
+
+                    <a>Apply for loan</a>
+                  </li>
+
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </breadcrumb>
+  <button (click)="onShow_form()">Show form</button>
+  <button (click)="onShow_list()">Show list</button>
+</div>
+<div *ngIf="form">
+  <app-form-guarantor></app-form-guarantor>
+</div>
+<div *ngIf="list">
+  <app-listguarantor></app-listguarantor>
+</div>
+
+<app-footer></app-footer>

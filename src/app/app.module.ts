@@ -22,10 +22,6 @@ import { Back1Component } from './components/pages/back1/back1.component';
 import {CommonModule} from "@angular/common";
 import {Back1Module} from "./components/pages/back1/back1.module";
 
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,18 +30,14 @@ import {Back1Module} from "./components/pages/back1/back1.module";
     FormGuarantorComponent,
     Back1Component,
 
-
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     BreadcrumbModule,
-    NgbModule
-  ],
-  providers: [ ],
-
     NgbModule,
     SharedModule,
     // * MATERIAL IMPORTS
@@ -58,7 +50,6 @@ import {Back1Module} from "./components/pages/back1/back1.module";
     Back1Module,
   ],
   providers: [GuarantorService],
-
   bootstrap: [AppComponent],
   exports: [
     Back1Component
