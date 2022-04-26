@@ -6,12 +6,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BreadcrumbModule } from 'angular-crumbs';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-<<<<<<< Updated upstream
-
-@NgModule({
-  declarations: [
-    AppComponent
-=======
 import {SharedModule} from './components/shared/shared.module';
 import {ApplycreditComponent} from "./components/pages/applycredit/applycredit.component";
 import {GuarantorService} from "./Services/GuarantorService";
@@ -28,6 +22,10 @@ import { Back1Component } from './components/pages/back1/back1.component';
 import {CommonModule} from "@angular/common";
 import {Back1Module} from "./components/pages/back1/back1.module";
 
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +34,7 @@ import {Back1Module} from "./components/pages/back1/back1.module";
     FormGuarantorComponent,
     Back1Component,
 
->>>>>>> Stashed changes
+
   ],
   imports: [
     BrowserModule,
@@ -44,11 +42,10 @@ import {Back1Module} from "./components/pages/back1/back1.module";
     AppRoutingModule,
     BrowserAnimationsModule,
     BreadcrumbModule,
-<<<<<<< Updated upstream
     NgbModule
   ],
   providers: [ ],
-=======
+
     NgbModule,
     SharedModule,
     // * MATERIAL IMPORTS
@@ -61,7 +58,7 @@ import {Back1Module} from "./components/pages/back1/back1.module";
     Back1Module,
   ],
   providers: [GuarantorService],
->>>>>>> Stashed changes
+
   bootstrap: [AppComponent],
   exports: [
     Back1Component
