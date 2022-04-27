@@ -5,14 +5,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BreadcrumbModule } from 'angular-crumbs';
 
-import {HttpClientModule} from "@angular/common/http";
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReclamationFrontComponent } from './components/pages/reclamation-front/reclamation-front.component';
 import { ReclamationService } from 'src/Services/reclamation.service';
 import { ListreclamationComponent } from './components/pages/reclamation-front/listreclamation/listreclamation.component';
 import { TestComponent } from './components/pages/test/test.component';
-import {SharedModule} from './components/shared/shared.module';
+
 import { UpdateReclamationComponent } from './components/pages/reclamation-front/update-reclamation/update-reclamation.component';
 import { ReclamationBackComponent } from './components/pages/reclamation-back/reclamation-back.component';
 import { NotificationbyclientComponent } from './components/pages/notificationbyclient/notificationbyclient.component';
