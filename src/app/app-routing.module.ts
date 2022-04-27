@@ -1,8 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AccountListComponent } from './components/pages/account-list/account-list.component';
+import { AddAccountComponent } from './components/pages/add-account/add-account.component';
+import { AddTransactionComponent } from './components/pages/add-transaction/add-transaction.component';
+import { ApprouveTransactionComponent } from './components/pages/approuve-transaction/approuve-transaction.component';
+import { TransactionListByRibComponent } from './components/pages/transaction-list-by-rib/transaction-list-by-rib.component';
+import { UpdateAccountComponent } from './components/pages/update-account/update-account.component';
+
 
 const routes: Routes = [
+  
   { path: '', loadChildren: () => import('./components/pages/home/home.module').then(m => m.HomeModule), data: { breadcrumb: 'Homepage' } }, 
+  {path: 'accounts', component: AccountListComponent},
+  {path: 'Addaccount', component: AddAccountComponent},
+  {path: 'Addtransaction', component: AddTransactionComponent},
+  {path: 'update-acc/:rib', component: UpdateAccountComponent},
+  {path: 'transactionsbyrib/:id', component: TransactionListByRibComponent},
+  {path: 'apptr', component: ApprouveTransactionComponent}, 
   { path: 'home-v2', loadChildren: () => import('./components/pages/hometwo/hometwo.module').then(m => m.HometwoModule), data: { breadcrumb: 'Homepage' } }, 
   { path: 'about', loadChildren: () => import('./components/pages/about/about.module').then(m => m.AboutModule), data: { breadcrumb: 'About Us' } }, 
   { path: 'blog', loadChildren: () => import('./components/pages/blog/blog.module').then(m => m.BlogModule), data: { breadcrumb: 'Blog Grid' } }, 
@@ -19,7 +33,8 @@ const routes: Routes = [
   { path: 'team', loadChildren: () => import('./components/pages/team/team.module').then(m => m.TeamModule), data: { breadcrumb: 'Team' } }, 
   { path: 'loan-dashboard', loadChildren: () => import('./components/pages/userdashboard/userdashboard.module').then(m => m.UserdashboardModule), data: { breadcrumb: 'User Dashboard' } },
   { path: '**', loadChildren: () => import('./components/pages/error/error.module').then(m => m.ErrorModule), data: { breadcrumb: 'Error 404' } }
-];
+
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
