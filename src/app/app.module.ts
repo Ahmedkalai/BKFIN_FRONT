@@ -14,18 +14,41 @@ import { AddTransactionComponent } from './components/pages/add-transaction/add-
 import { UpdateAccountComponent } from './components/pages/update-account/update-account.component';
 import { TransactionListByRibComponent } from './components/pages/transaction-list-by-rib/transaction-list-by-rib.component';
 import { ApprouveTransactionComponent } from './components/pages/approuve-transaction/approuve-transaction.component';
+import {ApplycreditComponent} from "./components/pages/applycredit/applycredit.component";
+import {GuarantorService} from "./Services/GuarantorService";
+
+import { ListguarantorComponent } from './components/pages/applycredit/listguarantor/listguarantor.component';
+import { FormGuarantorComponent } from './components/pages/applycredit/form-guarantor/form-guarantor.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { Back1Component } from './components/pages/back1/back1.component';
+import {CommonModule} from "@angular/common";
+import {Back1Module} from "./components/pages/back1/back1.module";
+
 
 @NgModule({
   declarations: [
     AppComponent,
+ 
     AccountListComponent,
     AddAccountComponent,
     AddTransactionComponent,
     UpdateAccountComponent,
     TransactionListByRibComponent,
     ApprouveTransactionComponent
+    ApplycreditComponent,
+    ListguarantorComponent,
+    FormGuarantorComponent,
+    Back1Component,
+
+ 
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     HttpClientModule,
     FormsModule,
@@ -33,10 +56,22 @@ import { ApprouveTransactionComponent } from './components/pages/approuve-transa
     BrowserAnimationsModule,
     BreadcrumbModule,
     NgbModule,
-    SharedModule
+    SharedModule,
+    // * MATERIAL IMPORTS
+    MatSidenavModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatIconModule,
+    MatDividerModule,
+    MatListModule,
+    Back1Module,
+ 
   ],
-  providers: [ ],
+  providers: [GuarantorService],
   bootstrap: [AppComponent],
+  exports: [
+    Back1Component
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

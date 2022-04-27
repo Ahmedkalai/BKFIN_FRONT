@@ -1,12 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { AccountListComponent } from './components/pages/account-list/account-list.component';
 import { AddAccountComponent } from './components/pages/add-account/add-account.component';
 import { AddTransactionComponent } from './components/pages/add-transaction/add-transaction.component';
 import { ApprouveTransactionComponent } from './components/pages/approuve-transaction/approuve-transaction.component';
 import { TransactionListByRibComponent } from './components/pages/transaction-list-by-rib/transaction-list-by-rib.component';
 import { UpdateAccountComponent } from './components/pages/update-account/update-account.component';
-
+import {ApplycreditComponent} from './components/pages/applycredit/applycredit.component';
+import {ListguarantorComponent} from './components/pages/applycredit/listguarantor/listguarantor.component';
+import {BDashboardComponent} from "./components/pages/back1/b-dashboard/b-dashboard.component";
+import {Back1Component} from "./components/pages/back1/back1.component";
+import {BHomeComponent} from "./components/pages/back1/b-home/b-home.component";
+import {BGuarantorsComponent} from "./components/pages/back1/b-guarantors/b-guarantors.component";
 
 const routes: Routes = [
   
@@ -17,6 +23,15 @@ const routes: Routes = [
   {path: 'update-acc/:rib', component: UpdateAccountComponent},
   {path: 'transactionsbyrib/:id', component: TransactionListByRibComponent},
   {path: 'apptr', component: ApprouveTransactionComponent}, 
+  { path: 'back', component :Back1Component,
+  children: [
+    {path :'' ,redirectTo :'b_home',pathMatch: 'full'},
+    { path: 'b_dashboard', component: BDashboardComponent },
+    { path: 'b_home', component: BHomeComponent },
+    {path:'b_guarantor',component :BGuarantorsComponent }
+  ]},
+{path: 'applycredit', component: ApplycreditComponent},
+{path: 'listguarantor', component: ListguarantorComponent},
   { path: 'home-v2', loadChildren: () => import('./components/pages/hometwo/hometwo.module').then(m => m.HometwoModule), data: { breadcrumb: 'Homepage' } }, 
   { path: 'about', loadChildren: () => import('./components/pages/about/about.module').then(m => m.AboutModule), data: { breadcrumb: 'About Us' } }, 
   { path: 'blog', loadChildren: () => import('./components/pages/blog/blog.module').then(m => m.BlogModule), data: { breadcrumb: 'Blog Grid' } }, 
