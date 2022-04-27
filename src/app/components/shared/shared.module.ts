@@ -13,6 +13,12 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { ServicesidebarComponent } from './servicesidebar/servicesidebar.component';
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatIconModule} from "@angular/material/icon";
+import {MatDividerModule} from "@angular/material/divider";
+import {MatListModule} from "@angular/material/list";
 
 
 
@@ -23,8 +29,16 @@ import { ServicesidebarComponent } from './servicesidebar/servicesidebar.compone
     RouterModule,
     NgbModule,
     SlickCarouselModule,
-    BreadcrumbModule
+    BreadcrumbModule,
+    // * MATERIAL IMPORTS
+    MatSidenavModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatIconModule,
+    MatDividerModule,
+    MatListModule
   ],
-  exports: [AdvertisementComponent, BlogsidebarComponent, BookappointmentComponent, BreadcrumbComponent, FooterComponent, HeaderComponent, ServicesidebarComponent]
+    exports: [
+         AdvertisementComponent, BlogsidebarComponent, BookappointmentComponent, BreadcrumbComponent, FooterComponent, HeaderComponent, ServicesidebarComponent]
 })
 export class SharedModule { }

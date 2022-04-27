@@ -1,0 +1,53 @@
+<!-- start lw-tab -->
+<div class="section-padding lw-tab-section p-relative">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="lw-mega-tab">
+          <ul ngbNav #navplans="ngbNav" class="nav lw-nav-tabs">
+            <li [ngbNavItem]="1">
+              <a ngbNavLink>
+                Most Popular
+              </a>
+              <div class="table-responsive">
+                <table class="lw-tab-table">
+                  <tr class="lw-table-row-1">
+                    <th>Name</th>
+                    <th>SecondName</th>
+                    <th>WOrkGuarantor</th>
+                    <th>Features</th>
+
+                  </tr>
+                  <tr *ngFor = "let Guarantor of Guarantors">
+                    <td class="lw-table-data-2">
+                      {{ Guarantor.nameGarantor }}
+                    </td>
+                    <td class="lw-table-data-3">
+                      {{ Guarantor.secondnameGarantor }}
+                    </td>
+                    <td class="lw-table-data-4">
+                      {{ Guarantor.workGarantor }}
+                    </td>
+                    <td class="lw-table-data-3 choose-btn"> <a href="#"
+                                                               class="btn-first btn-submit-fill">Choose</a>
+                      <a href="#" class="Loan-content">T&C Apply</a>
+                    </td>
+                  </tr>
+
+                </table>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
