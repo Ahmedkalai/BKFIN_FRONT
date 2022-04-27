@@ -33,12 +33,11 @@ export class EventComponent implements OnInit {
 getAllEvents() {
   this.EventService.getAllEvents().subscribe(res => this.listEvents = res)
   }
-
   addEvent(){
     this.EventService.addEvent(this.Event).subscribe(()=> this.getAllEvents());
   }
-  updateEvent(idEvent:any){
-    this.EventService.updateEvent(this.id,Event).subscribe(()=> this.getAllEvents());
+  updateEvent(id:Number){
+    this.EventService.updateEvent(this.Event,this.id).subscribe(()=> this.getAllEvents());
   }
   deleteEvent(idEvent:any){
     this.EventService.deleteEvent(idEvent).subscribe(()=> this.getAllEvents());

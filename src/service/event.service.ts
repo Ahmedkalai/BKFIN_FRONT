@@ -14,13 +14,13 @@ export class EventService {
   addEvent(event : any) {
     return this.httpClient.post(`${this.API_URL}/add-event`, event)
   }
-  updateEvent(event : any,eventId : any){
-    return this.httpClient.put(`${this.API_URL}/modify-event/${eventId}`, event)
+  updateEvent(eventId: any,event : any){
+    return this.httpClient.put(`${this.API_URL}/modify-event/${eventId}`,event)
   }
   deleteEvent(eventId : any){
     return  this.httpClient.delete(`${this.API_URL}/remove-event/${eventId}`)
   }
-  // assign(eventId : any,agentid : any){
-  //  return  this.httpClient.post(`${this.API_URL}/addagev/${eventId}/${agentid}`)
+ // assign(eventId : any,agentid : any){
+ // return  this.httpClient.post(`${this.API_URL}/addagev/${eventId}/${agentid}`)
   //}
 }
