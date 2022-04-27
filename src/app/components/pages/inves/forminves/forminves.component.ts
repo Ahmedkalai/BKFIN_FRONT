@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { Fund } from 'src/Model/fund';
 import { Inves } from 'src/Model/inves';
 import { InvesService } from 'src/service/inves.service';
@@ -14,9 +15,14 @@ export class ForminvesComponent implements OnInit {
   listFunds:any;
   Inves : Inves;
   Fund : Fund;
-  constructor(private invesService: InvesService , private router: Router ) { }
+  id : number;
+  constructor(private invesService: InvesService , private router: Router,
+    private route:ActivatedRoute ) { }
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.params['id'];
+    console.log(this.id);
+    
     this.Inves ={
       idInvestesment:null,
       cinInvestesment:null,
@@ -29,18 +35,18 @@ export class ForminvesComponent implements OnInit {
       mailInvestesment:null,
       finalAmount:null,
       fund:null
-      }
+    }
+  
   }
   
   getallInves() {
     this.invesService.getAllInves().subscribe(inv => this.listinves = inv)
     }
 
-  
     addInves(idFund : any){
-      this.invesService.addInves(this.Inves,idFund).subscribe( data => {
+      this.invesService.addInves(this.Inves,this.id).subscribe( data => {
           console.log(data);
-          this.goToInvesList();
+          this.goToFundList();
         },
         error => console.log(error));
     }
@@ -48,10 +54,10 @@ export class ForminvesComponent implements OnInit {
     goToInvesList(){
       this.router.navigate(['Inves']);
     }
+
   
     onSubmit(){
-      console.log(this.Inves);
-      this.addInves(1);
+      this.addInves(this.id);
     }
     
     goToFundList(){

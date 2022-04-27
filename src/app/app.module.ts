@@ -13,6 +13,7 @@ import { FormfundComponent } from './components/pages/fund/formfund/formfund.com
 import { InvesComponent } from './components/pages/inves/listinves/inves.component';
 import { ForminvesComponent } from './components/pages/inves/forminves/forminves.component';
 import { DetailinvesComponent } from './components/pages/inves/detailinves/detailinves.component';
+import { EventComponent } from './components/pages/event/listevent/event.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { DetailinvesComponent } from './components/pages/inves/detailinves/detai
     InvesComponent,
     ForminvesComponent,
     DetailinvesComponent,
+    EventComponent,
     
   ],
   imports: [

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Inves } from 'src/Model/inves';
 import { InvesService } from 'src/service/inves.service';
 
@@ -13,11 +13,15 @@ export class DetailinvesComponent implements OnInit {
   form:boolean=false;
   Inves!:Inves;
   closeResult!:string;
-  constructor(private invesService: InvesService , private router: Router) { }
+  id : number;
+  constructor(private invesService: InvesService , private router: Router
+    , private route:ActivatedRoute ) { }
 
   ngOnInit(): void {
-    this.getallInves();
-
+    
+   this.getallInves();
+   //this.id = this.route.snapshot.params['id'];
+   //this.getInvestesmentbyFund(this.id);
     this.Inves ={
       idInvestesment:null,
       cinInvestesment:null,
@@ -36,7 +40,10 @@ export class DetailinvesComponent implements OnInit {
   getallInves() {
     this.invesService.getAllInves().subscribe(inv => this.listinves = inv)
     }
-
+  getInvestesmentbyFund(idFund : any){
+    this.invesService.getInvestesmentbyFund(this.id)
+    }
+ 
 }
 
 

@@ -27,53 +27,6 @@
   </div>
 </breadcrumb>
 
-<!-- start Loan Calculator -->
-<section class="section-padding pb-0 exp-cal2">
-  <div class="container">
-      <div class="section-header">
-          <div class="section-heading">
-              <h4 class="text-white fw-800">Rate Investissement Calculator</h4>
-              <div class="section-description">
-                  <p class="text-light-white">Simulates rates for a better Investissement  </p>
-              </div>
-          </div>
-      </div>
-      <div class="row">
-          <div class="offset-lg-2 col-lg-8 ">
-              <div class="exp-cal2-loan">
-                  <div class="row">
-                      <div class="col-md-5">
-                          <p class="fw-600 text-center">Investissement Amount</p>
-                          <div class="exp-cal2-input">
-                              <input placeholder="" maxlength="10" name="calculator" type="number" value="100"
-                                  id="num1">
-                          </div>
-                          <p class="fw-600 mt-2 fs-13">please enter amount sup to 7000DT</p>
-                      </div>
-                      <div class="col-md-2 align-self-center">
-                          <div class=exp-cal-icon>
-                              <button type="button" id="calculate"><i class="fa fa-angle-right"></i>
-                              </button>
-                          </div>
-                      </div>
-                      <div class="col-md-5">
-                          <p class="fw-600 text-center exp-cal2-content">Investissement Rate</p>
-                          <div class="ex-calculate-value">
-                              <input type="text" name="sum" id="sum" value="0,02%" readonly> <a href="#">How do we
-                                  calculate this?</a>
-                          </div>
-                      </div>
-                      <div class="col-lg-12 text-center"> 
-                        <button onclick="Rate(Inves.idInvestesment)"
-                              class="btn-first btn-submit-fill ">Find the Rate</button>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-</section>
-<!-- End Loan Calculator -->
 
 <div class="section-padding lw-tab-section p-relative">
     <div class="container">
@@ -133,9 +86,9 @@
                       </td>
                       
                       <td class="lw-table-data-3" class="center">
-                        
-                        <button (click) = "CalculateAmoutOfInves(Inves.idInvestesment)" type ="button" class = "btn btn-info" >Calculate Final Amount</button>
+                        <button (click) = "CalculateAmoutOfInves(Inves.idInvestesment)" type ="button" class = "btn btn-info" > Final Amount</button>
                       </td>
+                      
                     </tr>
                   </table>
                 </div>

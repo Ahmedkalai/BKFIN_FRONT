@@ -12,6 +12,9 @@ export class InvesService {
 getAllInves(){
   return this.httpClient.get(`${this.API_URL}/retrieve-all-investesments`)
 }
+getInvestesmentbyFund(idFund : any){
+  return this.httpClient.get(`${this.API_URL}/retrieve-investesments-by-fund/${idFund}`)
+}
 addInves(Inves:any,idFund : any) {
   return this.httpClient.post(`${this.API_URL}/add_investesment/${idFund}`, Inves)
 }

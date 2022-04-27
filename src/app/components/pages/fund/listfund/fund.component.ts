@@ -43,8 +43,11 @@ goToaddfund(){
 addFund(){
     this.FundService.addFund(this.Fund).subscribe(()=> this.getAllFunds());
   }
-goToaddInves(){
-  this.router.navigate(['AddInves']);
+goToaddInves(id:Number){
+  this.router.navigate(['AddInves',id]);
+}
+goToDeails(){
+ this.router.navigate(['getallInves']);
 }
 
 }

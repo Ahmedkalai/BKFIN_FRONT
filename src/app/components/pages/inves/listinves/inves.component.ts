@@ -55,4 +55,7 @@ export class InvesComponent implements OnInit {
   Rate(idInvestesment : any){
     this.invesService.CalculateRateOfInves(idInvestesment);
   }
+  updInves(id:Number){
+    this.router.navigate(['AddInves',id]);
+  }
 }

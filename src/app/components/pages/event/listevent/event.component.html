@@ -1,0 +1,124 @@
+<app-header></app-header>
+<breadcrumb #parent>
+  <div class="sub-header p-relative">
+    <div class="overlay overlay-bg-black"></div>
+    <div class="pattern"></div>
+    <div class="section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+
+              <div class="sub-header-content p-relative">
+                <h1 class="text-custom-white lh-default fw-600">Event</h1>
+                <ul class="custom">
+                  <li><a class="text-custom-white">Home</a></li>
+                  <li >
+
+                      <a>Event Management</a>
+                  </li>
+
+                </ul>
+              </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</breadcrumb>
+<!-- Start User Details -->
+<section >
+  <div >
+    <div class="row">
+      <div class="offset-lg-3 col-lg-6">
+        
+          
+            
+            <form style="margin-top: 40px">
+              <div class="row">
+               
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="text-custom-black fs-14 fw-600">Title</label>
+                    <input type="text" class ="form-control" #tauxGain="ngModel"  [(ngModel)] = "Event.nameEvent" name = "tauxGain">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="text-custom-black fs-14 fw-600">Description</label>
+                    <input type="text" class ="form-control" #tauxGain="ngModel"  [(ngModel)] = "Event.description" name = "tauxGain">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="text-custom-black fs-14 fw-600">Region</label>
+                    <input type="text" class ="form-control" #tauxGain="ngModel"  [(ngModel)] = "Event.region" name = "tauxGain">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="text-custom-black fs-14 fw-600">Date</label>
+                    <input type="date" class ="form-control" #tauxGain="ngModel"  [(ngModel)] = "Event.dateEvent" name = "tauxGain">
+                  </div>
+                </div>
+               </div>
+            </form>
+      </div>
+    </div>
+ </div>
+</section>
+<div  class="section-padding lw-tab-section p-relative"> 
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="lw-mega-tab">
+          <ul ngbNav #navplans="ngbNav" class="nav lw-nav-tabs">
+            <li [ngbNavItem]="1">
+              
+             
+                <button (click) = "addEvent()"  class = "btn btn-success"  type ="submit" style="margin-left: 80px" style="margin-bottom: 10px" >Add New Event</button>
+                <h3 style="margin-bottom: 20px" >Event Management</h3> 
+               
+              <div class="table-responsive">
+                <table class="lw-tab-table">
+                  <tr class="lw-table-row-1">
+                      <th>Event Identifier</th>
+                      <th>Title</th>
+                      <th>Description</th>
+                      <th>Region</th>
+                      <th>Date</th>
+                      <th>Actions </th>
+                  </tr>
+                  <tr *ngFor="let Event of listEvents">
+                      <td class="lw-table-data-2"  class="center">
+                          {{Event.idEvent}}
+                        </td>
+                    <td class="lw-table-data-2"  class="center">
+                      {{Event.nameEvent}}
+                    </td>
+                    <td class="lw-table-data-3" class="center">
+                      {{Event.description}}
+                    </td>
+                    <td class="lw-table-data-4" class="center">
+                    {{Event.region}}
+                    </td>
+                    <td class="lw-table-data-4" class="center">
+                      {{Event.dateEvent}}
+                      </td>
+                    <td class="lw-table-data-3" class="center">
+                      <button type ="button" class = "btn btn-danger" (click)="deleteEvent(Event.idEvent)">Delete Event</button>
+                    </td>
+                    <td class="lw-table-data-3" class="center">
+                      <button type ="button" class = "btn btn-info" (click)="updateEvent(Event.idEvent)">Update Event</button>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
