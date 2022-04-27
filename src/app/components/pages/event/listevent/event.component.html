@@ -78,7 +78,13 @@
              
                 <button (click) = "addEvent()"  class = "btn btn-success"  type ="submit" style="margin-left: 80px" style="margin-bottom: 10px" >Add New Event</button>
                 <h3 style="margin-bottom: 20px" >Event Management</h3> 
-               
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="text-custom-black fs-14 fw-600">Agent</label>
+                    <input type="text" class ="form-control" #tauxGain="ngModel" [(ngModel)] = "Event.Agent" name = "tauxGain">
+                  </div>
+                </div>
+              
               <div class="table-responsive">
                 <table class="lw-tab-table">
                   <tr class="lw-table-row-1">
@@ -105,11 +111,15 @@
                     <td class="lw-table-data-4" class="center">
                       {{Event.dateEvent}}
                       </td>
-                    <td class="lw-table-data-3" class="center">
-                      <button type ="button" class = "btn btn-danger" (click)="deleteEvent(Event.idEvent)">Delete Event</button>
-                    </td>
+                   
                     <td class="lw-table-data-3" class="center">
                       <button type ="button" class = "btn btn-info" (click)="updateEvent(Event.idEvent)">Update Event</button>
+                    </td>
+                    <td class="lw-table-data-3" class="center">
+                      <button   class = "btn btn-success"  type ="submit" style="margin-left: 80px" style="margin-bottom: 10px" >Associate</button>
+                    </td>
+                    <td class="lw-table-data-3" class="center">
+                      <button type ="button" class = "btn btn-danger" (click)="deleteEvent(Event.idEvent)">Delete Event</button>
                     </td>
                   </tr>
                 </table>
