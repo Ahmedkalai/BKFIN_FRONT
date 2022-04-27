@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Reclamation } from 'src/Model/Reclamation';
 import { ReclamationService } from 'src/Services/reclamation.service';
-import { NotificationsService } from 'angular2-notifications';
+
 
 @Component({
   selector: 'app-reclamation-front',
