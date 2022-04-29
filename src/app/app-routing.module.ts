@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
+import { ChatbotComponent } from './components/pages/chatbot/chatbot.component';
 import { NotificationbyclientComponent } from './components/pages/notificationbyclient/notificationbyclient.component';
 import { ReclamationBackComponent } from './components/pages/reclamation-back/reclamation-back.component';
 import { ReclamationComponent } from './components/pages/reclamation-back/reclamation/reclamation.component';
@@ -10,33 +10,15 @@ import { UpdateReclamationComponent } from './components/pages/reclamation-front
 import {TestComponent} from './components/pages/test/test.component';
 
 
-
-
-import {ApplycreditComponent} from './components/pages/applycredit/applycredit.component';
-import {ListguarantorComponent} from './components/pages/applycredit/listguarantor/listguarantor.component';
-import {BDashboardComponent} from "./components/pages/back1/b-dashboard/b-dashboard.component";
-import {Back1Component} from "./components/pages/back1/back1.component";
-import {BHomeComponent} from "./components/pages/back1/b-home/b-home.component";
-import {BGuarantorsComponent} from "./components/pages/back1/b-guarantors/b-guarantors.component";
-
 const routes: Routes = [
   { path: '', loadChildren: () => import('./components/pages/home/home.module').then(m => m.HomeModule), data: { breadcrumb: 'Homepage' } },
-  { path: 'home-v2', loadChildren: () => import('./components/pages/hometwo/hometwo.module').then(m => m.HometwoModule), data: { breadcrumb: 'Homepage' } },
-  { path: 'back', component :Back1Component,
-    children: [
-      {path :'' ,redirectTo :'b_home',pathMatch: 'full'},
-      { path: 'b_dashboard', component: BDashboardComponent },
-      { path: 'b_home', component: BHomeComponent },
-      {path:'b_guarantor',component :BGuarantorsComponent }
-    ]},
-  {path: 'applycredit', component: ApplycreditComponent},
-  {path: 'listguarantor', component: ListguarantorComponent},
   {path: 'AddRec', component: ReclamationFrontComponent},
   {path: 'recclient', component: ListreclamationComponent},
   {path: 'not', component: NotificationbyclientComponent},
   {path: 'update-rec/:id', component: UpdateReclamationComponent},
-  {path: 'test', component: ReclamationComponent},
-
+  {path: 'reclamationback', component: ReclamationComponent},
+  {path: 'chatbot', component: ChatbotComponent},
+  { path: 'home-v2', loadChildren: () => import('./components/pages/hometwo/hometwo.module').then(m => m.HometwoModule), data: { breadcrumb: 'Homepage' } },
   { path: 'about', loadChildren: () => import('./components/pages/about/about.module').then(m => m.AboutModule), data: { breadcrumb: 'About Us' } },
   { path: 'blog', loadChildren: () => import('./components/pages/blog/blog.module').then(m => m.BlogModule), data: { breadcrumb: 'Blog Grid' } },
   { path: 'blog-sidebar', loadChildren: () => import('./components/pages/blogleft/blogleft.module').then(m => m.BlogleftModule), data: { breadcrumb: 'Blog Left' } },
