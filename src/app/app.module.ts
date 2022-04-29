@@ -17,6 +17,7 @@ import {GuarantorService} from "./Services/GuarantorService";
 import {HttpClientModule} from "@angular/common/http";
 import {NgxPaginationModule} from "ngx-pagination";
 import { SortDirective } from './directive/sort.directive';
+import { AdminCreditComponent } from './components/pages/admin-credit/admin-credit.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SortDirective } from './directive/sort.directive';
     ExempleComponent,
     TableCompleteComponent,
     NgbdSortableHeader,
-    SortDirective
+    SortDirective,
+    AdminCreditComponent
   ],
   imports: [
     HttpClientModule,
