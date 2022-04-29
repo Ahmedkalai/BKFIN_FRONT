@@ -1,8 +1,7 @@
-export class CreditService{
-  import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
-import { Credit } from './Credit';
+import {Credit} from "../models/Credit";
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +32,4 @@ export class CreditService {
     return this.httpClient.delete(`${this.baseURL}/remove-credit/${id}`);
   }
 
-}
 }

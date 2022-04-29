@@ -1,24 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {ApplycreditComponent} from './components/pages/applycredit/applycredit.component';
-import {ListguarantorComponent} from './components/pages/applycredit/listguarantor/listguarantor.component';
-import {BDashboardComponent} from "./components/pages/back1/b-dashboard/b-dashboard.component";
-import {Back1Component} from "./components/pages/back1/back1.component";
-import {BHomeComponent} from "./components/pages/back1/b-home/b-home.component";
-import {BGuarantorsComponent} from "./components/pages/back1/b-guarantors/b-guarantors.component";
+import {TableCompleteComponent} from "./components/pages/table-complete/table-complete.component";
 
 const routes: Routes = [
   { path: '', loadChildren: () => import('./components/pages/home/home.module').then(m => m.HomeModule), data: { breadcrumb: 'Homepage' } },
   { path: 'home-v2', loadChildren: () => import('./components/pages/hometwo/hometwo.module').then(m => m.HometwoModule), data: { breadcrumb: 'Homepage' } },
-  { path: 'back', component :Back1Component,
-    children: [
-      {path :'' ,redirectTo :'b_home',pathMatch: 'full'},
-      { path: 'b_dashboard', component: BDashboardComponent },
-      { path: 'b_home', component: BHomeComponent },
-      {path:'b_guarantor',component :BGuarantorsComponent }
-    ]},
-  {path: 'applycredit', component: ApplycreditComponent},
-  {path: 'listguarantor', component: ListguarantorComponent},
+  {path: 'tab' , component : TableCompleteComponent},
+  { path: 'exemple', loadChildren: () => import('./components/pages/exemple/exemple.module').then(m => m.ExempleModule), data: { breadcrumb: 'Exemple' } },
   { path: 'about', loadChildren: () => import('./components/pages/about/about.module').then(m => m.AboutModule), data: { breadcrumb: 'About Us' } },
   { path: 'blog', loadChildren: () => import('./components/pages/blog/blog.module').then(m => m.BlogModule), data: { breadcrumb: 'Blog Grid' } },
   { path: 'blog-sidebar', loadChildren: () => import('./components/pages/blogleft/blogleft.module').then(m => m.BlogleftModule), data: { breadcrumb: 'Blog Left' } },
