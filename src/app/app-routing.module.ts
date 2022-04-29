@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { ChatbotComponent } from './components/pages/chatbot/chatbot.component';
 import { NotificationbyclientComponent } from './components/pages/notificationbyclient/notificationbyclient.component';
 import { ReclamationBackComponent } from './components/pages/reclamation-back/reclamation-back.component';
@@ -10,6 +11,9 @@ import { UpdateReclamationComponent } from './components/pages/reclamation-front
 import {TestComponent} from './components/pages/test/test.component';
 
 
+import {TableCompleteComponent} from "./components/pages/table-complete/table-complete.component";
+
+
 const routes: Routes = [
   { path: '', loadChildren: () => import('./components/pages/home/home.module').then(m => m.HomeModule), data: { breadcrumb: 'Homepage' } },
   {path: 'AddRec', component: ReclamationFrontComponent},
@@ -18,7 +22,10 @@ const routes: Routes = [
   {path: 'update-rec/:id', component: UpdateReclamationComponent},
   {path: 'reclamationback', component: ReclamationComponent},
   {path: 'chatbot', component: ChatbotComponent},
-  { path: 'home-v2', loadChildren: () => import('./components/pages/hometwo/hometwo.module').then(m => m.HometwoModule), data: { breadcrumb: 'Homepage' } },
+  {path: 'home-v2', loadChildren: () => import('./components/pages/hometwo/hometwo.module').then(m => m.HometwoModule), data: { breadcrumb: 'Homepage' } },
+
+  {path: 'tab' , component : TableCompleteComponent},
+  {path: 'exemple', loadChildren: () => import('./components/pages/exemple/exemple.module').then(m => m.ExempleModule), data: { breadcrumb: 'Exemple' } },
   { path: 'about', loadChildren: () => import('./components/pages/about/about.module').then(m => m.AboutModule), data: { breadcrumb: 'About Us' } },
   { path: 'blog', loadChildren: () => import('./components/pages/blog/blog.module').then(m => m.BlogModule), data: { breadcrumb: 'Blog Grid' } },
   { path: 'blog-sidebar', loadChildren: () => import('./components/pages/blogleft/blogleft.module').then(m => m.BlogleftModule), data: { breadcrumb: 'Blog Left' } },

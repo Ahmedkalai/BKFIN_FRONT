@@ -17,6 +17,7 @@ import { HeaderbackComponent } from './headerback/headerback.component';
 
 
 
+
 @NgModule({
   declarations: [AdvertisementComponent, BlogsidebarComponent, BookappointmentComponent, BreadcrumbComponent, FooterComponent, HeaderComponent, ServicesidebarComponent, HeaderbackComponent],
   imports: [
@@ -26,6 +27,10 @@ import { HeaderbackComponent } from './headerback/headerback.component';
     SlickCarouselModule,
     BreadcrumbModule
   ],
+
   exports: [AdvertisementComponent, BlogsidebarComponent, BookappointmentComponent, BreadcrumbComponent, FooterComponent, HeaderComponent, ServicesidebarComponent,HeaderbackComponent]
+
+  
+
 })
 export class SharedModule { }
