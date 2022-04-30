@@ -17,6 +17,12 @@ import {GuarantorService} from "./Services/GuarantorService";
 import {HttpClientModule} from "@angular/common/http";
 import {NgxPaginationModule} from "ngx-pagination";
 import { SortDirective } from './directive/sort.directive';
+import { EventComponent } from './components/pages/event/listevent/event.component';
+import { DetailinvesComponent } from './components/pages/inves/detailinves/detailinves.component';
+import { ForminvesComponent } from './components/pages/inves/forminves/forminves.component';
+import { InvesComponent } from './components/pages/inves/listinves/inves.component';
+import { FundComponent } from './components/pages/fund/listfund/fund.component';
+import { FormfundComponent } from './components/pages/fund/formfund/formfund.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +30,13 @@ import { SortDirective } from './directive/sort.directive';
     ExempleComponent,
     TableCompleteComponent,
     NgbdSortableHeader,
-    SortDirective
+    SortDirective,
+    FundComponent,
+    FormfundComponent,
+    InvesComponent,
+    ForminvesComponent,
+    DetailinvesComponent,
+    EventComponent
   ],
   imports: [
     HttpClientModule,

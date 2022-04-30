@@ -1,5 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { EventComponent } from './components/pages/event/listevent/event.component';
+import { FormfundComponent } from './components/pages/fund/formfund/formfund.component';
+import { FundComponent } from './components/pages/fund/listfund/fund.component';
+import { DetailinvesComponent } from './components/pages/inves/detailinves/detailinves.component';
+import { ForminvesComponent } from './components/pages/inves/forminves/forminves.component';
+import { InvesComponent } from './components/pages/inves/listinves/inves.component';
 import {TableCompleteComponent} from "./components/pages/table-complete/table-complete.component";
 
 const routes: Routes = [
@@ -7,6 +13,21 @@ const routes: Routes = [
   { path: 'home-v2', loadChildren: () => import('./components/pages/hometwo/hometwo.module').then(m => m.HometwoModule), data: { breadcrumb: 'Homepage' } },
   {path: 'tab' , component : TableCompleteComponent},
   { path: 'exemple', loadChildren: () => import('./components/pages/exemple/exemple.module').then(m => m.ExempleModule), data: { breadcrumb: 'Exemple' } },
+
+  {path:'listevent',component :EventComponent },  
+      //{path:'detailinves',component :InvesComponent },
+      { path : 'AddFund', component: FormfundComponent}, 
+      {path : 'getInvestesmentbyFund/:id',component: DetailinvesComponent},
+      {path:'forminves',component :InvesComponent },
+      { path : 'getallInves', component: InvesComponent}, 
+      { path : 'AddInves/:id', component: ForminvesComponent}, 
+      { path : 'fund', component: FundComponent,
+      children:[
+        { path : 'Inves', component: InvesComponent}, 
+        {path:'listinves',component :InvesComponent },
+       
+      ] },
+ 
   { path: 'about', loadChildren: () => import('./components/pages/about/about.module').then(m => m.AboutModule), data: { breadcrumb: 'About Us' } },
   { path: 'blog', loadChildren: () => import('./components/pages/blog/blog.module').then(m => m.BlogModule), data: { breadcrumb: 'Blog Grid' } },
   { path: 'blog-sidebar', loadChildren: () => import('./components/pages/blogleft/blogleft.module').then(m => m.BlogleftModule), data: { breadcrumb: 'Blog Left' } },

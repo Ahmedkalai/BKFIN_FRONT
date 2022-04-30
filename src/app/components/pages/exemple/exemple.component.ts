@@ -63,11 +63,8 @@ export class ExempleComponent implements OnInit {
 
   ngOnInit(): void {
     this.getGuarantors();
-
-
+    console.log( this.getGuarantors());
   }
-
-
 
   private getGuarantors(){
     this.GuarantService.getGuarantorsList().subscribe(data => {

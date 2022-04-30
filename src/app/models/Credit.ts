@@ -1,8 +1,8 @@
 import {Client} from "./Client";
-import {Fund} from "./Fund ";
 import {DuesHistory} from "./DuesHistory";
 import {Pack} from "./Pack";
 import {Guarantor} from "./Guarantor";
+import { Fund } from "./fund";
 
 export class Credit{
   idCredit:number;

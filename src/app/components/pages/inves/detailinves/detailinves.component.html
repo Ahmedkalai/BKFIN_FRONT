@@ -1,0 +1,47 @@
+<app-header></app-header>
+<app-breadcrumb></app-breadcrumb>
+ 
+
+<div class="section-padding lw-tab-section p-relative">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="lw-mega-tab">
+          <ul ngbNav #navplans="ngbNav" class="nav lw-nav-tabs">
+            <li [ngbNavItem]="1">
+              
+              <h3 style="margin-bottom: 20px" >Investissement List</h3> 
+            
+              <div class="table-responsive">
+    <table class="lw-tab-table">
+        <tr class="lw-table-row-1">
+            <th>Name</th>
+            <th>Second Name</th>
+            <th>Final Amount</th>
+        </tr>
+<tr *ngFor="let Inves of listinves">
+    
+  <td class="lw-table-data-3" class="center">
+    {{Inves.nameInvestesment }}
+  </td>
+  <td class="lw-table-data-4" class="center">
+    {{Inves.secondnnameInvestesment }}
+  </td>
+  
+  <td class="lw-table-data-4" class="center">
+    {{Inves.finalAmount }}
+  </td>
+  </tr>
+  </table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+ 
+<app-footer></app-footer>
+ 
