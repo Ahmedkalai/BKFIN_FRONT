@@ -23,6 +23,15 @@ export class FundComponent implements OnInit {
  /* Funds: Fund[] = []; */
 constructor(private FundService: FundService , private router: Router ,
   private InvesService :InvesService){}
+
+  public counter: any = 0.0;
+  increment() {
+    this.counter += 0.01;
+  }
+  decrement() {
+    this.counter -= 0.01;
+  }
+
 ngOnInit(): void {
   this.getAllFunds();
 

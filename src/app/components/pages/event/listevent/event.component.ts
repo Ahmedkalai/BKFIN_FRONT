@@ -6,6 +6,9 @@ import {EventService} from 'src/app/Services/event.service'
 import {LoadupService} from 'src/app/Services/loadup.service'
 import {FilterupService} from 'src/app/Services/filterup.service'
 import { Agent } from 'src/app/models/agent';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-event',
@@ -15,32 +18,70 @@ import { Agent } from 'src/app/models/agent';
 export class EventComponent implements OnInit {
   listEvents:any;
   listup:any;
+  listAgents:any;
   form:boolean=false;
   Agent!:Agent;
   Event!:Event;
   unemployedpopulation!:unemployedpopulation;
-  closeResult!:string;
   id : number;
+  filterTerm!: string;
+  closeResult = '';
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 6;
+  tableSizes: any = [3, 6, 9, 12];
   constructor(private EventService: EventService , private router: Router,
     private route:ActivatedRoute,
     private LoadupService: LoadupService ,
-    private FilterupService: FilterupService  ) { }
+    private FilterupService: FilterupService ,
+    private modalService: NgbModal ) { }
+
+    onTableDataChange(event: any) {
+      this.page = event;
+      this.getAllEvents();
+    }
+    onTableSizeChange(event: any): void {
+      this.tableSize = event.target.value;
+      this.page = 1;
+      this.getAllEvents();
+    }
+    open(content) {
+      this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+    }
+  
+  
+    openVerticallyCentered(content) {
+      this.modalService.open(content, { centered: true });
+    }
+  
+    private getDismissReason(reason: any): string {
+      if (reason === ModalDismissReasons.ESC) {
+        return 'by pressing ESC';
+      } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+        return 'by clicking on a backdrop';
+      } else {
+        return `with: ${reason}`;
+      }
+    }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.getAllEvents();
+    this.load();
     this.filter();
-    this.Agent={ id:null,
-	
+
+    this.Agent={ 
+      idAgent:null,
       name:null,
       secondName:null,
-      
       phoneNum:null,
       email:null,
-      
       adresse:null,
       password:null,
-       
         role:null,
         fullLocation:null,
       IpAddress:null,
@@ -51,6 +92,8 @@ export class EventComponent implements OnInit {
       classification:null,
       state:null,
         Event:null}
+
+        
   this.Event ={
       idEvent:null,
       nameEvent: null,
@@ -59,6 +102,7 @@ export class EventComponent implements OnInit {
       description:null,
       Agent:null
     }
+    
   this.unemployedpopulation={
     population_id: null,
     regions:  null,
@@ -131,12 +175,45 @@ getAllEvents() {
   updateEvent(id:Number){
     this.EventService.updateEvent(this.Event,this.id).subscribe(()=> this.getAllEvents());
   }
-  deleteEvent(idEvent:any){
-    this.EventService.deleteEvent(idEvent).subscribe(()=> this.getAllEvents());
-  }
-  Associate(idEvent:any,idAgent:any){
-this.EventService.assign(idEvent,idAgent).subscribe(()=> this.getAllEvents());
-  }
+  //deleteEvent(idEvent:any){
+   // this.EventService.deleteEvent(idEvent).subscribe(()=> this.getAllEvents());
+  //}
+error(idEvent:any){
+    Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Yes, delete it!',
+    cancelButtonText: 'No, cancel!',
+  }).then((result) => {
+    if (result.value) {
+      this.EventService.deleteEvent(idEvent).subscribe(()=> this.getAllEvents());
+      Swal.fire(
+        'Deleted!',
+        'Your file has been deleted.',
+        'success'
+      )
+ } else if (
+     result.dismiss === Swal.DismissReason.cancel)
+     { Swal.fire(
+        'Cancelled',
+        'Your imaginary file is safe :)',
+        'error')}})}
+//  Associate(idEvent:any,idAgent:any){
+//this.EventService.assign(idEvent,idAgent).subscribe(()=> this.getAllEvents());
+ // }
+ Associate(idEvent:any,idAgent:any){
+  this.EventService.assign(idEvent,idAgent).subscribe(()=> this.getAllEvents());
+  Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'The invitation is sent successfully',
+    showConfirmButton: false,
+    timer: 1500
+  })
+}
+  
   load(){
     this.LoadupService.load().subscribe( data => {
       console.log(data);

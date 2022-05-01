@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AgentComponent } from './components/pages/agents/agent/agent.component';
 import { EventComponent } from './components/pages/event/listevent/event.component';
 import { FormfundComponent } from './components/pages/fund/formfund/formfund.component';
 import { FundComponent } from './components/pages/fund/listfund/fund.component';
@@ -13,6 +14,9 @@ const routes: Routes = [
   { path: 'home-v2', loadChildren: () => import('./components/pages/hometwo/hometwo.module').then(m => m.HometwoModule), data: { breadcrumb: 'Homepage' } },
   {path: 'tab' , component : TableCompleteComponent},
   { path: 'exemple', loadChildren: () => import('./components/pages/exemple/exemple.module').then(m => m.ExempleModule), data: { breadcrumb: 'Exemple' } },
+
+  {path:'listAgent',component :AgentComponent },  
+
 
   {path:'listevent',component :EventComponent },  
       //{path:'detailinves',component :InvesComponent },

@@ -1,132 +1,176 @@
 
                <app-header></app-header>
                <app-breadcrumb></app-breadcrumb>
-               
-               
-               <!-- Start User Details -->
-               <section >
-                 <div >
-                   <div class="row">
-                     <div class="offset-lg-3 col-lg-6">
-                       
-                      
-                           
-                           <form style="margin-top: 40px">
-                             <div class="row">
-                              
-                               <div class="col-md-12">
-                                 <div class="form-group">
-                                   <label class="text-custom-black fs-14 fw-600">Title</label>
-                                   <input type="text" class ="form-control" #title="ngModel"  [(ngModel)] = "Event.nameEvent" name = "tauxGain">
-                                 </div>
-                               </div>
-                               <div class="col-md-12">
-                                 <div class="form-group">
-                                   <label class="text-custom-black fs-14 fw-600">Description</label>
-                                   <input type="text" class ="form-control" #desc="ngModel"  [(ngModel)] = "Event.description" name = "tauxGain">
-                                 </div>
-                               </div>
-                               <div class="col-md-12">
-                                 <div class="form-group">
-                                   <label class="text-custom-black fs-14 fw-600">Region</label>
-                                   
-                                <select>
-                                    <option *ngFor="let unemployedpopulation of listup" 
-                                   
-                                    value="{{unemployedpopulation.regions}} " >   {{unemployedpopulation.regions}} </option>
-                                </select>
-
-                                  
-
-                                 </div>
-                               </div>
-                               <div class="col-md-12">
-                                 <div class="form-group">
-                                   <label class="text-custom-black fs-14 fw-600">Date</label>
-                                   <input type="date" class ="form-control" #date="ngModel"  [(ngModel)] = "Event.dateEvent" name = "tauxGain">
-                                 </div>
-                               </div>
-                              </div>
-                           </form>
-                     </div>
-                   </div>
+             
+               <section class="section-padding bg-gray contact-us">
+                <div class="container">
+                  <button type ="button" class = "btn btn-danger" (click)="filter()">filter</button>
+                  <div class="row">
+                    
+                    <div class="col-md-4 col-sm-6" *ngFor="let unemployedpopulation of listup | paginate: { itemsPerPage: 6, currentPage: page }">
+                        <div class="main-services-box p-relative mb-xl-30">
+                            <div class="main-service-wrapper padding-20">
+                                <h5 class="fw-700">{{unemployedpopulation.regions}}</h5>
+                                <p class="text-light-white no-margin">{{unemployedpopulation.environment}}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-               </section>
+
+
+                    <div class="row">
+                        <div class="col-xl-5 col-lg-4 mb-md-80">
+                         
+                            <div class="contact-form full-height align-self-center bx-wrapper bg-custom-white">
+                                <h4 class="text-custom-black fw-600">Generate New Event</h4>
+                                <p class="text-light-white no-margin">Enhancing visibility to offer the best possible services</p>
+                                <form class="form-layout-1">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="text-left">Event Name</label>
+                                                <input type="text" name="title" class="form-control" placeholder="Name"
+                                                #title="ngModel"  [(ngModel)] = "Event.nameEvent">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                              <label class="text-left">Event Location</label>
+                                              <input type="text" name="#" class="form-control" placeholder="Location"
+                                              #date="ngModel"  [(ngModel)] = "Event.region">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 mb-xl-20">
+                                            <div class="form-group">
+                                              
+                                                <label class="text-left">Event Description</label>
+                                                <textarea rows="5" name="#" class="form-control" placeholder="Write Something"
+                                                #desc="ngModel"  [(ngModel)] = "Event.description"></textarea>
+                                          
+                                               
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="text-left">Event Date</label>
+                                                <input type="date" name="#" class="form-control" placeholder="Date"
+                                                #date="ngModel"  [(ngModel)] = "Event.dateEvent" >
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                          <button (click) = "addEvent()"  class="btn-first btn-submit text-light-blue full-width" type ="submit" >Add New Event</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-xl-7 col-lg-8">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6790064.787747445!2d5.067970869697644!3d33.80040624824386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x125595448316a4e1%3A0x3a84333aaa019bef!2sTunisie!5e0!3m2!1sfr!2stn!4v1651361304747!5m2!1sfr!2stn" title="map" class="full-width full-height"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-padding bg-gray">
+              <div class="container" >
+
+               
+
+                <div class="row doctors-team-style-2" class="section-padding-top : 5px">
+                  <app-agent></app-agent>
+                  <div class="container mt-5">
+
+                   
+
+                    <div class="col-sm-6" class="center" >
+                      <div class="form-group">
+                        <input placeholder="Agent Associated"
+                        type="text" class ="form-control" #Agent="ngModel" [(ngModel)] = "Event.Agent" name = "Agent">
+                      </div>
+                  </div>
+
+                    
+
+
+                    <div class="search p-relative">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Search..."
+                        [(ngModel)]="filterTerm"
+                      />
+                      </div>
+                    </div>
+                    <div class="table-responsive">
+                      <table class="lw-tab-table" >
+                        <tr class="lw-table-row-1">
+                          <th [appSort]="listEvents" data-order="desc" data-name="Event Identifier" scope="col">Event Identifier</th>
+                          <th [appSort]="listEvents" data-order="desc" data-name="Title" scope="col">Title</th>
+                          <th [appSort]="listEvents" data-order="desc" data-name="Description" scope="col">Description</th>
+                          <th [appSort]="listEvents" data-order="desc" data-name="Region" scope="col">Region</th>
+              <th [appSort]="listEvents" data-order="desc" data-name="Date" scope="col">Date</th>
+                          <th>Actions</th>
+                        </tr>
+                        <tr *ngFor = "let Event of listEvents | filter: filterTerm | paginate
+                          : {
+                              itemsPerPage: tableSize,
+                              currentPage: page,
+                              totalItems: count
+                            };
+                      let i = index
+                    ">
+                          <td class="lw-table-data-2">
+                           {{Event.idEvent}}
+                          </td>
+                          <td class="lw-table-data-2">
+                            {{Event.nameEvent}}
+                          </td>
+                          <td class="lw-table-data-3">
+                             {{Event.description}}
+                          </td>
+                          <td class="lw-table-data-4">
+                              {{Event.region}}
+                          </td>
+            <td class="lw-table-data-4">
+                                {{Event.dateEvent}}
+                          </td>
+                        
+              
+                                               <td class="lw-table-data-3 choose-btn">
+                                                 <button  (click)="Associate(Event.idEvent,Agent.value)"
+                                                  class = "btn btn-outline-primary"  type ="submit"  >Assignment</button>
+                                           
+                                                 <button type ="button" class = "btn btn-danger" (click)="error(Event.idEvent)">Delete</button>
+                                               </td>
+                        </tr>
+            
+                      </table>
+                      <div class="d-flex justify-content-center">
+                        <pagination-controls
+                          previousLabel="Prev"
+                          nextLabel="Next"
+                          (pageChange)="onTableDataChange($event)"
+                        >
+                        </pagination-controls>
+                      </div>          
+                    </div>           
+                    <hr>           
+                  </div>           
+                </div>
+              </div>
+            </section>
+
+          
+
+<!--
                <div  class="section-padding lw-tab-section p-relative"> 
                  <div class="container">
                    <div class="row">
                      <div class="col-12">
                        <div class="lw-mega-tab">
                          <ul ngbNav #navplans="ngbNav" class="nav lw-nav-tabs">
-                           <li [ngbNavItem]="1">
-                             
-                            
-                               <button (click) = "addEvent()"  class = "btn btn-success"  type ="submit" style="margin-left: 80px" style="margin-bottom: 10px" >Add New Event</button>
-                               <h3 style="margin-bottom: 20px" >Event Management</h3> 
+                           <li [ngbNavItem]="1">                                                            
                                <button type ="button" class = "btn btn-danger" (click)="load()">import</button>
-                               <button type ="button" class = "btn btn-danger" (click)="filter()">filter</button>
-                               <div class="table-responsive">
-                                 <table class="lw-tab-table">
-                                   <tr class="lw-table-row-1">
-                                       <th>region</th>
-                                   </tr>
-                                   <tr *ngFor="let unemployedpopulation of listup">
-                                       <td class="lw-table-data-2"  class="center">
-                                           {{unemployedpopulation.regions}}
-                                         </td>
-                                   </tr>
-                                 </table>
-                               </div> 
-                               <div class="col-md-12">
-                                 <div class="form-group">
-                                   <label class="text-custom-black fs-14 fw-600">Agent</label>
-                                   <input type="text" class ="form-control" #Agent="ngModel" [(ngModel)] = "Event.Agent" name = "Agent">
-                                 </div>
-                               </div>
-                              
-                             <div class="table-responsive">
-                               <table class="lw-tab-table">
-                                 <tr class="lw-table-row-1">
-                                     <th>Event Identifier</th>
-                                     <th>Title</th>
-                                     <th>Description</th>
-                                     <th>Region</th>
-                                     <th>Date</th>
-                                     <th>Actions </th>
-                                 </tr>
-                                 <tr *ngFor="let Event of listEvents">
-                                     <td class="lw-table-data-2"  class="center">
-                                         {{Event.idEvent}}
-                                       </td>
-                                   <td class="lw-table-data-2"  class="center">
-                                     {{Event.nameEvent}}
-                                   </td>
-                                   <td class="lw-table-data-3" class="center">
-                                     {{Event.description}}
-                                   </td>
-                                 
-                                   <td class="lw-table-data-3" class="center">
-                                    {{Event.region}}
-                                  </td>
-                                 
-                              
-                                   <td class="lw-table-data-4" class="center">
-                                     {{Event.dateEvent}}
-                                     </td>
-                                  
-                                   <td class="lw-table-data-3" class="center">
-                                     <button type ="button" class = "btn btn-info" (click)="updateEvent(Event.idEvent)">Update Event</button>
-                                   </td>
-                                   <td class="lw-table-data-3" class="center">
-                                     <button  (click)="Associate(Event.idEvent,Agent.value)"
-                                      class = "btn btn-success"  type ="submit" style="margin-left: 80px" style="margin-bottom: 10px" >Associate</button>
-                                   </td>
-                                   <td class="lw-table-data-3" class="center">
-                                     <button type ="button" class = "btn btn-danger" (click)="deleteEvent(Event.idEvent)">Delete Event</button>
-                                   </td>
-                                 </tr>
-                               </table>
-                             </div>
+                               <button type ="button" class = "btn btn-danger" (click)="filter()">filter</button>                        
                            </li>
                          </ul>
                        </div>
@@ -134,5 +178,6 @@
                    </div>
                  </div>
                </div>
-               
+              -->
+              
                <app-footer></app-footer>

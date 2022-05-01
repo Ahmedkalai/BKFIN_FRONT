@@ -1,0 +1,31 @@
+
+          <div class="table-responsive">
+            <table class="lw-tab-table" >
+              <tr class="lw-table-row-1">
+                <th >Agent Identifier</th>
+                <th >Name</th>
+                <th >Second Name</th>
+                <th >adresse</th>
+                <th >Disponibility</th>
+              </tr>
+              <tr *ngFor = "let Agent of listAgents">
+                <td class="lw-table-data-2">
+                 {{Agent.idAgent}}
+                </td>
+                <td class="lw-table-data-2">
+                    {{Agent.name}}
+                  </td>
+                  <td class="lw-table-data-2">
+                    {{Agent.secondName}}
+                  </td>
+                <td class="lw-table-data-2">
+                  {{Agent.adresse}}
+                </td>
+                <td class="lw-table-data-3">
+                   {{Agent.state}}
+                </td>
+    
+              </tr>
+  
+            </table>
+            </div>

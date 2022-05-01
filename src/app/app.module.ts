@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BreadcrumbModule } from 'angular-crumbs';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -23,6 +23,8 @@ import { ForminvesComponent } from './components/pages/inves/forminves/forminves
 import { InvesComponent } from './components/pages/inves/listinves/inves.component';
 import { FundComponent } from './components/pages/fund/listfund/fund.component';
 import { FormfundComponent } from './components/pages/fund/formfund/formfund.component';
+import { AgentComponent } from './components/pages/agents/agent/agent.component';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { FormfundComponent } from './components/pages/fund/formfund/formfund.com
     InvesComponent,
     ForminvesComponent,
     DetailinvesComponent,
-    EventComponent
+    EventComponent,
+    AgentComponent,
   ],
   imports: [
     HttpClientModule,
@@ -50,7 +53,7 @@ import { FormfundComponent } from './components/pages/fund/formfund/formfund.com
     ExempleModule,
     ReactiveFormsModule,
     Ng2SearchPipeModule,
-    NgxPaginationModule
+    NgxPaginationModule,
   ],
   providers: [GuarantorService],
   bootstrap: [AppComponent],
