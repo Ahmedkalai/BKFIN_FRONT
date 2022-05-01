@@ -87,7 +87,7 @@ export class InvesComponent implements OnInit {
         position: 'top-end',
         icon: 'success',
         title: 'The final amount is calculated',
-        showConfirmButton: false,
+        showConfirmButton: false, 
         timer: 1500
       })
   }
