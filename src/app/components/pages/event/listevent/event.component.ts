@@ -73,6 +73,7 @@ export class EventComponent implements OnInit {
     this.getAllEvents();
     this.load();
     this.filter();
+    //console.log(this.listup);
 
     this.Agent={ 
       idAgent:null,
@@ -220,10 +221,12 @@ error(idEvent:any){
     })
   
   }
- 
+ //state:boolean=false;
   filter(){
-    this.FilterupService.filter().subscribe(res => this.listup = res)
-    console.log(this.listup);
+    this.FilterupService.filter().subscribe(res => {this.listup = res;
+      console.log(this.listup)
+    });
+   //this.state=true;
   }
 
 }

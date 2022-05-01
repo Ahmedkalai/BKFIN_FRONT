@@ -2,8 +2,53 @@
 <app-breadcrumb></app-breadcrumb>
 
 
+
+
+<!-- start rate Calculator -->
+<section class="section-padding pb-30 exp-cal2">
+  <div  class="container">
+      
+      <div class="row">
+          <div class="offset-lg-2 col-lg-8 ">
+              <div class="exp-cal2-loan">
+                  <div class="row">
+                      <div class="col-md-5">
+                        <p class="fw-600 text-center">Enter your Inves amount</p>
+                        <div >
+                            <input class="form-control"
+                            placeholder="0DT" maxlength="10" name="calculator" type="number" id="num1"
+                            #amount="ngModel" [(ngModel)] = "Inves.amoutInvestesment">
+                                  
+                        </div>
+                        <p class="fw-600 mt-2 fs-13">*The more you invest the more you will save money</p>
+                    </div>
+                    <div class="col-md-2 align-self-center">
+                        <div class=exp-cal-icon>
+                            <button type="button" id="calculate"><i class="fa fa-angle-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <p class="fw-600 text-center exp-cal2-content">Your Inves rate</p>
+                        <div >
+                          <input _ngcontent-heb-c13="" id="sum" name="sum" 
+                          class="form-control" type="number" value={{torate}}>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 text-center">
+                      <button (click)="Rate(amount.value)"   class="btn-first btn-submit text-light-blue full-width" type ="submit" >Find My Rate</button>
+                    </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<!-- End rate Calculator -->
+
+
 <!-- Start User Details -->
-<section class="section-padding-bottom user-info-details">
+<section    >
   <div class="container">
     <div class="row">
       <div class="offset-lg-2 col-lg-8">
@@ -35,7 +80,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                       <label class="text-custom-black fs-14 fw-600">Email</label>
-                      <input type="text" class ="form-control" #mailInvestesment="ngModel" [(ngModel)] = "Inves.mailInvestesment" name = "mailInvestesment">
+                      <input type="email" class ="form-control" #mailInvestesment="ngModel" [(ngModel)] = "Inves.mailInvestesment" name = "mailInvestesment">
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -51,14 +96,21 @@
                     </div>
                   </div>
                </div>
-              <button  class = "btn btn-success btn-lg btn-block" type ="submit" style="margin-left: 10px" >Submit</button>
+               <div class="col-12" >
+                <button  class="btn-first btn-submit text-light-blue full-width" type ="submit" >Submit</button>
+              </div>
             </form>
-            <button (click) = "goToFundList()"  class = "btn btn-info btn-lg btn-block" style="margin-left: 10px" >Cancel</button>
+            <div class="col-12" >
+              <button  class="btn-first btn-submit text-light-blue full-width" (click) = "goToFundList()" >Cancel</button>
+            </div>
+           
           </div>
         </div>
       </div>
     </div>
  </div>
 </section>
+
+
 
 <app-footer></app-footer>

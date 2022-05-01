@@ -4,6 +4,7 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Fund } from 'src/app/models/fund';
 import { Inves } from 'src/app/models/inves';
 import {FundService} from 'src/app/Services/fund.service'
+
 import {InvesService} from 'src/app/Services/inves.service'
 import {LoadupService} from 'src/app/Services/loadup.service'
 import {FilterupService} from 'src/app/Services/filterup.service'
@@ -19,7 +20,7 @@ export class FundComponent implements OnInit {
   form:boolean=false;
   Fund!:Fund;
   Inves!:Inves;
-  
+  idFund:any;
 // @Input() torate : any =0
  torate:any=0;
  /* Funds: Fund[] = []; */
@@ -29,12 +30,14 @@ export class FundComponent implements OnInit {
   count: number = 0;
   tableSize: number = 6;
   tableSizes: any = [3, 6, 9, 12];
+  id : number;
 constructor(private FundService: FundService , private router: Router ,
   private InvesService :InvesService,
   private route:ActivatedRoute,
     private LoadupService: LoadupService ,
     private FilterupService: FilterupService ,
-    private modalService: NgbModal ){}
+    private modalService: NgbModal ,
+    private invesService : InvesService ){}
 
   public counter: any = 0.0;
   increment() {
@@ -144,14 +147,18 @@ addFund(){
 goToaddInves(id:Number){
   this.router.navigate(['AddInves',id]);
 }
+
+
+
+
 goToDeails(){
  this.router.navigate(['getallInves']);
 }
 
 Rate(amountInvestesment: number){
  this.InvesService.Rate(amountInvestesment).subscribe(res =>  {
-  console.log(res) ;this.torate = res});
- console.log(this.torate);
+ this.torate = res ; console.log(this.torate)});
+ 
 }
 
 }

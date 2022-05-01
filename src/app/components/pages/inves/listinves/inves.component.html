@@ -1,77 +1,93 @@
 <app-header></app-header>
 <app-breadcrumb></app-breadcrumb>
+<button (click) = "PDF()" class="btn-first btn-submit text-light-blue full-width"  type ="button" style="margin-left: 10px" style="margin-bottom: 10px" >Export List To PDF</button>
 
 
-<div class="section-padding lw-tab-section p-relative">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <div class="lw-mega-tab">
-            <ul ngbNav #navplans="ngbNav" class="nav lw-nav-tabs">
-              <li [ngbNavItem]="1">
-                
-                <h3 style="margin-bottom: 20px" >Investissement Management</h3> 
-                 
-                 
-                  <button (click) = "PDF()" class = "btn btn-success"  type ="button" style="margin-left: 10px" style="margin-bottom: 10px" >Export List To PDF</button>
-                
-                
-                <div class="table-responsive">
-                  <table class="lw-tab-table">
-                    <tr class="lw-table-row-1">
-                        <th>Investissement Identifier</th>
-                        <th>CIN</th>
-                        <th>Name</th>
-                        <th>Second Name</th>
-                        <th>Email</th>
-                        <th>Profesion</th>
-                        <th>Amout</th>
-                        <th>Rate</th>
-                        <th>Final Amount</th>
-                        <th>Action</th>
-                    </tr>
-                    <tr *ngFor="let Inves of listinves">
-                        <td class="lw-table-data-2"  class="center">
-                            {{Inves.idInvestesment}}
-                          </td>
-                      <td class="lw-table-data-2"  class="center">
-                        {{Inves.cinInvestesment}}
-                    </td>
-                      <td class="lw-table-data-3" class="center">
-                        {{Inves.nameInvestesment }}
-                      </td>
-                      <td class="lw-table-data-4" class="center">
-                        {{Inves.secondnnameInvestesment }}
-                      </td>
-                      <td class="lw-table-data-4" class="center">
-                        {{Inves.mailInvestesment }}
-                      </td>
-                      <td class="lw-table-data-4" class="center">
-                        {{Inves.professionInvestesment }}
-                      </td>
-                      <td class="lw-table-data-4" class="center">
-                        {{Inves.amoutInvestesment }}
-                      </td>
-                      <td class="lw-table-data-4" class="center">
-                        {{Inves.tauxInves }}
-                      </td>
-                      <td class="lw-table-data-4" class="center">
-                        {{Inves.finalAmount }}
-                      </td>
-                      
-                      <td class="lw-table-data-3" class="center">
-                        <button (click) = "CalculateAmoutOfInves(Inves.idInvestesment)" type ="button" class = "btn btn-info" > Final Amount</button>
-                      </td>
-                      
-                    </tr>
-                  </table>
-                </div>
-              </li>
-            </ul>
+<section class="section-padding bg-gray">
+  <div class="container"  class="padding-top : 1px" >
+    <div class="row doctors-team-style-2" class="section-padding-top : 5px">     
+      <div class="container mt-5">
+      
+        <div class="search p-relative">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search..."
+            [(ngModel)]="filterTerm"
+          />
           </div>
         </div>
-      </div>
+        <div class="table-responsive">
+          <table class="lw-tab-table" >
+            <tr class="lw-table-row-1">
+              <th [appSort]="listinves" data-order="desc" data-name="Investissement Identifier" scope="col">Invest ID</th>
+              <th [appSort]="listinves" data-order="desc" data-name="CIN" scope="col">CIN</th>
+              <th [appSort]="listinves" data-order="desc" data-name="Name" scope="col">Name</th>
+              <th [appSort]="listinves" data-order="desc" data-name="Second Name" scope="col">Second Name</th>
+              <th [appSort]="listinves" data-order="desc" data-name="Email" scope="col">Email</th>
+              <th [appSort]="listinves" data-order="desc" data-name="Profesion" scope="col">Profesion</th>
+              <th [appSort]="listinves" data-order="desc" data-name="Amout" scope="col">Amout</th>
+              <th [appSort]="listinves" data-order="desc" data-name="Rate" scope="col">Rate</th>
+              <th [appSort]="listinves" data-order="desc" data-name="Final Amount" scope="col">Final Amount</th>
+              <th>Actions</th>
+            </tr>
+            <tr *ngFor = "let Inves of listinves | filter: filterTerm | paginate
+            : {
+                itemsPerPage: tableSize,
+                currentPage: page,
+                totalItems: count
+              };
+        let i = index
+      ">
+              <td class="lw-table-data-2" >
+                {{Inves.idInvestesment}}
+              </td>
+              <td class="lw-table-data-2" >
+                {{Inves.cinInvestesment}}
+              </td>
+              <td class="lw-table-data-3">
+                {{Inves.nameInvestesment }}
+              </td>
+              <td class="lw-table-data-4" >
+                {{Inves.secondnnameInvestesment }}
+          </td>
+          <td class="lw-table-data-4" >
+            {{Inves.mailInvestesment }}
+          </td>
+          <td class="lw-table-data-4" >
+            {{Inves.professionInvestesment }}
+          </td>
+          <td class="lw-table-data-4" >
+            {{Inves.amoutInvestesment }}
+          </td>
+          <td class="lw-table-data-4" >
+            {{Inves.tauxInves }}
+          </td>
+          <td class="lw-table-data-4" >
+            {{Inves.finalAmount }}
+          </td>
+          
+          <td class="lw-table-data-3" >
+            <button (click) = "CalculateAmoutOfInves(Inves.idInvestesment)" type ="button" class = "btn btn-outline-primary" > Final Amount</button>
+          </td>
+            
+            </tr>
+
+          </table>
+          <div class="d-flex justify-content-center">
+            <pagination-controls
+              previousLabel="Prev"
+              nextLabel="Next"
+              (pageChange)="onTableDataChange($event)"
+            >
+            </pagination-controls>
+          </div>          
+        </div>           
+        <hr>           
+      </div>           
     </div>
   </div>
+</section>
   
   <app-footer></app-footer>

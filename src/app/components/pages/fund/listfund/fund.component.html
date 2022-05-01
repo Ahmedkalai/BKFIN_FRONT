@@ -77,10 +77,8 @@
             
   
                                    <td class="lw-table-data-3 choose-btn">
-                                     <button   (click) = "goToaddInves(Fund.idFund)" 
-                                      class = "btn btn-outline-primary"  type ="submit"  >Add Investissement</button>
-                               
-                                     <button type ="button" class = "btn btn-danger"(click)="deleteFund(Fund.idFund)">Delete</button>
+                                    <button  (click) = "goToaddInves(Fund.idFund)"  class = "btn btn-outline-primary"  type ="submit"  >Add Investissement </button>
+                                    <button type ="button" class = "btn btn-danger" (click)="deleteFund(Fund.idFund)">Delete Fund</button>
                                    </td>
             </tr>
 
@@ -102,7 +100,8 @@
 
 
 
-<!-- start rate Calculator -->
+<!-- start rate Calculator
+   
 <section class="section-padding pb-0 exp-cal2">
   <div class="container">
       <div class="section-header">
@@ -122,10 +121,7 @@
                         <div class="exp-cal2-input">
                             <input placeholder="0DT" maxlength="10" name="calculator" type="number" id="num1"
                             #amount="ngModel" [(ngModel)] = "Inves.amoutInvestesment">
-                            <input placeholder="$0" maxlength="10" class="d-none" name="calculator" value={{torate}}
-                            [(ngModel)] = torate
-                                type="text" id="num2" >
-                                
+                            <input _ngcontent-heb-c13="" id="sum" name="sum"  type="number" value={{torate}}>        
                         </div>
                         <p class="fw-600 mt-2 fs-13">please enter amount sup 8000DT</p>
                     </div>
@@ -150,7 +146,8 @@
       </div>
   </div>
 </section>
-<!-- End rate Calculator -->
+
+End rate Calculator -->
 
 
 

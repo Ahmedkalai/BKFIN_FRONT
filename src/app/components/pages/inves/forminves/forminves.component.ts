@@ -16,6 +16,7 @@ export class ForminvesComponent implements OnInit {
   Inves : Inves;
   Fund : Fund;
   id : number;
+  torate:any=0;
   constructor(private invesService: InvesService , private router: Router,
     private route:ActivatedRoute ) { }
 
@@ -63,6 +64,12 @@ export class ForminvesComponent implements OnInit {
     goToFundList(){
       this.router.navigate(['fund']);
     }
+
+    Rate(amountInvestesment: number){
+      this.invesService.Rate(amountInvestesment).subscribe(res =>  {
+      this.torate = res ; console.log(this.torate)});
+      
+     }
 
 }
 
