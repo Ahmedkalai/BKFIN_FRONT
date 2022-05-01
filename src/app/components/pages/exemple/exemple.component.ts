@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Guarantor} from "../../../models/Guarantor";
-import {GuarantorService} from "../../../Services/GuarantorService";
-import {Router} from "@angular/router";
+import {Guarantor} from '../../../models/Guarantor';
+import {GuarantorService} from '../../../Services/GuarantorService';
+import {Router} from '@angular/router';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -13,18 +13,18 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 })
 export class ExempleComponent implements OnInit {
   closeResult = '';
-  page: number = 1;
-  count: number = 0;
-  tableSize: number = 6;
+  page = 1;
+  count = 0;
+  tableSize = 6;
   tableSizes: any = [3, 6, 9, 12];
 
-  Guarantors:Guarantor[];
+  Guarantors: Guarantor[];
   filterTerm!: string;
 
   constructor(private GuarantService: GuarantorService,
               private router: Router, private modalService: NgbModal) {
 
-//Create dummy data
+// Create dummy data
 
 
   }

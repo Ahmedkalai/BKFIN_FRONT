@@ -1,121 +1,113 @@
-<app-header xmlns:filter="http://www.w3.org/1999/xhtml"></app-header>
-<app-breadcrumb></app-breadcrumb>
+<!--<app-header xmlns:filter="http://www.w3.org/1999/xhtml"></app-header>-->
+<!--<app-breadcrumb></app-breadcrumb>-->
 
 
 
-<section class="section-padding bg-gray">
-  <div class="container">
-    <div class="row doctors-team-style-2">
+<!--<section class="section-padding bg-gray">-->
+<!--  <div class="container">-->
+<!--    <div class="row doctors-team-style-2">-->
 
-      <div class="container mt-5">
-        <div class="form-group">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Search..."
-            [(ngModel)]="filterTerm"
-          />
-        </div>
-        <div class="table-responsive">
-          <table class="lw-tab-table">
-            <tr class="lw-table-row-1">
-              <th [appSort]="Guarantors" data-order="desc" data-name="idGarantor" scope="col">idGarantor</th>
-              <th [appSort]="Guarantors" data-order="desc" data-name="nameGarantor" scope="col">nameGarantor </th>
-              <th [appSort]="Guarantors" data-order="desc" data-name="secondnameGarantor" scope="col">secondnameGarantor </th>
-              <th [appSort]="Guarantors" data-order="desc" data-name="workGarantor" scope="col">workGarantor</th>
-              <th>Actions</th>
-            </tr>
-            <tr *ngFor = "let Guarantor of Guarantors  | filter: filterTerm | paginate
-              : {
-                  itemsPerPage: tableSize,
-                  currentPage: page,
-                  totalItems: count
-                };
-          let i = index
-        ">
-              <td class="lw-table-data-2">
-                {{ Guarantor.idGarantor }}
-              </td>
-              <td class="lw-table-data-2">
-                {{ Guarantor.nameGarantor }}
-              </td>
-              <td class="lw-table-data-3">
-                {{ Guarantor.secondnameGarantor }}
-              </td>
-              <td class="lw-table-data-4">
-                {{ Guarantor.workGarantor }}
-              </td>
-              <td class="lw-table-data-3 choose-btn">
-                <button class="btn btn-lg btn-outline-primary" (click)="openVerticallyCentered(content1)">view</button>
-                <ng-template #content1 let-modal>
-                  <div class="modal-header">
-                    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-                  </div>
-                  <div class="modal-body">
-                    <form>
-                      <div class="mb-3">
-                        <label for="dateOfBirth">Date of birth</label>
-                        <div class="input-group">
-                          <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
-                          <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-                  </div>
-                </ng-template>
-
-
-                <button class="btn btn-lg btn-outline-primary" (click)="openVerticallyCentered(content2)">UPdate</button>
-                <ng-template #content2 let-modal>
-                  <div class="modal-header">
-                    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-                  </div>
-                  <div class="modal-body">
-                    <form>
-                      <div class="mb-3">
-                        <label for="dateOfBirth">Date of birth</label>
-                        <div class="input-group">
-                          <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
-                          <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-                  </div>
-                </ng-template>
-
-              </td>
-
-            </tr>
-
-          </table>
-          <div class="d-flex justify-content-center">
-            <pagination-controls
-              previousLabel="Prev"
-              nextLabel="Next"
-              (pageChange)="onTableDataChange($event)"
-            >
-            </pagination-controls>
-          </div>
-
-        </div>
+<!--      <div class="container mt-5">-->
+<!--        <div class="form-group">-->
+<!--          <input-->
+<!--            type="text"-->
+<!--            class="form-control"-->
+<!--            placeholder="Search..."-->
+<!--            [(ngModel)]="filterTerm"-->
+<!--          />-->
+<!--        </div>-->
+<!--        <div class="table-responsive">-->
+<!--          <table class="lw-tab-table">-->
+<!--            <tr class="lw-table-row-1">-->
+<!--              <th [appSort]="Credits" data-order="desc" data-name="idGarantor" scope="col">idGarantor</th>-->
+<!--              <th [appSort]="Credits" data-order="desc" data-name="nameGarantor" scope="col">nameGarantor </th>-->
+<!--              <th [appSort]="Credits" data-order="desc" data-name="secondnameGarantor" scope="col">secondnameGarantor </th>-->
+<!--              <th [appSort]="Credits" data-order="desc" data-name="workGarantor" scope="col">workGarantor</th>-->
+<!--              <th>Actions</th>-->
+<!--            </tr>-->
+<!--            <tr *ngFor = "let credit of Credits  | filter: filterTerm | paginate-->
+<!--              : {-->
+<!--                  itemsPerPage: tableSize,-->
+<!--                  currentPage: page,-->
+<!--                  totalItems: count-->
+<!--                };-->
+<!--          let i = index-->
+<!--        ">-->
+<!--              <td class="lw-table-data-2">-->
+<!--                {{ Guarantor.idGarantor }}-->
+<!--              </td>-->
+<!--              <td class="lw-table-data-2">-->
+<!--                {{ Guarantor.nameGarantor }}-->
+<!--              </td>-->
+<!--              <td class="lw-table-data-3">-->
+<!--                {{ Guarantor.secondnameGarantor }}-->
+<!--              </td>-->
+<!--              <td class="lw-table-data-4">-->
+<!--                {{ Guarantor.workGarantor }}-->
+<!--              </td>-->
+<!--              <td class="lw-table-data-3 choose-btn">-->
+<!--                <button class="btn btn-lg btn-outline-primary" (click)="openVerticallyCentered(content1)">view</button>-->
+<!--                <ng-template #content1 let-modal>-->
+<!--                  <div class="modal-header">-->
+<!--                    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>-->
+<!--                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--                    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>-->
+<!--                  </div>-->
+<!--                  <div class="modal-body">-->
+<!--                    <form>-->
+<!--                      <div class="mb-3">-->
+<!--                        <label for="dateOfBirth">Date of birth</label>-->
+<!--                        <div class="input-group">-->
+<!--                          <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">-->
+<!--                          <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </form>-->
+<!--                  </div>-->
+<!--                  <div class="modal-footer">-->
+<!--                    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>-->
+<!--                  </div>-->
+<!--                </ng-template>-->
 
 
+<!--                <button class="btn btn-lg btn-outline-primary" (click)="openVerticallyCentered(content2)">UPdate</button>-->
+<!--                <ng-template #content2 let-modal>-->
+<!--                  <div class="modal-header">-->
+<!--                    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>-->
+<!--                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--                    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>-->
+<!--                  </div>-->
+<!--                  <div class="modal-body">-->
+<!--                    <form>-->
+<!--                      <div class="mb-3">-->
+<!--                        <label for="dateOfBirth">Date of birth</label>-->
+<!--                        <div class="input-group">-->
+<!--                          <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">-->
+<!--                          <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </form>-->
+<!--                  </div>-->
+<!--                  <div class="modal-footer">-->
+<!--                    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>-->
+<!--                  </div>-->
+<!--                </ng-template>-->
 
+<!--              </td>-->
 
+<!--            </tr>-->
 
+<!--          </table>-->
+<!--          <div class="d-flex justify-content-center">-->
+<!--            <pagination-controls-->
+<!--              previousLabel="Prev"-->
+<!--              nextLabel="Next"-->
+<!--              (pageChange)="onTableDataChange($event)"-->
+<!--            >-->
+<!--            </pagination-controls>-->
+<!--          </div>-->
 
-
-        <hr>
+<!--        </div>-->
 
 
 
@@ -123,12 +115,16 @@
 
 
 
-
-      </div>
-
+<!--        <hr>-->
 
 
 
+
+
+
+
+
+<!--      </div>-->
 
 
 
@@ -145,9 +141,13 @@
 
 
 
-    </div>
-  </div>
-</section>
 
 
-<app-footer></app-footer>
+
+
+<!--    </div>-->
+<!--  </div>-->
+<!--</section>-->
+
+
+<!--<app-footer></app-footer>-->
