@@ -191,14 +191,14 @@ error(idEvent:any){
       this.EventService.deleteEvent(idEvent).subscribe(()=> this.getAllEvents());
       Swal.fire(
         'Deleted!',
-        'Your file has been deleted.',
+        'The event has been deleted.',
         'success'
       )
  } else if (
      result.dismiss === Swal.DismissReason.cancel)
      { Swal.fire(
         'Cancelled',
-        'Your imaginary file is safe :)',
+        'The event is safe :)',
         'error')}})}
 //  Associate(idEvent:any,idAgent:any){
 //this.EventService.assign(idEvent,idAgent).subscribe(()=> this.getAllEvents());
