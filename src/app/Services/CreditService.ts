@@ -40,8 +40,8 @@ export class CreditService {
     return this.httpClient.delete(`${this.baseURL}/remove-credit/${id}`);
   }
 
-  downloadFile(mnttotl:number,period:number,interst:number): any {
-    return this.httpClient.get(`${this.baseURL}/export/excel/${mnttotl}/${period}/${interst}`, {responseType: 'blob'});
+  downloadFile(mnttotl:number,period:number,interst:number) {
+    return this.httpClient.get<any>(`${this.baseURL}/export/excel/${mnttotl}/${period}/${interst}`, {responseType: 'arraybuffer' as'json'});
   }
 
 

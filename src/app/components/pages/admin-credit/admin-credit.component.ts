@@ -17,7 +17,6 @@ export class AdminCreditComponent implements OnInit {
   count = 0;
   tableSize = 6;
   tableSizes: any = [3, 6, 9, 12];
-
   Credits: Credit[];
   filterTerm!: string;
 

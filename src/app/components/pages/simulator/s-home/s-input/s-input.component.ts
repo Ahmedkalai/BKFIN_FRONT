@@ -167,7 +167,16 @@ export class SInputComponent implements OnInit {
   }
 
   download(period,interst,amount)
-  {
+  { console.log(amount);
+    console.log(interst);
+    console.log(period);
+    this.creditserv.downloadFile(amount,period,interst/100).subscribe((res =>
+    {
+      let file= new Blob([res], { type : 'application/vnd.ms-excel'});
+      var fileUrl =URL.createObjectURL(file);
+      window.open(fileUrl);
+    }));
+
 
 
 
