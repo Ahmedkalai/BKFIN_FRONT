@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Fund } from 'src/app/models/fund';
 import { Inves } from 'src/app/models/inves';
 import {InvesService} from 'src/app/Services/inves.service'
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-forminves',
@@ -50,6 +50,13 @@ export class ForminvesComponent implements OnInit {
           this.goToFundList();
         },
         error => console.log(error));
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'The Fund is created successfully',
+          showConfirmButton: false,
+          timer: 1500
+        })
     }
 
     goToInvesList(){

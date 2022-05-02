@@ -53,7 +53,7 @@ import { AgentComponent } from './components/pages/agents/agent/agent.component'
     ExempleModule,
     ReactiveFormsModule,
     Ng2SearchPipeModule,
-    NgxPaginationModule,
+    NgxPaginationModule
   ],
   providers: [GuarantorService],
   bootstrap: [AppComponent],

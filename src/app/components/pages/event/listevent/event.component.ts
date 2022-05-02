@@ -172,6 +172,13 @@ getAllEvents() {
   }
   addEvent(){
     this.EventService.addEvent(this.Event).subscribe(()=> this.getAllEvents());
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'The Fund is created successfully',
+      showConfirmButton: false,
+      timer: 1500
+    })
   }
   updateEvent(id:Number){
     this.EventService.updateEvent(this.Event,this.id).subscribe(()=> this.getAllEvents());

@@ -17,8 +17,8 @@ getInvestesmentbyFund(idFund : any){
 addInves(Inves:any,idFund : any) {
   return this.httpClient.post(`${this.API_URL}/add_investesment/${idFund}`, Inves)
 }
-editInves(Inves:any ,idInvestesment : any ){
-  return this.httpClient.put(`${this.API_URL}/modify-investesment/${idInvestesment}`,Inves)
+editInves(Inves:any){
+  return this.httpClient.put(`${this.API_URL}/modify-investesment`,Inves)
 }
 CalculateAmoutOfInves(idInvestesment : any){
   return this.httpClient.get(`${this.API_URL}/CalculateAmoutOfInves/${idInvestesment}`)

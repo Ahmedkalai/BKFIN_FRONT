@@ -91,10 +91,10 @@ export class InvesComponent implements OnInit {
         timer: 1500
       })
   }
-  updateInves(Inves : any ,idInvestesment : any){
-      this.invesService.editInves(Inves,idInvestesment).subscribe(()=> this.getallInves());
-      
+  updateInves(Inves : any ){
+      this.invesService.editInves(Inves).subscribe(()=> this.getallInves());
   }
+
   PDF(){
     this.invesService.PDF();
   }
