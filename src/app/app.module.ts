@@ -34,12 +34,18 @@ import {DatePickerAllModule} from '@syncfusion/ej2-angular-calendars';
 import {initialdata} from './components/pages/inputtt/initialdata';
 import { SimulatordashboardComponent } from './components/pages/simulatordashboard/simulatordashboard.component';
 import {SDashboardComponent} from './components/pages/simulator/s-home/s-dashboard/s-dashboard.component';
+import {ApplycreditComponent} from './components/pages/applycredit/applycredit.component';
+import {FormGuarantorComponent} from './components/pages/applycredit/form-guarantor/form-guarantor.component';
+import {FileUploadModule} from 'ng2-file-upload';
+import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
+import { Cloudinary } from 'cloudinary-core';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ExempleComponent,
+    ApplycreditComponent,
     TableCompleteComponent,
     NgbdSortableHeader,
     SortDirective,
@@ -52,9 +58,8 @@ import {SDashboardComponent} from './components/pages/simulator/s-home/s-dashboa
     SInputComponent,
     StatementComponent,
     InputttComponent,
-    SimulatordashboardComponent
-
-
+    SimulatordashboardComponent,
+    FormGuarantorComponent
   ],
   imports: [
     HttpClientModule,
@@ -75,11 +80,14 @@ import {SDashboardComponent} from './components/pages/simulator/s-home/s-dashboa
     RadioButtonModule,
     SliderModule,
     DatePickerAllModule,
-    AccumulationChartAllModule
+    AccumulationChartAllModule,
+    FileUploadModule,
+    CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'dlw3w0bei' } as CloudinaryConfiguration)
   ],
-  providers: [GuarantorService,
+  providers: [
+              GuarantorService,
               DataService,
-    initialdata],
+              initialdata],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

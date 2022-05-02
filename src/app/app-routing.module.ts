@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: '', loadChildren: () => import('./components/pages/home/home.module').then(m => m.HomeModule), data: { breadcrumb: 'Homepage' } },
   { path: 'home-v2', loadChildren: () => import('./components/pages/hometwo/hometwo.module').then(m => m.HometwoModule), data: { breadcrumb: 'Homepage' } },
   {path: 'tab' , component : TableCompleteComponent},
+  { path: 'applycredit', loadChildren: () => import('./components/pages/applycredit/applycredit.module').then(m => m.ApplycreditModule), data: { breadcrumb: 'Apply for Credit' } },
   { path: 'guarantors_back', loadChildren: () => import('./components/pages/exemple/exemple.module').then(m => m.ExempleModule), data: { breadcrumb: 'Guarantors' } },
   { path: 'credit_back', loadChildren: () => import('./components/pages/admin-credit/admin-credit.module').then(m => m.AdminCreditModule), data: { breadcrumb: 'Credits' } },
   { path: 'inputt' ,component :InputttComponent},

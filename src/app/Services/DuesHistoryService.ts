@@ -1,8 +1,7 @@
-export class DuesHistoryService{
-  import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
-import { Observable } from 'rxjs';
-import { DuesHistory } from './DuesHistory';
+import {HttpClient} from '@angular/common/http';
+import {DuesHistory} from '../models/DuesHistory';
+import {Observable} from 'rxjs';
+import {Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +16,10 @@ export class DuesHistoryService {
     return this.httpClient.get<DuesHistory[]>(`${this.baseURL}/retrieve-all-DuesHistory`);
   }
 
+  getDuesHistorysList_bycredit(idcredit :number ): Observable<DuesHistory[]>{
+    return this.httpClient.get<DuesHistory[]>(`${this.baseURL}/retrieve-all-DuesHistory-Credit/${idcredit}`);
+  }
+
   createDuesHistory(DuesHistory: DuesHistory,idcredit:number): Observable<Object>{
     return this.httpClient.post(`${this.baseURL}/add-DuesHistory/${idcredit}`, DuesHistory);
   }
@@ -26,11 +29,11 @@ export class DuesHistoryService {
   }
 
   updateDuesHistory(idcredit: number, DuesHistory: DuesHistory): Observable<Object>{
-    return this.httpClient.put(`${this.baseURL}/modify-DuesHistory/${id}`, DuesHistory);
+    return this.httpClient.put(`${this.baseURL}/modify-DuesHistory/${idcredit}`, DuesHistory);
   }
 
   deleteDuesHistory(id: number): Observable<Object>{
     return this.httpClient.delete(`${this.baseURL}/${id}`);
   }
 }
-}
+
