@@ -4,7 +4,6 @@
 @angular/ngbootstrap 
 @angular/chart.js
 @angular/qrcode
-@angular/ng-wheel
 @ng mail firebase
 @ng datapicker
-cloudinary
+@cloudinary
