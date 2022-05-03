@@ -6,7 +6,7 @@ export class Product{
     valueProduct:Number;
     valueEXC:Number;
     packs :Pack[];
-    partner:Partner;
+    partner_product:Partner;
 
 
 

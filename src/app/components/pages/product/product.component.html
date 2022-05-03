@@ -1,0 +1,228 @@
+<app-header xmlns:filter="http://www.w3.org/1999/xhtml"></app-header>
+<app-breadcrumb></app-breadcrumb>
+
+
+
+<section class="section-padding bg-gray">
+  <div class="container">
+    <div class="row doctors-team-style-2">
+      <button class="btn btn-lg btn-outline-primary" (click)="download()"  >PDF</button>
+      <br>
+      <br>
+     
+     <div class="container mt-5">
+        
+        <button class="btn btn-lg btn-outline-primary" (click)="openVerticallyCentered(content3)"  >Add Product</button>
+        <ng-template #content3 let-modal>
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Add Product</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')" ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <div class="form-group">
+                  <label>  Nom Produit </label>
+                  <input type="text" class ="form-control" id = "nameProduct"
+                      [(ngModel)] = "Product.nameProduct" name = "nameProduct">
+              </div>
+          
+              <div class="form-group">
+                  <label> Prix </label>
+                  <input type="text" class ="form-control" id = "valueProduct"
+                      [(ngModel)] = "Product.valueProduct" name = "valueProduct">
+              </div>
+              <div class="form-group">
+                  <label for="exampleFormControlSelect1">Partner</label>
+                  <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="idPartner" name="idPartner">
+                  <option *ngFor="let p of partners" value="{{p.idPartner}}">{{p.namePartner}}</option>
+                  </select>
+                </div> 
+            </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')" (click)="addProduct(Product)">Add</button>
+          <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+        </div>
+      </ng-template>
+      <br>
+      <br>
+      <br>
+      <button (click) = "scrap()" class="btn btn-lg btn-outline-primary"> Scrap Product</button>
+      <br>
+      <br>
+  
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search..."
+            [(ngModel)]="filterTerm"
+          />
+        </div>
+        <div class="table-responsive">
+          <table class="lw-tab-table">
+            <tr class="lw-table-row-1">
+              <th [appSort]="products" data-order="desc" data-name="idProduct" scope="col">idProduct</th>
+              <th [appSort]="products" data-order="desc" data-name="nameProduct" scope="col">nameProduct </th>
+              <th [appSort]="products" data-order="desc" data-name="valueProduct" scope="col">valueProduct </th>
+              <th [appSort]="products" data-order="desc" data-name="valueEXC" scope="col">valueEXC</th>
+              <th [appSort]="products" data-order="desc" data-name="partner" scope="col">Partner</th>
+              <th>Actions</th>
+            </tr>
+            <tr *ngFor = "let p of products  | filter: filterTerm | paginate
+              : {
+                  itemsPerPage: tableSize,
+                  currentPage: page,
+                  totalItems: count
+                };
+          let i = index
+        ">
+              <td class="lw-table-data-2">
+                {{ p.idProduct }}
+              </td>
+              <td class="lw-table-data-2">
+                {{ p.nameProduct }}
+              </td>
+              <td class="lw-table-data-3">
+                {{ p.valueProduct }}
+              </td>
+              <td class="lw-table-data-4">
+                {{ p.valueEXC }}
+              </td>
+              <td class="lw-table-data-5">
+                {{ p.partner_product.namePartner }}
+              </td>
+             
+              <td class="lw-table-data-3 choose-btn">
+                <button class="btn btn-lg btn-outline-primary" (click)="openVerticallyCentered(content1)">View</button>
+                <ng-template #content1 let-modal>
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">View Partner</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')" ></button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="mb-3">
+                        <div>
+                          <div>
+                              <label> <b> Nom Produit : </b></label> {{p.nameProduct}}
+                          </div>
+                          <div>
+                              <label> <b> Prix : </b></label> {{p.valueProduct}}
+                          </div>
+                          <div>
+                              <label> <b> Partenaire : </b></label> {{p.partner_product.namePartner}}
+                          </div>
+                      </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+                  </div>
+                </ng-template>
+
+
+                <button class="btn btn-lg btn-outline-success" (click)="openVerticallyCentered(content2)" >Update</button>
+                <ng-template #content2 let-modal>
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="mb-3">
+                        
+        <div class="form-group">
+          <label> Nom Produit </label>
+          <input type="text" class ="form-control" id = "nameProduct"
+              [(ngModel)] = "p.nameProduct" name = "nameProduct">
+      </div>
+  
+      <div class="form-group">
+          <label> Prix</label>
+          <input type="text" class ="form-control" id = "valueProduct"
+              [(ngModel)] = "p.valueProduct" name = "valueProduct">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Partner</label>
+      <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="idPartner" name="idPartner">
+          <option *ngFor="let partner of partners" value="{{p.partner_product.namePartner}}">{{partner.namePartner}}</option>
+          </select>
+      </div> 
+       
+                        </div>
+                     
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')"(click)="editproduct(p.idProduct)">Save</button>
+                    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+                  </div>
+                </ng-template>
+                
+                <button class="btn btn-lg btn-outline-danger"  (click)="deleteProduct(p.idProduct)">Delete</button>
+            
+              </td>
+              
+              </tr>
+
+          </table>
+          <div class="d-flex justify-content-center">
+            <pagination-controls
+              previousLabel="Prev"
+              nextLabel="Next"
+              (pageChange)="onTableDataChange($event)"
+            >
+            </pagination-controls>
+          </div>
+
+        </div>
+
+
+
+
+
+
+
+        <hr>
+
+
+
+
+
+
+
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</section>
+
+
+<app-footer></app-footer>

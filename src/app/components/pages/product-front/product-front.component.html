@@ -1,0 +1,39 @@
+
+  <app-header></app-header>
+<app-breadcrumb></app-breadcrumb>
+
+
+<!-- Start Blog -->
+<section class="section-padding bg-gray our-articles">
+    <div class="container">
+        <div class="row">
+            <article class="col-lg-4 col-md-6 post mb-xl-30" *ngFor="let item of Products | paginate: { itemsPerPage: 6, currentPage: page }">
+                
+                   
+               
+<div class="card border-dark mb-3" style="max-width: 18rem;">
+                    <div class="card-header text-dark"><h4>Name Product :</h4></div>
+                    
+                    <div class="card-header text-dark"><h6>{{item.nameProduct}}</h6>
+                   <h3>  <a routerLink="/prod/{{item.idProduct}}" class="text-light fs-14 text-dark">Read
+                        More</a></h3> 
+                    </div>
+                   
+                            
+                            
+                                </div>
+                              </article>
+                        </div>
+                    </div>
+            
+        <div class="row">
+            <div class="col-12">
+                <nav class="mt-5">
+                    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+                </nav>
+            </div>
+        </div>
+   
+</section>
+<app-footer></app-footer>
+<!-- End Blog -->

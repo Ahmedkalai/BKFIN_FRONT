@@ -1,0 +1,263 @@
+<app-header xmlns:filter="http://www.w3.org/1999/xhtml"></app-header>
+<app-breadcrumb></app-breadcrumb>
+
+
+
+<section class="section-padding bg-gray">
+  <div class="container">
+    <div class="row doctors-team-style-2">
+
+      <div class="container mt-5">
+            <button class="btn btn-lg btn-outline-primary" (click)="openVerticallyCentered(content3)" >Add Partner</button>
+            <ng-template #content3 let-modal>
+              <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Add Partner</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')" ></button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="mb-3">
+                   
+        <div class="form-group">
+            <label>  Activite </label>
+            <input type="text" class ="form-control" id = "activitePartner"
+                [(ngModel)] = "partner.activitePartner" name = "activitePartner">
+        </div>
+    
+        <div class="form-group">
+            <label> Nom </label>
+            <input type="text" class ="form-control" id = "namePartner"
+                [(ngModel)] = "partner.namePartner" name = "namePartner">
+        </div>
+        <div class="form-group">
+            <label>  Secteur </label>
+            <input type="text" class ="form-control" id = "sectorPartner"
+                [(ngModel)] = "partner.sectorPartner" name = "sectorPartner">
+        </div>
+    
+        <div class="form-group">
+            <label> Url Partner</label>
+            <input type="text" class ="form-control" id = "urlPartner"
+                [(ngModel)] = "partner.urlPartner" name = "urlPartner">
+        </div>
+        <label class="text-custom-black fs-14 fw-600">url image</label>
+        <div>
+          <input type="file" (change)="onFileChanged($event)">
+    </div>
+        <div class="form-group">
+            <label> Email </label>
+            <input type="text" class ="form-control" id = "emailPartner"
+                [(ngModel)] = "partner.emailPartner" name = "emailPartner">
+        </div>
+                </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')" (click)="AddPartner(partner)">Add</button>
+              <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+            </div>
+          </ng-template>
+          <br>
+          <br>
+          <br>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search..."
+            [(ngModel)]="filterTerm"
+          />
+        </div>
+        <div class="table-responsive">
+          <table class="lw-tab-table">
+            <tr class="lw-table-row-1">
+              <th [appSort]="partners" data-order="desc" data-name="idPartner" scope="col">idPartner</th>
+              <th [appSort]="partners" data-order="desc" data-name="activitePartner" scope="col">activitePartner </th>
+              <th [appSort]="partners" data-order="desc" data-name="namePartner" scope="col">namePartner </th>
+              <th [appSort]="partners" data-order="desc" data-name="sectorPartner" scope="col">sectorPartner</th>
+              <th [appSort]="partners" data-order="desc" data-name="urlPartner" scope="col">urlPartner</th>
+              <th [appSort]="partners" data-order="desc" data-name="logoPartner" scope="col">logoPartner</th>
+              <th [appSort]="partners" data-order="desc" data-name="emailPartner" scope="col">emailPartner</th>
+              <th>Actions</th>
+            </tr>
+            <tr *ngFor = "let p of partners  | filter: filterTerm | paginate
+              : {
+                  itemsPerPage: tableSize,
+                  currentPage: page,
+                  totalItems: count
+                };
+          let i = index
+        ">
+              <td class="lw-table-data-2">
+                {{ p.idPartner }}
+              </td>
+              <td class="lw-table-data-2">
+                {{ p.activitePartner }}
+              </td>
+              <td class="lw-table-data-3">
+                {{ p.namePartner }}
+              </td>
+              <td class="lw-table-data-4">
+                {{ p.sectorPartner }}
+              </td>
+              <td class="lw-table-data-5">
+                {{ p.urlPartner }}
+              </td>
+              <td class="lw-table-data-6">
+                {{ p.logoPartner }}
+              </td>
+              <td class="lw-table-data-7">
+                {{ p.emailPartner }}
+              </td>
+              <td class="lw-table-data-3 choose-btn">
+                <button class="btn btn-lg btn-outline-primary" (click)="openVerticallyCentered(content1)" (click)="getPartner(p.idPartner)">View</button>
+                <ng-template #content1 let-modal>
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">View Partner</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')" ></button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="mb-3">
+                        <div>
+                            <div>
+                                <label> <b>  Activite : </b></label> {{p.activitePartner}}
+                            </div>
+                            <div>
+                                <label> <b> Nom : </b></label> {{p.namePartner}}
+                            </div>
+                            <div>
+                                <label> <b> Secteur : </b></label> {{p.sectorPartner}}
+                            </div>
+                            <div>
+                                <label> <b> Url : </b></label> {{p.urlPartner}}
+                            </div>
+                            <div>
+                                <label> <b> Logo : </b></label> {{p.logoPartner}}
+                            </div>
+                            <div>
+                                <label> <b> Email : </b></label> {{p.emailPartner}}
+                            </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+                  </div>
+                </ng-template>
+
+
+                <button class="btn btn-lg btn-outline-primary" (click)="openVerticallyCentered(content2)" >Update</button>
+                <ng-template #content2 let-modal>
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="mb-3">
+                         
+        <div class="form-group">
+            <label> Acitivite </label>
+            <input type="text" class ="form-control" id = "activitePartner"
+                [(ngModel)] = "p.activitePartner" name = "activitePartner">
+        </div>
+        <div class="form-group">
+            <label> Nom </label>
+            <input type="text" class ="form-control" id = "namePartner"
+                [(ngModel)] = "p.namePartner" name = "namePartner">
+        </div>
+        <div class="form-group">
+            <label> Secteur </label>
+            <input type="text" class ="form-control" id = "sectorPartner"
+                [(ngModel)] = "p.sectorPartner" name = "sectorPartner">
+        </div>
+        <div class="form-group">
+            <label> Url </label>
+            <input type="text" class ="form-control" id = "urlPartner"
+                [(ngModel)] = "p.urlPartner" name = "urlPartner">
+        </div>
+        <div class="form-group">
+            <label> Logo </label>
+            <input type="text" class ="form-control" id = "logoPartner"
+                [(ngModel)] = "p.logoPartner" name = "logoPartner">
+        </div>
+        <div class="form-group">
+            <label> Email </label>
+            <input type="text" class ="form-control" id = "emailPartner"
+                [(ngModel)] = "p.emailPartner" name = "emailPartner">
+        </div>
+                        </div>
+                     
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')" (click)="editpartner(p.idPartner)">Save</button>
+                    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+                  </div>
+                </ng-template>
+                
+                  <button class="btn btn-lg btn-outline-primary"  (click)="deletePartner(p.idPartner)">Delete</button>
+            
+              </td>
+              
+              </tr>
+
+          </table>
+          <div class="d-flex justify-content-center">
+            <pagination-controls
+              previousLabel="Prev"
+              nextLabel="Next"
+              (pageChange)="onTableDataChange($event)"
+            >
+            </pagination-controls>
+          </div>
+
+        </div>
+
+
+
+
+
+
+
+        <hr>
+
+
+
+
+
+
+
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</section>
+
+
+<app-footer></app-footer>

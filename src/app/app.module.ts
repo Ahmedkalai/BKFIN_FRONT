@@ -55,11 +55,27 @@ import { AddTransactionComponent } from './components/pages/add-transaction/add-
 import { UpdateAccountComponent } from './components/pages/update-account/update-account.component';
 import { TransactionListByRibComponent } from './components/pages/transaction-list-by-rib/transaction-list-by-rib.component';
 import { ListaccByClientComponent } from './components/listacc-by-client/listacc-by-client.component';
+import { PartnerComponent } from './components/pages/partner/partner.component';
+import { ProductComponent } from './components/pages/product/product.component';
+import { PackComponent } from './components/pages/pack/pack.component';
+import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
+import { Cloudinary } from 'cloudinary-core';
+import { PackFrontComponent } from './components/pages/pack-front/pack-front.component';
+import { DetailsPackFrontComponent } from './components/pages/details-pack-front/details-pack-front.component';
+import { TombolaComponent } from './components/pages/tombola/tombola.component';
+import { PartnerFrontComponent } from './components/pages/partner-front/partner-front.component';
+import { DetailsPartnerFrontComponent } from './components/pages/details-partner-front/details-partner-front.component';
+import { ProductFrontComponent } from './components/pages/product-front/product-front.component';
+import { DetailsProductFrontComponent } from './components/pages/details-product-front/details-product-front.component';
+
+
 
 FullCalendarModule.registerPlugins([ 
   interactionPlugin,
   dayGridPlugin
 ]);
+
+
 
 
 
@@ -95,8 +111,16 @@ FullCalendarModule.registerPlugins([
     UpdateAccountComponent,
     TransactionListByRibComponent,
     ListaccByClientComponent,
-   
-   
+    PartnerComponent,
+    ProductComponent,
+    PackComponent,
+    PackFrontComponent,
+    DetailsPackFrontComponent,
+    TombolaComponent,
+    PartnerFrontComponent,
+    DetailsPartnerFrontComponent,
+    ProductFrontComponent,
+    DetailsProductFrontComponent
   ],
   imports: [
     HttpClientModule,
@@ -127,6 +151,9 @@ FullCalendarModule.registerPlugins([
               GuarantorService,
               DataService,
               initialdata],
+    
+  ],
+  providers: [GuarantorService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

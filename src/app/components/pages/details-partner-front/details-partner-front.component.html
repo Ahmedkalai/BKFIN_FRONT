@@ -1,0 +1,37 @@
+<app-header></app-header>
+<app-breadcrumb></app-breadcrumb>
+
+<!-- Start Blog -->
+<section class="section-padding bg-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-12"> 
+                <div class="blog-detail padding-20" >
+                    <!-- article -->
+                    <article class="post">
+                        <div class="post-wrapper">
+                            <div class="blog-img animate-img mb-xl-20">
+                                <a href="#">
+                                    <img [src]="Partner.logoPartner" class="image-fit" alt="{{Partner.logoPartner}}"  >
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Name Partner : {{Partner.namePartner}}</h5>
+                                <p class="card-title">Activite : {{Partner.activitePartner}}</p>
+                               <p class="card-title">Sector : {{Partner.sectorPartner}}</p>
+                                <p class="card-title">Lien Site : {{Partner.urlPartner}}</p>
+                                <p class="card-title">Email : {{Partner.emailPartner}}</p>
+                                <a href="#" class="btn btn-primary" routerLink="/partnerf"
+                                >Back</a>
+                              </div>
+                                </div>
+                                </article>
+                 
+           </div> 
+           </div>       
+        </div>
+    </div>
+</section>
+<!-- End Blog -->
+
+<app-footer></app-footer>

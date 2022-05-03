@@ -1,0 +1,277 @@
+<app-header xmlns:filter="http://www.w3.org/1999/xhtml"></app-header>
+<app-breadcrumb></app-breadcrumb>
+
+
+
+<section class="section-padding bg-gray">
+  <div class="container">
+    <div class="row doctors-team-style-2">
+
+      <div class="container mt-5">
+            <button class="btn btn-lg btn-outline-primary" (click)="openVerticallyCentered(content3)" >Add Pack</button>
+            <ng-template #content3 let-modal>
+              <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Add Pack</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')" ></button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="mb-3">
+                   
+                    <div class="form-group">
+                        <label>  Type </label>
+                        <input type="text" class ="form-control" id = "packType"
+                            [(ngModel)] = "pack.packType" name = "packType">
+                    </div>
+                
+                    <div class="form-group">
+                        <label> Description </label>
+                        <input type="text" class ="form-control" id = "descriptionPack"
+                            [(ngModel)] = "pack.descriptionPack" name = "descriptionPack">
+                    </div>
+                    <div class="form-group">
+                        <label>  Secteur </label>
+                        <input type="text" class ="form-control" id = "secteurPack"
+                            [(ngModel)] = "pack.secteurPack" name = "secteurPack">
+                    </div>
+                
+                    <div class="form-group">
+                        <label> Statut </label>
+                        <input type="text" class ="form-control" id = "statePack"
+                            [(ngModel)] = "pack.statePack" name = "statePack">
+                    </div>
+                    <div class="form-group">
+                        <label>  Prix </label>
+                        <input type="text" class ="form-control" id = "priceP"
+                            [(ngModel)] = "pack.priceP" name = "priceP">
+                    </div>
+                
+                    <label class="text-custom-black fs-14 fw-600">url image</label>
+                   <div>
+                   <input type="file" (change)="onFileChanged($event)">
+                   </div>
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1">Products</label>
+                      <select class="form-control" id="exampleFormControlSelect1" multiple [(ngModel)]="idProduct" name="idProduct">
+                      <option *ngFor="let p of products" value="{{p.idProduct}}" >{{p.nameProduct}}</option>
+                      </select>
+                    </div> 
+                </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')" (click)="addpack(pack)">Add</button>
+              <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+            </div>
+          </ng-template>
+          <br>
+          <br>
+          <br>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search..."
+            [(ngModel)]="filterTerm"
+          />
+        </div>
+        <div class="table-responsive">
+          <table class="lw-tab-table">
+            <tr class="lw-table-row-1">
+              <th [appSort]="packs" data-order="desc" data-name="idPack" scope="col">idPack</th>
+              <th [appSort]="packs" data-order="desc" data-name="packType" scope="col">packType </th>
+              <th [appSort]="packs" data-order="desc" data-name="descriptionPack" scope="col">descriptionPack </th>
+              <th [appSort]="packs" data-order="desc" data-name="secteurPack" scope="col">secteurPack</th>
+              <th [appSort]="packs" data-order="desc" data-name="statePack" scope="col">statePack</th>
+              <th [appSort]="packs" data-order="desc" data-name="priceP" scope="col">priceP</th>
+              <th [appSort]="packs" data-order="desc" data-name="imagePack" scope="col">imagePack</th>
+              <th>Actions</th>
+            </tr>
+            <tr *ngFor = "let p of packs  | filter: filterTerm | paginate
+              : {
+                  itemsPerPage: tableSize,
+                  currentPage: page,
+                  totalItems: count
+                };
+          let i = index
+        ">
+              <td class="lw-table-data-2">
+                {{ p.idPack }}
+              </td>
+              <td class="lw-table-data-2">
+                {{p.packType}}
+              </td>
+              <td class="lw-table-data-3">
+                {{p.descriptionPack}}
+              </td>
+              <td class="lw-table-data-4">
+                {{p.secteurPack}}
+              </td>
+              <td class="lw-table-data-5">
+                {{p.statePack}}
+              </td>
+              <td class="lw-table-data-6">
+                {{p.priceP}}
+              </td>
+              <td class="lw-table-data-7">
+                {{p.imagePack}}
+              </td>
+              <td class="lw-table-data-3 choose-btn">
+                <button class="btn btn-lg btn-outline-primary" (click)="openVerticallyCentered(content1)" (click)="getPack(p.idPack)">View</button>
+                <ng-template #content1 let-modal>
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">View Pack</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')" ></button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="mb-3">
+                        <div>
+                            <div>
+                                <label> <b>  Type : </b></label> {{p.packType}}
+                            </div>
+                            <div>
+                                <label> <b> Description : </b></label> {{p.descriptionPack}}
+                            </div>
+                            <div>
+                                <label> <b> Secteur : </b></label> {{p.secteurPack}}
+                            </div>
+                            <div>
+                                <label> <b> Statut : </b></label> {{p.statePack}}
+                            </div>
+                            <div>
+                                <label> <b> Prix : </b></label> {{p.priceP}}
+                            </div>
+                            <div>
+                                <label> <b> Image : </b></label> {{p.imagePack}}
+                            </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+                  </div>
+                </ng-template>
+
+
+                <button class="btn btn-lg btn-outline-success" (click)="openVerticallyCentered(content2)" >Update</button>
+                <ng-template #content2 let-modal>
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="mb-3">
+                         
+                        <div class="form-group">
+                            <label> Type </label>
+                            <input type="text" class ="form-control" id = "packType"
+                                [(ngModel)] = "p.packType" name = "packType">
+                        </div>
+                        <div class="form-group">
+                            <label> Description </label>
+                            <input type="text" class ="form-control" id = "descriptionPack"
+                                [(ngModel)] = "p.descriptionPack" name = "descriptionPack">
+                        </div>
+                        <div class="form-group">
+                            <label> Secteur </label>
+                            <input type="text" class ="form-control" id = "secteurPack"
+                                [(ngModel)] = "p.secteurPack" name = "secteurPack">
+                        </div>
+                        <div class="form-group">
+                            <label> Statut </label>
+                            <input type="text" class ="form-control" id = "statePack"
+                                [(ngModel)] = "p.statePack" name = "statePack">
+                        </div>
+                        <div class="form-group">
+                            <label> Prix </label>
+                            <input type="text" class ="form-control" id = "priceP"
+                                [(ngModel)] = "p.priceP" name = "priceP">
+                        </div>
+                        <div class="form-group">
+                            <label> Image </label>
+                            <input type="text" class ="form-control" id = "imagePack"
+                                [(ngModel)] = "p.imagePack" name = "imagePack">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect1">Products</label>
+                          <select class="form-control" id="exampleFormControlSelect1" multiple [(ngModel)]="idProduct" name="idProduct">
+                          <option *ngFor="let p of products" value="{{p.idProduct}}" >{{p.nameProduct}}</option>
+                          </select>
+                        </div> 
+                        </div>
+                     
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')" (click)="editpack(p.idPack)">Save</button>
+                    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+                  </div>
+                </ng-template>
+                
+                  <button class="btn btn-lg btn-outline-danger"  (click)="deletePack(p.idPack)">Delete</button>
+                  <button class="btn btn-lg btn-outline-warning"  (click)="statePack(p.idPack)">State</button>
+            
+              </td>
+              
+              </tr>
+
+          </table>
+          <div class="d-flex justify-content-center">
+            <pagination-controls
+              previousLabel="Prev"
+              nextLabel="Next"
+              (pageChange)="onTableDataChange($event)"
+            >
+            </pagination-controls>
+          </div>
+
+        </div>
+
+
+
+
+
+
+
+        <hr>
+
+
+
+
+
+
+
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</section>
+
+
+<app-footer></app-footer>
