@@ -44,6 +44,11 @@ export class CreditService {
     return this.httpClient.get<any>(`${this.baseURL}/export/excel/${mnttotl}/${period}/${interst}`, {responseType: 'arraybuffer' as'json'});
   }
 
+  getActiveCredit(idclient: number): Observable<Credit>{
+    return this.httpClient.get<Credit>(`${this.baseURL}/activeCredit/${idclient}`);
+  }
 
-
+  getLastCredit(idclient: number): Observable<Credit>{
+    return this.httpClient.get<Credit>(`${this.baseURL}/lastcredit/${idclient}`);
+  }
 }

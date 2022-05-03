@@ -78,13 +78,7 @@
                             <th [appSort]="Dueshist" data-order="desc" data-name="supposedDate" scope="col">supposedDate</th>
                             <th [appSort]="Dueshist" data-order="desc" data-name="dateHistory" scope="col">dateHistory</th>
                           </tr>
-                          <tr *ngFor = "let DH of Dueshist  | filter: filterTerm | paginate
-                                       : {
-                                                itemsPerPage: tableSize,
-                                                      currentPage: page,
-                                                       totalItems: count
-                                                };
-                                                  let i = index
+                          <tr *ngFor = "let DH of Dueshist   let i = index
                             "  >
                             <td class="lw-table-data-2"style="color: black">
                               {{i+1}}
@@ -111,8 +105,9 @@
 
 
 
-                <br>
+
                 <button *ngIf="credit.completed==0" class="btn btn-dark" (click)="openVerticallyCentered(content2)"  >Add Payment</button>
+
                 <ng-template #content2 let-modal>
                   <div class="modal-header">
                     <h4 class="modal-title" id="modal-basic-title">Profile update</h4>

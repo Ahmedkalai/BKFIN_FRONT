@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
+import {CreditService} from '../../../../Services/CreditService';
+import {DuesHistory} from '../../../../models/DuesHistory';
+import {DuesHistoryService} from '../../../../Services/DuesHistoryService';
+
 
 @Component({
   selector: 'app-content',
@@ -9,7 +13,57 @@ import { Label } from 'ng2-charts';
 })
 export class ContentComponent implements OnInit {
 
-  constructor() { }
+  loanAmount=0;
+  nbloans=0;
+  payedamount:number;
+  dhistories: DuesHistory[];
+  lastdueshistory :DuesHistory[];
+  lastvaleuamount:number;
+  mensualite:number=null;
+  lastpaymentdate:any;
+
+
+  constructor(private creditservice : CreditService , private  dhservice :DuesHistoryService) {
+
+  }
+  retour:any;
+  setLoan()
+  {//client id b session
+    this.creditservice.getActiveCredit(3).subscribe(res => {
+      this.retour=res;
+      if(this.retour.idCredit==null)
+      {}
+      else {
+
+        this.loanAmount=this.retour.amount;
+        this.nbloans=1;
+        this.payedamount=this.retour.interestRate;
+        this.mensualite=this.retour.monthlyPaymentAmount;
+
+        this.dhservice.getDuesHistorysList_bycredit(this.retour.idCredit).subscribe(res1 =>{this.dhistories =res1;
+          this.lastpaymentdate=this.dhistories[this.dhistories.length - 1].dateHistory;});
+
+
+
+
+      }
+    });
+
+    this.creditservice.getLastCredit(3).subscribe(res => {
+      console.log(res);
+      this.lastdueshistory=res.duesHistory;
+      this.lastvaleuamount=res.amount;
+    });
+
+  }
+
+
+
+
+
+
+
+
   public isCollapsed = false;
   public isMenuCollapsed = false;
   // Small
@@ -110,6 +164,7 @@ export class ContentComponent implements OnInit {
       data: [200, 175, 150, 125, 100, 75, 50, 25, 0]
     }
   ];
+
 
   dailyactivitypost = [
     {
@@ -212,7 +267,10 @@ export class ContentComponent implements OnInit {
     },
   ];
 
+
   ngOnInit(): void {
+    this.setLoan();
+
   }
 
 }

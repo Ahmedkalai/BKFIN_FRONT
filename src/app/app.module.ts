@@ -39,6 +39,7 @@ import {FormGuarantorComponent} from './components/pages/applycredit/form-guaran
 import {FileUploadModule} from 'ng2-file-upload';
 import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
 import { Cloudinary } from 'cloudinary-core';
+import {QRCodeModule} from 'angular2-qrcode';
 
 
 @NgModule({
@@ -81,6 +82,7 @@ import { Cloudinary } from 'cloudinary-core';
     SliderModule,
     DatePickerAllModule,
     AccumulationChartAllModule,
+    QRCodeModule,
     FileUploadModule,
     CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'dlw3w0bei' } as CloudinaryConfiguration)
   ],

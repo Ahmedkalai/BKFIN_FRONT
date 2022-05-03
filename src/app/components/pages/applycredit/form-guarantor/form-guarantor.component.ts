@@ -6,7 +6,7 @@ import {Credit} from '../../../../models/Credit';
 import {HttpClient} from '@angular/common/http';
 import {Cloudinary} from '@cloudinary/angular-5.x';
 import {FileUploader, FileUploaderOptions} from 'ng2-file-upload';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-form-guarantor',
   templateUrl: './form-guarantor.component.html',
@@ -20,25 +20,8 @@ export class FormGuarantorComponent implements OnInit {
 
   @Input()
   responses: Array<any>;
+  constructor(private guarantorService: GuarantorService , private router: Router , private http: HttpClient) {
 
-  private hasBaseDropZoneOver: boolean = false;
-  public uploader: FileUploader;
-  private title: string;
-
-  constructor(private guarantorService: GuarantorService , private router: Router ,private cloudinary: Cloudinary,
-  private zone: NgZone,
-  private http: HttpClient) {
-  this.responses = [];
-  this.title = '';
-
-    // @ts-ignore
-    // tslint:disable-next-line:only-arrow-functions
-  this.cloudinary.config(['cloudinaryProvider', function (cloudinaryProvider) {
-      cloudinaryProvider
-        .set('cloud_name', 'dlw3w0bei')
-        .set('secure', true)
-        .set('upload_preset', 'msa732u9');
-    }]);
   }
 
 
@@ -60,14 +43,6 @@ export class FormGuarantorComponent implements OnInit {
   }
 
 
-
-
-
-  // tslint:disable-next-line:typedef
-  goToGuarantorList(){
-    this.router.navigate(['listguarantor']);
-  }
-
   urlll:any;
   filename:any;
   // tslint:disable-next-line:typedef
@@ -76,7 +51,9 @@ export class FormGuarantorComponent implements OnInit {
     const uploadData = new FormData();
     uploadData.append('upload_preset', 'msa732u9');
     uploadData.append('file', this.selectedFile);
-    uploadData.append('public_id', this.selectedFile.name );
+    let current = new Date();
+    let timestamp = current.getTime();
+    uploadData.append('public_id', this.selectedFile.name +timestamp );
 
     this.http.post('https://api.cloudinary.com/v1_1/dlw3w0bei/image/upload', uploadData).subscribe(
       data => {this.urlll=data;
@@ -86,11 +63,15 @@ export class FormGuarantorComponent implements OnInit {
             console.log(data1);
             this.guarantorService.addfromfile(data1.idGarantor).subscribe(res => {
                 console.log(res);
+              // tslint:disable-next-line:triple-equals
                 if (res=="okkkkkkkkkkkkkkkkkk")
                 {
-                  this.router.navigateByUrl('/applycredit_2');
+                  this.router.navigateByUrl('applycredit/form2/' + data1.idGarantor);
                 }
-                else { this.router.navigateByUrl('/error'); }
+                else if (res=="fail")
+                { Swal.fire('Error', 'Error Invalid type of Pay Statement ', 'warning') ;
+                  console.log(data1.idGarantor);
+                  this.guarantorService.deleteGuarantor(data1.idGarantor).subscribe(res1 => console.log(res1));}
               }
             );
           },
@@ -109,9 +90,9 @@ export class FormGuarantorComponent implements OnInit {
 
     }
 
-  selectedFile: File
+  selectedFile: File;
   onFileChanged(event) {
-    this.selectedFile = event.target.files[0]
+    this.selectedFile = event.target.files[0];
 
   }
 

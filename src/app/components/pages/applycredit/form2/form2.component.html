@@ -1,0 +1,75 @@
+<section class="section-padding-bottom user-info-details">
+  <div class="container">
+    <div class="row">
+      <div class="offset-lg-3 col-lg-6">
+        <div class="user-info-tabs">
+          <div class="step-tab-inner">
+            <div class="heading text-center">
+              <h4 class="text-custom-black fw-600">Enter Loan Information</h4>
+              <p class="text-custom-black">Check your business's eligibility without impacting
+                your credit.<sup>*</sup></p>
+            </div>
+            <form (ngSubmit) = "onSubmit()">
+              <div class="row">
+                <div class="col-12">
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="form-group">
+                            <label class="text-custom-black fs-14 fw-600">Loan Amount</label>
+                            <input required="required" type="number" #amount="ngModel"  [(ngModel)] = "credit.amount" name = "amount" class="form-control form-control-custom"
+                                   placeholder="$ 10,000.00">
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <div class="form-group">
+                            <label class="text-custom-black fs-14 fw-600">Payment Period</label>
+                            <select #creditPeriod="ngModel"  [(ngModel)] = "credit.creditPeriod" name="creditPeriod" class="custom-select form-control form-control-custom">
+                              <option disabled> Select Period  </option>
+                              <option [value]="1">1 Year</option>
+                              <option [value]="2">2 Year</option>
+                              <option [value]="3">3 Year</option>
+                              <option [value]="4">4 Year</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="radio-box form-group">
+                          <div class="custom-radio">
+                            <input id="phone1" name="phonetype" type="radio" value="false"
+                                   [checked]="true"
+                                   (change)="onItemChange1($event)">
+                            <label for="phone1"> Sans Différé </label>
+                          </div>
+                          <div class="custom-radio">
+                            <input id="phone2" name="phonetype" type="radio" value="true"
+                                   [checked]="false"
+                                   (change)="onItemChange($event)">
+                            <label for="phone2">Avec Différé Total </label>
+                          </div>
+                        </div>
+                        <div class="col-lg-12"  *ngIf="differee" >
+                          <div class="form-group">
+                            <label class="text-custom-black fs-14 fw-600">Différé Period</label>
+                            <select #DIFF_period="ngModel"  [(ngModel)] = "credit.DIFF_period" name="DIFF_period"  required="required" class="custom-select form-control form-control-custom">
+                              <option disabled>Select Period</option>
+                              <option [value]="1"> 1 Year </option>
+                              <option [value]="2"> 2 Year</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button class = "btn btn-success" type ="submit" style="margin-left: 40%;">Submit</button>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -19,10 +19,12 @@
         <div class="table-responsive">
           <table class="lw-tab-table">
             <tr class="lw-table-row-1">
-              <th [appSort]="Guarantors" data-order="desc" data-name="idGarantor" scope="col">idGarantor</th>
-              <th [appSort]="Guarantors" data-order="desc" data-name="nameGarantor" scope="col">nameGarantor </th>
-              <th [appSort]="Guarantors" data-order="desc" data-name="secondnameGarantor" scope="col">secondnameGarantor </th>
-              <th [appSort]="Guarantors" data-order="desc" data-name="workGarantor" scope="col">workGarantor</th>
+              <th [appSort]="Guarantors" data-order="desc" data-name="idGarantor" scope="col">IdGarantor</th>
+              <th [appSort]="Guarantors" data-order="desc" data-name="nameGarantor" scope="col">First Name </th>
+              <th [appSort]="Guarantors" data-order="desc" data-name="secondnameGarantor" scope="col">Secondname </th>
+              <th [appSort]="Guarantors" data-order="desc" data-name="workGarantor" scope="col">work</th>
+              <th [appSort]="Guarantors" data-order="desc" data-name="salaryGarantor" scope="col">Salary</th>
+
               <th>Actions</th>
             </tr>
             <tr *ngFor = "let Guarantor of Guarantors  | filter: filterTerm | paginate
@@ -45,8 +47,12 @@
               <td class="lw-table-data-4">
                 {{ Guarantor.workGarantor }}
               </td>
+              <td class="lw-table-data-5" style="color: red">
+                {{ Guarantor.salaryGarantor }}
+              </td>
+
               <td class="lw-table-data-3 choose-btn">
-                <button class="btn btn-lg btn-outline-primary" (click)="openVerticallyCentered(content1)">view</button>
+                <button class="btn btn-danger" (click)="openVerticallyCentered(content1)" (click)="delete(Guarantor.idGarantor)">Delete</button>
                 <ng-template #content1 let-modal>
                   <div class="modal-header">
                     <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
@@ -54,23 +60,15 @@
                     <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
                   </div>
                   <div class="modal-body">
-                    <form>
-                      <div class="mb-3">
-                        <label for="dateOfBirth">Date of birth</label>
-                        <div class="input-group">
-                          <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
-                          <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
-                        </div>
-                      </div>
-                    </form>
+
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
                   </div>
                 </ng-template>
 
-
-                <button class="btn btn-lg btn-outline-primary" (click)="openVerticallyCentered(content2)">UPdate</button>
+                <br>
+                <button class="btn btn-dark" (click)="openVerticallyCentered(content2)" (click)="update(Guarantor)">Update</button>
                 <ng-template #content2 let-modal>
                   <div class="modal-header">
                     <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
@@ -78,19 +76,38 @@
                     <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
                   </div>
                   <div class="modal-body">
-                    <form>
-                      <div class="mb-3">
-                        <label for="dateOfBirth">Date of birth</label>
-                        <div class="input-group">
-                          <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
-                          <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+                    <form (ngSubmit) = "onSubmit()">
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="form-group">
+                            <label class="text-custom-black fs-14 fw-600">Guarantor Name</label>
+                            <input type="text" class ="form-control" #nameGarantor="ngModel"  [(ngModel)] = "Guarant.nameGarantor" name = "nameGarantor">
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="text-custom-black fs-14 fw-600">Second  Name</label>
+                            <input type="text" class ="form-control" #secondnameGarantor="ngModel" [(ngModel)] = "Guarant.secondnameGarantor" name = "secondnameGarantor">
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="text-custom-black fs-14 fw-600">salaryGarantor</label>
+                            <input type="number" class ="form-control" #salaryGarantor="ngModel"  [(ngModel)] = "Guarant.salaryGarantor" name = "salaryGarantor">
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="text-custom-black fs-14 fw-600">workGarantor</label>
+                            <input type="text" class ="form-control" #workGarantor="ngModel" [(ngModel)] = "Guarant.workGarantor" name = "workGarantor">
+                          </div>
+
                         </div>
                       </div>
+                      <button class = "btn btn-success" type ="submit" style="margin-left: 40%;" (click)="modal.close('Save click')">Submit</button>
                     </form>
                   </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-                  </div>
+
                 </ng-template>
 
               </td>
