@@ -32,6 +32,7 @@
     "bootstrap": "^4.5.3",
     "chart.js": "^2.9.4",
     "date-fns": "^2.23.0",
+    "file-saver": "^2.0.5",
     "jquery": "^3.5.1",
     "jspdf": "^2.5.1",
     "ng-circle-progress": "^1.6.0",

@@ -1,10 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Inves } from 'src/app/models/inves';
 import {InvesService} from 'src/app/Services/inves.service';
 import Swal from 'sweetalert2';
-
+import {saveAs} from 'file-saver/dist/FileSaver';
 
 @Component({
   selector: 'app-inves',
@@ -25,7 +26,8 @@ export class InvesComponent implements OnInit {
   tableSize: number = 6;
   tableSizes: any = [3, 6, 9, 12];
   constructor(private invesService: InvesService , private router: Router ,
-    private modalService: NgbModal ,) { }
+    private modalService: NgbModal ,
+    private http:HttpClient) { }
   onTableDataChange(event: any) {
     this.page = event;
     this.getallInves();
@@ -100,7 +102,15 @@ export class InvesComponent implements OnInit {
   }
 
   PDF(){
-    this.invesService.PDF();
+  //  alert('downalded');
+    this.http.get('http://localhost:8083/BKFIN/Investesment/export',{responseType:'arraybuffer'}).subscribe(pdf=>{
+    //pour que le doc soit .pdf  
+    const blob = new Blob([pdf],{type:'application/pdf'});
+      const filename = 'Unmashed.pdf';
+      saveAs(blob,filename);
+    },err=>{
+      console.log(err);
+    });
   }
   Rate(idInvestesment : any){
    return this.invesService.CalculateRateOfInves(idInvestesment);
