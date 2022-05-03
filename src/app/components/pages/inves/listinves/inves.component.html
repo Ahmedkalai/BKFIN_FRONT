@@ -1,0 +1,152 @@
+<app-header></app-header>
+<app-breadcrumb></app-breadcrumb>
+
+
+
+<section class="section-padding bg-gray">
+  <div class="container"  class="padding-top : 1px" >
+    <div class="row doctors-team-style-2" class="section-padding-top : 5px">     
+      <div class="container mt-5">
+      
+        <div class="search p-relative">
+          <button (click)="PDF()" class="btn-first btn-submit text-light-blue full-width"  type ="button" style="margin-left: 10px" 
+          style="margin-bottom: 10px" ><b>Export List To PDF</b></button>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search..."
+            [(ngModel)]="filterTerm"
+          />
+          </div>
+        </div>
+       
+        <div class="table-responsive">
+          <table class="lw-tab-table" >
+            <tr class="lw-table-row-1">
+              <th [appSort]="listinves" data-order="desc" data-name="Investissement Identifier" scope="col">Invest ID</th>
+              <th [appSort]="listinves" data-order="desc" data-name="CIN" scope="col">CIN</th>
+              <th [appSort]="listinves" data-order="desc" data-name="Name" scope="col">Name</th>
+              <th [appSort]="listinves" data-order="desc" data-name="Second Name" scope="col">Second Name</th>
+              <th [appSort]="listinves" data-order="desc" data-name="Email" scope="col">Email</th>
+              <th [appSort]="listinves" data-order="desc" data-name="Profesion" scope="col">Profesion</th>
+              <th [appSort]="listinves" data-order="desc" data-name="Amout" scope="col">Amout</th>
+              <th [appSort]="listinves" data-order="desc" data-name="Rate" scope="col">Rate</th>
+              <th [appSort]="listinves" data-order="desc" data-name="Final Amount" scope="col">Final Amount</th>
+              <th>Actions</th>
+            </tr>
+            <tr *ngFor = "let Inves of listinves | filter: filterTerm | paginate
+            : {
+                itemsPerPage: tableSize,
+                currentPage: page,
+                totalItems: count
+              };
+        let i = index
+      ">
+              <td class="lw-table-data-2" >
+                {{Inves.idInvestesment}}
+              </td>
+              <td class="lw-table-data-2" >
+                {{Inves.cinInvestesment}}
+              </td>
+              <td class="lw-table-data-3">
+                {{Inves.nameInvestesment }}
+              </td>
+              <td class="lw-table-data-4" >
+                {{Inves.secondnnameInvestesment }}
+          </td>
+          <td class="lw-table-data-4" >
+            {{Inves.mailInvestesment }}
+          </td>
+          <td class="lw-table-data-4" >
+            {{Inves.professionInvestesment }}
+          </td>
+          <td class="lw-table-data-4" >
+            {{Inves.amoutInvestesment }}
+          </td>
+          <td class="lw-table-data-4"  style="color:red">
+            {{Inves.tauxInves }}
+          </td>
+          <td class="lw-table-data-4" style="background:#15124A">
+          <b> {{Inves.finalAmount }} </b> 
+          </td>
+          
+          <td class="lw-table-data-3" >
+          <button (click) = "CalculateAmoutOfInves(Inves.idInvestesment)" type ="button" 
+          class = "btn btn-outline-primary"><b>Final Amount</b></button> 
+          <button type ="button"  class="btn btn-outline-warning"
+           (click)="openVerticallyCentered(content2)"><b>Update</b></button>
+        </td>
+
+
+        <ng-template #content2 let-modal>
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Investissement update</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                 
+<div class="form-group">
+    <label> Name Investor </label>
+        <input type="text" class ="form-control" #nameInvestesment="ngModel" 
+         [(ngModel)] = "Inves.nameInvestesment" name = "nameInvestesment">
+</div>
+<div class="form-group">
+    <label> SecondName </label>
+    <input type="text" class ="form-control" #secondnnameInvestesment="ngModel"
+     [(ngModel)] = "Inves.secondnnameInvestesment" name = "secondnnameInvestesment">
+</div>
+<div class="form-group">
+    <label> CIN </label>
+    <input type="number" class ="form-control" #cinInvestesment="ngModel"  
+    [(ngModel)] = "Inves.cinInvestesment" name = "cinInvestesment">
+</div>
+<div class="form-group">
+    <label> Email </label>
+    <input type="email" class ="form-control" #mailInvestesment="ngModel" 
+    [(ngModel)] = "Inves.mailInvestesment" name = "mailInvestesment">
+</div>
+<div class="form-group">
+  <label> Profession </label>
+  <input type="text" class ="form-control" #professionInvestesment="ngModel" 
+  [(ngModel)] = "Inves.professionInvestesment" name = "professionInvestesment">
+</div>
+<div class="form-group">
+  <label> Amount  </label>
+  <input type="number" class ="form-control" #amoutInvestesment="ngModel" 
+  [(ngModel)] = "Inves.amoutInvestesment" name = "amoutInvestesment">
+</div>
+                </div>
+             
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="updateInves(Inves.idInvestesment)" 
+            (click)="modal.close('Save click')">Update</button>
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+          </div>
+        </ng-template>
+
+
+            </tr>
+
+          </table>
+          <div class="d-flex justify-content-center">
+            <pagination-controls
+              previousLabel="Prev"
+              nextLabel="Next"
+              (pageChange)="onTableDataChange($event)"
+            >
+            </pagination-controls>
+          </div>          
+        </div>           
+        <hr>           
+      </div>           
+    </div>
+  </div>
+</section>
+  
+  <app-footer></app-footer>

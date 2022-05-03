@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BreadcrumbModule } from 'angular-crumbs';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -40,7 +40,23 @@ import {FileUploadModule} from 'ng2-file-upload';
 import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
 import { Cloudinary } from 'cloudinary-core';
 import {QRCodeModule} from 'angular2-qrcode';
+import { EventComponent } from './components/pages/event/listevent/event.component';
+import { DetailinvesComponent } from './components/pages/inves/detailinves/detailinves.component';
+import { ForminvesComponent } from './components/pages/inves/forminves/forminves.component';
+import { InvesComponent } from './components/pages/inves/listinves/inves.component';
+import { FundComponent } from './components/pages/fund/listfund/fund.component';
+import { FormfundComponent } from './components/pages/fund/formfund/formfund.component';
+import { AgentComponent } from './components/pages/agents/agent/agent.component';
 
+import { FullCalendarModule } from '@fullcalendar/angular';
+import interactionPlugin from '@fullcalendar/interaction';
+import dayGridPlugin from '@fullcalendar/daygrid';
+
+
+FullCalendarModule.registerPlugins([ 
+  interactionPlugin,
+  dayGridPlugin
+]);
 
 @NgModule({
   declarations: [
@@ -60,7 +76,14 @@ import {QRCodeModule} from 'angular2-qrcode';
     StatementComponent,
     InputttComponent,
     SimulatordashboardComponent,
-    FormGuarantorComponent
+    FormGuarantorComponent,
+    FundComponent,
+    FormfundComponent,
+    InvesComponent,
+    ForminvesComponent,
+    DetailinvesComponent,
+    EventComponent,
+    AgentComponent
   ],
   imports: [
     HttpClientModule,
@@ -84,7 +107,8 @@ import {QRCodeModule} from 'angular2-qrcode';
     AccumulationChartAllModule,
     QRCodeModule,
     FileUploadModule,
-    CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'dlw3w0bei' } as CloudinaryConfiguration)
+    CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'dlw3w0bei' } as CloudinaryConfiguration),
+    FullCalendarModule,
   ],
   providers: [
               GuarantorService,

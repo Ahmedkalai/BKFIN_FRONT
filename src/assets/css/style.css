@@ -44,6 +44,8 @@ Version: 1.0.0
 
 /*--------animation---------*/
 
+
+
 @keyframes fadeInOut {
     0% {
         opacity: 1;

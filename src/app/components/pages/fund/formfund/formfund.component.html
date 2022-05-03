@@ -1,0 +1,41 @@
+<app-header></app-header>
+<app-breadcrumb></app-breadcrumb>
+<!-- Start User Details -->
+<section class="section-padding-bottom user-info-details">
+  <div class="container">
+    <div class="row">
+      <div class="offset-lg-3 col-lg-6">
+        <div class="user-info-tabs">
+          <div class="step-tab-inner">
+            
+            <form (ngSubmit) = "onSubmit()">
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-group">
+                    <label class="text-custom-black fs-14 fw-600">Amout</label>
+                    <input type="number" class ="form-control" #amountFund="ngModel"  [(ngModel)] = "Fund.amountFund" name = "amountFund">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="text-custom-black fs-14 fw-600">Rate</label>
+                    <input type="number" class ="form-control" #tauxFund="ngModel" [(ngModel)] = "Fund.tauxFund" name = "tauxFund">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="text-custom-black fs-14 fw-600">Win Rate</label>
+                    <input type="number" class ="form-control" #tauxGain="ngModel"  [(ngModel)] = "Fund.tauxGain" name = "tauxGain">
+                  </div>
+                </div>
+               </div>
+            </form>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+ </div>
+</section>
+
+<app-footer></app-footer>
