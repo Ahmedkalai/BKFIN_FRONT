@@ -11,7 +11,6 @@
                         <div class="main-services-box p-relative mb-xl-30">
                             <div class="main-service-wrapper padding-20">
                                 <p class="fw-700">{{unemployedpopulation}}</p>
-                               
                             </div>
                         </div>
                     </div>
@@ -62,7 +61,8 @@
                                             </div>
                                         </div>
                                         <div class="col-12">
-                                          <button (click) = "addEvent()"  class="btn-first btn-submit text-light-blue full-width" type ="submit" >Add New Event</button>
+                                          <button (click) = "addEvent()"  class="btn-first btn-submit text-light-blue full-width" 
+                                          type ="submit" ><b>Add New Event</b></button>
                                         </div>
                                     </div>
                                 </form>
@@ -161,9 +161,9 @@
               
                                                <td class="lw-table-data-3 choose-btn">
                                                  <button  (click)="Associate(Event.idEvent,Agent.value)"
-                                                  class = "btn btn-outline-primary"  type ="submit"  >Assignment</button>
+                                                 class="btn btn-outline-info"  type ="submit"><b>Assignment</b></button>
                                            
-                                                 <button type ="button" class = "btn btn-danger" (click)="error(Event.idEvent)">Delete</button>
+                                                 <button type ="button" class="btn btn-outline-danger" (click)="error(Event.idEvent)"><b>Delete</b></button>
                                                </td>
                         </tr>
             

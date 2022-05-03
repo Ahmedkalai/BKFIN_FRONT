@@ -9,6 +9,8 @@
       <div class="container mt-5">
       
         <div class="search p-relative">
+          <button (click)="PDF()" class="btn-first btn-submit text-light-blue full-width"  type ="button" style="margin-left: 10px" 
+          style="margin-bottom: 10px" ><b>Export List To PDF</b></button>
         <div class="form-group">
           <input
             type="text"
@@ -18,7 +20,7 @@
           />
           </div>
         </div>
-        <button (click)="PDF()" class="btn-first btn-submit text-light-blue full-width"  type ="button" style="margin-left: 10px" style="margin-bottom: 10px" >Export List To PDF</button>
+       
         <div class="table-responsive">
           <table class="lw-tab-table" >
             <tr class="lw-table-row-1">
@@ -62,17 +64,18 @@
           <td class="lw-table-data-4" >
             {{Inves.amoutInvestesment }}
           </td>
-          <td class="lw-table-data-4" >
+          <td class="lw-table-data-4"  style="color:red">
             {{Inves.tauxInves }}
           </td>
-          <td class="lw-table-data-4" >
+          <td class="lw-table-data-4" style="background:#15124A">
             {{Inves.finalAmount }}
           </td>
           
           <td class="lw-table-data-3" >
-          <button (click) = "CalculateAmoutOfInves(Inves.idInvestesment)" type ="button" class = "btn btn-outline-primary" > Final Amount</button> 
-          <button type ="button" class = "btn btn-outline-primary"
-           (click)="openVerticallyCentered(content2)" >Update</button>
+          <button (click) = "CalculateAmoutOfInves(Inves.idInvestesment)" type ="button" 
+          class = "btn btn-outline-primary"><b>Final Amount</b></button> 
+          <button type ="button"  class="btn btn-outline-warning"
+           (click)="openVerticallyCentered(content2)"><b>Update</b></button>
         </td>
 
 

@@ -106,7 +106,7 @@ export class InvesComponent implements OnInit {
     this.http.get('http://localhost:8083/BKFIN/Investesment/export',{responseType:'arraybuffer'}).subscribe(pdf=>{
     //pour que le doc soit .pdf  
     const blob = new Blob([pdf],{type:'application/pdf'});
-      const filename = 'Unmashed.pdf';
+      const filename = 'Investissement.pdf';
       saveAs(blob,filename);
     },err=>{
       console.log(err);

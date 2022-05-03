@@ -259,7 +259,7 @@ getAllEvents() {
     Swal.fire({
       position: 'top-end',
       icon: 'success',
-      title: 'The Fund is created successfully',
+      title: 'The event is created successfully',
       showConfirmButton: false,
       timer: 1500
     })

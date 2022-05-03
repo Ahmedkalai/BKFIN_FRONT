@@ -17,10 +17,10 @@
   </div>
 </div>
 <div class="col-12" >
-  <button (click) = "addFund()"   class="btn-first btn-submit text-light-blue full-width" type ="submit" >Add New Fund</button>
+  <button (click) = "addFund()"   class="btn-first btn-submit text-light-blue full-width" type ="submit" ><b>Add New Fund</b></button>
 </div>
 <div class="col-12" >
-  <button (click)="goToDeails()"   class="btn-first btn-submit text-light-blue full-width" type ="submit" >View Details Funds</button>
+  <button (click)="goToDeails()"   class="btn-first btn-submit text-light-blue full-width" type ="submit" ><b>View Details Funds</b></button>
 </div>
 </div>
 </div>
@@ -32,7 +32,7 @@
 
 <section class="section-padding bg-gray">
   <div class="container"  class="padding-top : 1px" >
-    <div class="row doctors-team-style-2" class="section-padding-top : 5px">     
+    <div class="row doctors-team-style-2" >     
       <div class="container mt-5">
       
         <div class="search p-relative">
@@ -77,8 +77,8 @@
             
   
                                    <td class="lw-table-data-3 choose-btn">
-                                    <button  (click) = "goToaddInves(Fund.idFund)"  class = "btn btn-outline-primary"  type ="submit"  >Add Investissement </button>
-                                    <button type ="button" class = "btn btn-danger" (click)="deleteFund(Fund.idFund)">Delete Fund</button>
+                                    <button  (click) = "goToaddInves(Fund.idFund)"  class="btn btn-outline-success"  type ="submit"><b>Add Investissement</b></button>
+                                    <button type ="button" class="btn btn-outline-danger" (click)="deleteFund(Fund.idFund)"><b>Delete Fund</b></button>
                                    </td>
             </tr>
 
