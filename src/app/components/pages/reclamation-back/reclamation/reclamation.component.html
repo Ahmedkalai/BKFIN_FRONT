@@ -1,0 +1,88 @@
+<app-header></app-header>
+<breadcrumb #parent>
+    <div class="sub-header p-relative">
+      <div class="overlay overlay-bg-black"></div>
+      <div class="pattern"></div>
+      <div class="section-padding">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+  
+                <div class="sub-header-content p-relative">
+                  <h1 class="text-custom-white lh-default fw-600"> Liste of complaints</h1>
+                  
+                </div>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </breadcrumb>
+  <div class="section-padding lw-tab-section p-relative">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="lw-mega-tab">
+            <ul ngbNav #navplans="ngbNav" class="nav lw-nav-tabs">
+              <li [ngbNavItem]="1">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Search..."
+                    [(ngModel)]="filterTerm"
+                  />
+                </div>
+                <div class="table-responsive">
+                  <table class="lw-tab-table">
+                    <tr class="lw-table-row-1">
+                      <th [appSort]="listReclamation" data-order="desc" data-name="idGarantor" scope="col">informationText</th>
+              <th [appSort]="listReclamation" data-order="desc" data-name="nameGarantor" scope="col">state </th>
+              <th [appSort]="listReclamation" data-order="desc" data-name="secondnameGarantor" scope="col">dateComplaint </th>
+              <th [appSort]="listReclamation" data-order="desc" data-name="workGarantor" scope="col">object</th>
+              <th>Actions</th>
+                    </tr>
+                    <tr *ngFor = "let R of listReclamations | filter: filterTerm | paginate
+                    : {
+                        itemsPerPage: tableSize,
+                        currentPage: page,
+                        totalItems: count
+                      };
+                let i = index
+              ">
+                      <td class="lw-table-data-2">
+                        {{ R.informationText }}
+                      </td>
+                      <td class="lw-table-data-3">
+                        {{ R.state }}
+                      </td>
+                      <td class="lw-table-data-4">
+                        {{ R.dateComplaint }}
+                      </td>
+                      <td class="lw-table-data-4">
+                        {{ R.object  }}
+                      </td>
+                      
+                      <button  *ngIf="!R.state" (click)  = "updatestateEmployee(R.idComplaint)" class = "btn btn-outline-primary"> change State</button>
+                      
+                    </tr>
+  
+                  </table>
+                  <div class="d-flex justify-content-center">
+                    <pagination-controls
+                      previousLabel="Prev"
+                      nextLabel="Next"
+                      (pageChange)="onTableDataChange($event)"
+                    >
+                    </pagination-controls>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+             <app-footer></app-footer>

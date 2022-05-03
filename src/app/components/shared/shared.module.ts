@@ -13,12 +13,14 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { ServicesidebarComponent } from './servicesidebar/servicesidebar.component';
+import { HeaderbackComponent } from './headerback/headerback.component';
+
 
 
 
 
 @NgModule({
-  declarations: [AdvertisementComponent, BlogsidebarComponent, BookappointmentComponent, BreadcrumbComponent, FooterComponent, HeaderComponent, ServicesidebarComponent],
+  declarations: [AdvertisementComponent, BlogsidebarComponent, BookappointmentComponent, BreadcrumbComponent, FooterComponent, HeaderComponent, ServicesidebarComponent, HeaderbackComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -27,6 +29,10 @@ import { ServicesidebarComponent } from './servicesidebar/servicesidebar.compone
     BreadcrumbModule
    
   ],
-  exports: [AdvertisementComponent, BlogsidebarComponent, BookappointmentComponent, BreadcrumbComponent, FooterComponent, HeaderComponent, ServicesidebarComponent]
+
+  exports: [AdvertisementComponent, BlogsidebarComponent, BookappointmentComponent, BreadcrumbComponent, FooterComponent, HeaderComponent, ServicesidebarComponent,HeaderbackComponent]
+
+  
+
 })
 export class SharedModule { }

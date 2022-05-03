@@ -1,0 +1,67 @@
+<app-header></app-header>
+<div class="overlapsec"></div>
+
+
+
+<breadcrumb #parent>
+  <div class="sub-header p-relative">
+    <div class="overlay overlay-bg-black"></div>
+    <div class="pattern"></div>
+    <div class="section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+
+              <div class="sub-header-content p-relative">
+                <h1 class="text-custom-white lh-default fw-400">Reclamation</h1>
+                
+              </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</breadcrumb>
+<!-- Start User Details -->
+<div>
+  <app-chatbot></app-chatbot>
+</div>
+<section class="section-padding-bottom user-info-details">
+  <div class="container">
+    <div class="row">
+      <div class="offset-lg-3 col-lg-6">
+        <div class="user-info-tabs">
+          <div class="step-tab-inner">
+            <div class="heading text-center">
+              <h4 class="text-custom-black fw-600">Enter your claim</h4>
+              <p class="text-custom-black">you can press the view button to see your claims history.<sup>*</sup></p>
+            </div>
+            <form (ngSubmit) = "onSubmit()">
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-group">
+                    <label class="text-custom-black fs-14 fw-600">InformationText</label>
+                    <input type="text" class ="form-control" #nameinformationText="ngModel"   [(ngModel)] = "reclamation.informationText" name = "informationText">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="text-custom-black fs-14 fw-600">Object</label>
+                    <input type="text" class ="form-control" #objectname="ngModel"[(ngModel)] = "reclamation.object" name = "object">
+                  </div>
+                </div>
+              </div>
+              <button class = "btn btn-success" type ="submit">Submit</button>
+            </form>
+            <button (click) = "goToEmployeeList()" class = "btn btn-info" style="margin-left: 400px"> View</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+</section>
+<app-footer></app-footer>
+

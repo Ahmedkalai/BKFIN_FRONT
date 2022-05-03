@@ -1,4 +1,4 @@
-import {Credit } from '../../../../../../Desktop/Credit';
+import {Credit } from './Credit';
 export class Notification {
   idNotification: number;
   dateNotif: Date;

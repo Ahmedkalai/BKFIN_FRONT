@@ -7,7 +7,6 @@
     "changeOrigin": true,
     "pathRewrite": {"^/api" : ""}
     },
-
     "/python/*": {
       "target": "http://localhost:5000",
       "secure": false,
@@ -20,7 +19,3 @@
 
 
    }
-
-
-    
-

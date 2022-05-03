@@ -1,0 +1,65 @@
+<app-header></app-header>
+<div class="overlapsec"></div>
+<breadcrumb #parent>
+  <div class="sub-header p-relative">
+    <div class="overlay overlay-bg-black"></div>
+    <div class="pattern"></div>
+    <div class="section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+
+              <div class="sub-header-content p-relative">
+                <h1 class="text-custom-white lh-default fw-600"> Update your Complaint</h1>
+                
+              </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</breadcrumb>
+
+<!-- Start Contact -->
+<section class="section-padding bg-gray contact-us">
+    <div class="container-sm" >
+        <div class="row">
+            <div class="col-xl-5 col-lg-4 mb-md-800 py-1"  >
+                <div class="contact-form full-height align-self-center bx-wrapper bg-custom-white ">
+                    <h4 class="text-custom-black fw-600"> Update Complaint</h4>
+                    <p class="text-light-white no-margin">update your complaint.</p>
+                         
+                    <form  (ngSubmit) = "onSubmit()">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="text-left">InformationText</label>
+                                    <input type="text"  class="form-control" placeholder="informationText"  id = "informationText"
+                                    [(ngModel)] = "reca.informationText" name = "informationText">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="text-left">Object</label>
+                                    <input type="text"  class="form-control" placeholder="object"  id = "object"
+                                    [(ngModel)] = "reca.object" name = "object">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit"
+                                    class="btn-first btn-submit text-light-blue full-width">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-xl-7 col-lg-8">
+                
+                <img src="assets/images/rec.jpg" height="100" width="100">
+            </div>
+        </div>
+    </div>
+</section>
+
+    <app-footer></app-footer>

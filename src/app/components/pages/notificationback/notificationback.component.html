@@ -1,0 +1,84 @@
+<app-header></app-header>
+<breadcrumb #parent>
+    <div class="sub-header p-relative">
+      <div class="overlay overlay-bg-black"></div>
+      <div class="pattern"></div>
+      <div class="section-padding">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+  
+                <div class="sub-header-content p-relative">
+                  <h1 class="text-custom-white lh-default fw-400">List of Notifications </h1>
+                </div>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </breadcrumb>
+  <div class="section-padding lw-tab-section p-relative">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="lw-mega-tab">
+            <ul ngbNav #navplans="ngbNav" class="nav lw-nav-tabs">
+              <li [ngbNavItem]="1">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Search..."
+                    [(ngModel)]="filterTerm"
+                  />
+                </div>
+               
+                <div class="table-responsive">
+                  <table class="lw-tab-table">
+                    <tr class="lw-table-row-1">
+                      <th [appSort]="listNotifications" data-order="desc" data-name="idGarantor" scope="col">Date</th>
+                      <th [appSort]="listNotifications" data-order="desc" data-name="idGarantor" scope="col">Object</th>
+                      <th [appSort]="listNotifications" data-order="desc" data-name="idGarantor" scope="col">Id Credit</th>
+
+                    
+                    </tr>
+                    <tr *ngFor='let p of listNotifications| filter: filterTerm | paginate
+                    : {
+                        itemsPerPage: tableSize,
+                        currentPage: page,
+                        totalItems: count
+                      };
+                let i = index
+              '>
+                      <td class="lw-table-data-2">
+                        {{p.dateNotif}}
+                      </td>
+                      <td class="lw-table-data-2">
+                        {{p.object}}
+                      </td>
+                      <td class="lw-table-data-2">
+                        {{p.credit}}
+                      </td>
+                      
+                    </tr>
+  
+                  </table>
+                  <div class="d-flex justify-content-center">
+                    <pagination-controls
+                      previousLabel="Prev"
+                      nextLabel="Next"
+                      (pageChange)="onTableDataChange($event)"
+                    >
+                    </pagination-controls>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+             <app-footer></app-footer>
+
