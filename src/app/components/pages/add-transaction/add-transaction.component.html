@@ -1,0 +1,201 @@
+<app-header></app-header>
+
+<breadcrumb #parent>
+    <div class="sub-header p-relative">
+      <div class="overlay overlay-bg-black"></div>
+      <div class="pattern"></div>
+      <div class="section-padding">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+  
+                <div class="sub-header-content p-relative">
+                  <h1 class="text-custom-white lh-default fw-600">Accounts</h1>
+                  <ul class="custom">
+                    <li><a class="text-custom-white">Home</a></li>
+                    <li >
+  
+                        <a>list of accounts</a>
+                    </li>
+  
+                  </ul>
+                </div>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </breadcrumb>
+  <!--
+<section class="section-padding loan-faqs-sec bg-light-white findrate-top">
+    <div class="container">
+        <div class="row">
+            <div class="offset-lg-2 col-lg-8">
+                <div class="findratesec">
+                    <h3 class="text-custom-black">Enter your RIB</h3>
+                    <div class="input-form-box">
+                        <form>
+                            <div class="input-group">
+                                 
+                                <input type="text" name="Rib" id="Rib" #Rib  class="form-control form-control-custom"
+                                    placeholder="Enter amount ($1,000 to $100,000)">
+                                 
+                              
+                             <select>
+                                <option *ngFor ="let accs of acc " value="{{accs.rib}} " name="rib" id="rib" #rib >    {{accs.rib}} </option>
+                            </select>
+                               
+                           
+                                <div class="input-group-append">
+                                    <button type="button" class="btn-first btn-submit-fill" (click)="search(Rib.value)" >Search </button>
+                                   
+                                </div>
+                          
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+-->
+<section class="section-padding pb-0 exp-cal2">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-heading">
+                <h3 class="text-white fw-700">Send Money </h3>
+                <div class="section-description">
+                    <p class="text-light-white">Security of Payment is ensured</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <form  #trans = "ngForm">
+                {{trans.value | json }}
+            <div class="offset-lg-2 col-lg-8 " >
+                <div class="exp-cal2-loan">
+                    <div class="row">
+                     
+                        <div class="col-md-10">
+                            <p class="text-custom-black fs-14 fw-600">Transaction details</p>
+                           
+
+                            <div class="exp-cal2-input">
+                               
+                                <input placeholder="$0" maxlength="10"  type="number"   #amount="ngModel"  [(ngModel)] = "trs.amount" name = "amount" >
+                                
+                            </div>
+                            <p class="fw-600 mt-2 fs-13">please enter amount $100 to $1000</p>
+                        </div>
+                     
+                        
+                        <!--
+                           <div class="col-md-5">
+                            <p class="fw-600 text-center exp-cal2-content">Please enter the Destination Rib </p>
+                            <div class="ex-calculate-value">
+                                <inputtype="text" #ribRecipient="ngModel"  [(ngModel)] = "trs.ribRecipient" name = "RibRecipient"  > 
+                                
+                                
+                            <a href="#">Would you approuve your transaction ?</a>
+                            </div>
+                            <p class="fw-600 text-center exp-cal2-content">Please enter the Source Rib </p>
+                            <div class="ex-calculate-value">
+                                <input type="text" #ribEmetteur="ngModel"  [(ngModel)] = "trs.ribEmetteur" name = "RibEmetteur" >
+                                
+                            <a href="#">Would you approuve your transaction ?</a>
+                            </div>
+                           </div>
+                            -->
+                            <div class="col-md-5">
+                           <!--
+                                <label _ngcontent-qsp-c4 class="text-custom-black fs-14 fw-600">Destination Rib </label>
+                            <div class="form-group">
+                                <input type="text" #ribRecipient="ngModel"  [(ngModel)] = "trs.ribRecipient" name = "RibRecipient"  > 
+                                
+                           
+                            </div>
+                            -->
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="text-custom-black fs-14 fw-600">Destination RIB</label>
+                                    <input type="text" #ribRecipient="ngModel"  [(ngModel)] = "trs.ribRecipient" name = "RibRecipient"  class="form-control form-control-custom"> 
+                                </div>
+                            </div>
+                            <!--
+                        <div _ngcontent-sli-c4 class="co12l-lg-">
+                            <label _ngcontent-qsp-c4 class="text-custom-black fs-14 fw-600"> Please enter the Source Rib </label>
+                           
+                            <div _ngcontent-ahq-c4 class="form-group">
+                                <input type="text" #ribEmetteur="ngModel"  [(ngModel)] = "trs.ribEmetteur" name = "RibEmetteur" >
+                                  <select clas="custom-select form-control form-control-custom">
+                            <option *ngFor ="let item of acc " value="{{item.rib}} " name="rib" id="rib" #rib >    {{item.rib}} </option>
+                        </select>
+                    
+                            <a href="#">Would you approuve your transaction ?</a>
+                            </div>
+                        </div>
+                    -->
+                    </div>
+                      
+<!--
+                           <div>
+                            <label>receive</label>
+                            <input type="text" #ribRecipient="ngModel"  [(ngModel)] = "trs.ribRecipient" name = "RibRecipient"  >
+                            <label>emet</label>
+                            <input type="text" #ribEmetteur="ngModel"  [(ngModel)] = "trs.ribEmetteur" name = "RibEmetteur"  >
+                        
+                        </div>
+                        -->
+                        <div class="col-lg-5">
+                            <div class="form-group">
+                                <label class="text-custom-black fs-14 fw-600">Your RIB</label>
+                                <select class="custom-select form-control form-control-custom" type="text"   #ribEmetteur="ngModel" [(ngModel)] = "trs.ribEmetteur" name = "RibEmetteur">
+                                    <option *ngFor ="let item of acc " name="rib" id="rib" #rib >    {{item.rib}} </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 text-center"> 
+                
+                            <button  class="btn-first btn-submit-fill " type ="submit" (click)=" addtransactions(content1) "> send Money</button>
+                            
+              <ng-template #content1 let-modal>
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Verify Transaction</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+                  </div>
+                
+                  <div class="modal-body">
+                    <form>
+                      <div class="mb-3">
+                        <label >saisissez votre code</label>
+                        <div class="input-group">
+                          <input  class="form-control" placeholder="code" name="code" type="number"[(ngModel)] = "code" >
+                          
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                 
+                  <div class="modal-content">
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" (click)="apptransactions()">Save &times;</button>
+                  </div>
+                </div>
+                </ng-template>
+
+
+                        </div>
+                  
+                    </div>
+                
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+</section>
+    
+
+<app-footer></app-footer>

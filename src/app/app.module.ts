@@ -4,7 +4,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BreadcrumbModule } from 'angular-crumbs';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ExempleComponent } from './components/pages/exemple/exemple.component';
@@ -47,16 +46,22 @@ import { InvesComponent } from './components/pages/inves/listinves/inves.compone
 import { FundComponent } from './components/pages/fund/listfund/fund.component';
 import { FormfundComponent } from './components/pages/fund/formfund/formfund.component';
 import { AgentComponent } from './components/pages/agents/agent/agent.component';
-
 import { FullCalendarModule } from '@fullcalendar/angular';
 import interactionPlugin from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
-
+import { AccountListComponent } from './components/pages/account-list/account-list.component';
+import { AddAccountComponent } from './components/pages/add-account/add-account.component';
+import { AddTransactionComponent } from './components/pages/add-transaction/add-transaction.component';
+import { UpdateAccountComponent } from './components/pages/update-account/update-account.component';
+import { TransactionListByRibComponent } from './components/pages/transaction-list-by-rib/transaction-list-by-rib.component';
+import { ListaccByClientComponent } from './components/listacc-by-client/listacc-by-client.component';
 
 FullCalendarModule.registerPlugins([ 
   interactionPlugin,
   dayGridPlugin
 ]);
+
+
 
 @NgModule({
   declarations: [
@@ -83,7 +88,15 @@ FullCalendarModule.registerPlugins([
     ForminvesComponent,
     DetailinvesComponent,
     EventComponent,
-    AgentComponent
+    AgentComponent,
+    AccountListComponent,
+    AddAccountComponent,
+    AddTransactionComponent,
+    UpdateAccountComponent,
+    TransactionListByRibComponent,
+    ListaccByClientComponent,
+   
+   
   ],
   imports: [
     HttpClientModule,
@@ -108,7 +121,7 @@ FullCalendarModule.registerPlugins([
     QRCodeModule,
     FileUploadModule,
     CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'dlw3w0bei' } as CloudinaryConfiguration),
-    FullCalendarModule,
+    FullCalendarModule
   ],
   providers: [
               GuarantorService,

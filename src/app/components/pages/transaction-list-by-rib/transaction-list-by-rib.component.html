@@ -1,0 +1,263 @@
+<!--
+<app-header></app-header>
+<breadcrumb #parent>
+    <div class="sub-header p-relative">
+      <div class="overlay overlay-bg-black"></div>
+      <div class="pattern"></div>
+      <div class="section-padding">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+  
+                <div class="sub-header-content p-relative">
+                  <h1 class="text-custom-white lh-default fw-600">Accounts</h1>
+                  <ul class="custom">
+                    <li><a class="text-custom-white">Home</a></li>
+                    <li >
+  
+                        <a>list of accounts</a>
+                    </li>
+  
+                  </ul>
+                </div>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </breadcrumb>
+
+  
+  <div class="section-padding lw-tab-section p-relative">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="lw-mega-tab">
+             <!--
+            <ul ngbNav #navplans="ngbNav" class="nav lw-nav-tabs">
+            
+                     <li [ngbNavItem]="1">
+                        <a ngbNavLink>
+                          Most Popular
+                        </a>
+                        -->
+                 <!--       
+                <div class="table-responsive">
+                  <table class="lw-tab-table">
+                    <tr class="lw-table-row-1">
+                        <th>  idTransaction</th> 
+                        <th> dateTransaction </th>
+                        <th> RibRecipient</th>
+                        <th> RibEmetteur </th>
+                        <th> amount</th>
+                        
+  
+                    </tr>
+                    <tr *ngFor = "let trs of tr" >
+                           <td> {{ trs.idTransaction}} </td>
+                           <td> {{ trs.dateTransaction }} </td>
+                           <td> {{ trs.ribRecipient }} </td>
+                           <td> {{ trs.ribEmetteur }} </td>
+                           <td> {{ trs.amount }} </td>
+                           -->
+                       
+                          <!--
+                           <td>
+                               <button (click) = "updateEmployee(employee.id)" class = "btn btn-info"> Update</button>
+                               <button (click) = "deleteEmployee(employee.id)" class = "btn btn-danger" style="margin-left: 10px"> Delete</button>
+                               <button (click) = "employeeDetails(employee.id)" class = "btn btn-info" style="margin-left: 10px"> View</button>
+                           </td>
+                       -->
+                         <!--
+                       </tr>
+  
+                  </table>
+                </div>
+          
+          
+         
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    
+<app-footer></app-footer>
+-->
+
+<app-header xmlns:filter="http://www.w3.org/1999/xhtml"></app-header>
+<app-breadcrumb></app-breadcrumb>
+
+
+
+<section class="section-padding bg-gray">
+  <div class="container"  id="htmlData">
+    
+    <div class="row doctors-team-style-2">
+      <div col-12 text-center class="col-6 text-center ">
+        <button type="submit"
+            class="btn-first btn-submit text-light-blue fw-600 mb-xl-20" (click)="openPDF()" >Download PDF</button>
+    </div>
+
+    <div  col-12 text-center class="col-4 text-center ">
+      <button type="submit"
+      _ngcontent-uub-c4  class="btn-first btn-submit text-light-blue fw-600 mb-xl-20" routerLink="/Addtransaction" >Send Money</button>
+  </div>
+      <div class="container mt-5">
+        
+    
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search..."
+            [(ngModel)]="filterTerm"
+          />
+        </div>
+        <div class="table-responsive">
+          <table class="lw-tab-table">
+            <tr class="lw-table-row-1">
+              <th [appSort]="tr" data-order="desc" data-name="idTransaction" scope="col">idTransaction</th>
+              <th [appSort]="tr" data-order="desc" data-name="dateTransaction" scope="col">dateTransaction </th>
+              <th [appSort]="tr" data-order="desc" data-name="ribRecipient" scope="col">ribRecipient </th>
+              <th [appSort]="tr" data-order="desc" data-name="ribEmetteur" scope="col">ribEmetteur</th>
+              <th [appSort]="tr" data-order="desc" data-name="amount" scope="col">amount</th>
+            
+            </tr>
+            <tr *ngFor = "let trs of tr  | filter: filterTerm | paginate
+              : {
+                  itemsPerPage: tableSize,
+                  currentPage: page,
+                  totalItems: count
+                };
+          let i = index
+        ">
+        <td class="lw-table-data-2">
+          {{ trs.idTransaction }}
+        </td>
+              <td class="lw-table-data-2">
+                {{ trs.dateTransaction }}
+              </td>
+              <td class="lw-table-data-2">
+                {{ trs.ribRecipient }}
+              </td>
+              <td class="lw-table-data-3">
+                {{ trs.ribEmetteur }}
+              </td>
+              <td class="lw-table-data-4">
+                {{ trs.amount }}
+              </td>
+              <!--
+              <td class="lw-table-data-3 choose-btn">
+                <button class="btn btn-lg btn-outline-primary" (click)="openVerticallyCentered(content1)">view</button>
+                <ng-template #content1 let-modal>
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="mb-3">
+                        <label for="dateOfBirth">Date of birth</label>
+                        <div class="input-group">
+                          <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+                          <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+                  </div>
+                </ng-template>
+
+
+                <button class="btn btn-lg btn-outline-primary" (click)="openVerticallyCentered(content2)">UPdate</button>
+                <ng-template #content2 let-modal>
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="mb-3">
+                        <label for="dateOfBirth">Date of birth</label>
+                        <div class="input-group">
+                          <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+                          <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+                  </div>
+                </ng-template>
+
+              </td>
+-->
+            </tr>
+
+          </table>
+         
+          <div class="d-flex justify-content-center">
+            <pagination-controls
+              previousLabel="Prev"
+              nextLabel="Next"
+              (pageChange)="onTableDataChange($event)"
+            >
+            </pagination-controls>
+          </div>
+
+        </div>
+
+
+
+
+
+
+
+        <hr>
+
+
+
+
+
+
+
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+
+  
+
+</section>
+
+
+<app-footer></app-footer>
+

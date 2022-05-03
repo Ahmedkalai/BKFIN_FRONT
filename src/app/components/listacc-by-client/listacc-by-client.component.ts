@@ -1,23 +1,29 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Account } from 'src/app/models/Account';
 import blogbox from '../../../../data/blog.json';
 import { AccountService } from 'src/app/services/account.service';
+
 @Component({
-  selector: 'app-content',
-  templateUrl: './content.component.html',
-  styleUrls: ['./content.component.css']
+  selector: 'app-listacc-by-client',
+  templateUrl: './listacc-by-client.component.html',
+  styleUrls: ['./listacc-by-client.component.css']
 })
-export class ContentComponent implements OnInit {
-
-  // pagination
+export class ListaccByClientComponent implements OnInit {
   rib : string ='' ; 
-  page: number = 1;
-  public blogbox: { id: number }[] = blogbox;
-
-  constructor(private accserv : AccountService) { }
+  acc: Account[];
+  constructor(private accService: AccountService  , private router: Router ) { }
   
   ngOnInit(): void {
+    this.getAcc(1);
     this.invokeStripe();
   }
+  private getAcc (id : number){
+      this.accService.getaccountsbyidclient(id).subscribe(data => {
+      this.acc = data;
+    });
+  }
+ 
   paymentHandler: any = null;
   
   makePayment(amount: any , rib : string) {
@@ -61,11 +67,15 @@ export class ContentComponent implements OnInit {
   
   pay(rib : string, amount: any ){
 
-    this.accserv.alimente(rib,amount).subscribe( data => {
+    this.accService.alimente(rib,amount).subscribe( data => {
       console.log(data);
       //this.trs={}; 
      // this.goTotransactionsList();
     }) ; 
   }
 
+  
+  
+
 }
+

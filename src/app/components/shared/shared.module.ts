@@ -16,6 +16,7 @@ import { ServicesidebarComponent } from './servicesidebar/servicesidebar.compone
 
 
 
+
 @NgModule({
   declarations: [AdvertisementComponent, BlogsidebarComponent, BookappointmentComponent, BreadcrumbComponent, FooterComponent, HeaderComponent, ServicesidebarComponent],
   imports: [
@@ -24,6 +25,7 @@ import { ServicesidebarComponent } from './servicesidebar/servicesidebar.compone
     NgbModule,
     SlickCarouselModule,
     BreadcrumbModule
+   
   ],
   exports: [AdvertisementComponent, BlogsidebarComponent, BookappointmentComponent, BreadcrumbComponent, FooterComponent, HeaderComponent, ServicesidebarComponent]
 })

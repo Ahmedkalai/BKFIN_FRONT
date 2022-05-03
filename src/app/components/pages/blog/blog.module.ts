@@ -8,6 +8,7 @@ import { BlogComponent } from './blog.component';
 
 import { SharedModule } from '../../shared/shared.module';
 import { ContentComponent } from './content/content.component';
+import { AccountService } from 'src/app/services/account.service';
 
 @NgModule({
   declarations: [BlogComponent, ContentComponent],

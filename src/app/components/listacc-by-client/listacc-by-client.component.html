@@ -1,0 +1,92 @@
+
+<app-header xmlns:filter="http://www.w3.org/1999/xhtml"></app-header>
+<app-breadcrumb></app-breadcrumb>
+<section class="genmed-intro">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-3 col-sm-6" *ngFor="let item of acc">
+                <div class="intro-box bg-dark-brown" data-wow-duration="1s">
+                    <div class="intro-wrapper text-center"> <i class="flaticon-flag"></i>
+                        <h6 class="text-custom-white fw-600">numero de rib : {{item.rib}}</h6>
+                        <p class="text-custom-white">sold : {{item.sold}}</p>
+                    <!-- <a routerLink="/service" class="btn-first btn-submit fw-600">Read more</a>
+                    -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- Start Main Services -->
+<section class="main-services section-padding p-relative">
+    <div class="side-lines"> <span class="box"></span>
+        <span class="text">Loanly</span>
+        <span class="line"></span>
+    </div>
+    <div class="container">
+        <div class="section-header">
+            <div class="section-heading">
+                <h3 class="text-custom-black fw-700">Your Accounts</h3>
+                <div class="section-description">
+                    <p class="text-light-white">Welcome To BKFIN App </p>
+                </div>
+            </div>
+            <div class="section-btn"> <a routerLink="/Addtransaction" class="btn-first btn-submit text-light-blue">send
+                    Money</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-sm-6" *ngFor="let item of acc">
+                <div class="main-services-box p-relative mb-xl-30">
+                    <div class="main-service-wrapper padding-20">
+                        <div class="icon-box"> <i class="{{item.icon}}"></i>
+                        </div>
+                        <h6 class="fw-100">Account Number</h6>
+                        <h6 class="fw-100"><a routerLink="/transactionsbyrib/{{item.rib}}"
+                                class="text-custom-black">{{item.rib}}</a></h6>
+                        <p class="text-light-white no-margin">Sold : {{item.sold}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- End Main Services -->
+<!-- Start Loan Calculator -->
+<section class="section-padding-bottom ln-loan-calculator-style">
+    <div class="container">
+        <div class="row">
+            <div class="offset-lg-3 col-lg-6">
+                <div class="ln-loan-calculator-wrap">
+                    <h4 class="text-center text-custom-black fw-600">Alimente Ton compte</h4>
+                  
+                    <div class="loan-price-wrap">
+                        <div class="container">
+                            <label class="text-custom-black fs-14 fw-600">Rib</label>
+
+                            <input type="text" name="rib" id="rib" #rib  class="form-control form-control-custom" placeholder="Your Rib">
+                            <div class="col-md-5 mb-2">
+                              <button (click)="makePayment(15,rib.value)" class="btn btn-outline-warning">Pay $15</button>
+                            </div>
+                            <div class="col-md-5 mb-2">
+                              <button (click)="makePayment(25,rib.value)" class="btn btn-outline-info">Pay $25</button>
+                            </div>
+                            <div class="col-md-5">
+                              <button (click)="makePayment(35,rib.value)" class="btn btn-outline-dark">Pay $35</button>
+                            </div>
+                         
+                          </div>
+                  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Loan Calculator -->
+<app-footer></app-footer>

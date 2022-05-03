@@ -1,0 +1,259 @@
+<!--
+<app-header></app-header>
+<breadcrumb #parent>
+    <div class="sub-header p-relative">
+      <div class="overlay overlay-bg-black"></div>
+      <div class="pattern"></div>
+      <div class="section-padding">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+  
+                <div class="sub-header-content p-relative">
+                  <h1 class="text-custom-white lh-default fw-600">Accounts</h1>
+                  <ul class="custom">
+                    <li><a class="text-custom-white">Home</a></li>
+                    <li >
+  
+                        <a>list of accounts</a>
+                    </li>
+  
+                  </ul>
+                </div>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </breadcrumb>
+  <div class="section-padding lw-tab-section p-relative">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="lw-mega-tab">
+            <button (click) = "loadbatch()" class = "btn-first btn-submit-fill"> Upload Data</button>
+            <ul ngbNav #navplans="ngbNav" class="nav lw-nav-tabs">
+              
+                     <li [ngbNavItem]="2">
+                        <a ngbNavLink>
+                          Most Popular
+                        </a>
+                        <li [ngbNavItem]="3">
+                            <a ngbNavLink>
+                              Most Popular
+                            </a>
+                <div class="table-responsive">
+                  <table class="lw-tab-table">
+                    <tr class="lw-table-row-1">
+                        <th>  Rib</th> 
+                        <th> sold </th>
+                        <th> openDate</th>
+                        <th> state </th>
+                        <th> typeAccount</th>
+                        <th> interest</th>
+                        <th> index_interest</th>
+                        <th> Actions </th>
+  
+                    </tr>
+                    <tr *ngFor = "let accs of acc" >
+                        <td> {{ accs.rib}} </td>
+                           <td> {{ accs.sold }} </td>
+                           <td> {{ accs.openDate }} </td>
+                           <td> {{ accs.state }} </td>
+                           <td> {{ accs.typeAccount }} </td>
+                           <td> {{ accs.interest }} </td>
+                           <td> {{ accs.index_interest }} </td>
+                         
+                          <!--
+                           <td>
+                               <button (click) = "updateEmployee(employee.id)" class = "btn btn-info"> Update</button>
+                               <button (click) = "deleteEmployee(employee.id)" class = "btn btn-danger" style="margin-left: 10px"> Delete</button>
+                               <button (click) = "employeeDetails(employee.id)" class = "btn btn-info" style="margin-left: 10px"> View</button>
+                           </td>
+                       -->
+                        <!--
+                       <td>
+                        <button (click) = "updateAcc(accs.rib)" class = "btn-first btn-submit-fill"> Update</button>
+                        <button (click) = "deleteacc(accs.rib)" class = "btn-first btn-submit-fill" style="margin-left: 10px"> Delete</button>
+                       </td>
+                       </tr>
+  
+                  </table>
+                </div>
+          
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+--> 
+<app-header xmlns:filter="http://www.w3.org/1999/xhtml"></app-header>
+<app-breadcrumb></app-breadcrumb>
+
+
+
+
+<section class="section-padding bg-gray">
+  <div class="container">
+    <div class="row doctors-team-style-2">
+     
+      <div class="container mt-5">
+        <button (click) = "loadbatch()" class = "btn-first btn-submit-fill"> Upload Data</button>
+        <div class="col-md-8" id="htmlData">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search..."
+            [(ngModel)]="filterTerm"
+          />
+        </div>
+        <div class="table-responsive">
+          <table class="lw-tab-table">
+            <tr class="lw-table-row-1">
+              <th [appSort]="acc" data-order="desc" data-name="rib" scope="col">rib</th>
+              <th [appSort]="acc" data-order="desc" data-name="sold" scope="col">sold </th>
+              <th [appSort]="acc" data-order="desc" data-name="openDate" scope="col">openDate </th>
+              <th [appSort]="acc" data-order="desc" data-name="state" scope="col">state</th>
+              <th [appSort]="acc" data-order="desc" data-name="typeAccount" scope="col">typeAccount</th>
+              <th [appSort]="acc" data-order="desc" data-name="interest" scope="col">interest</th>
+              <th [appSort]="acc" data-order="desc" data-name="index_interest" scope="col">index_interest</th>
+              <th>Actions</th>
+            </tr>
+            <tr *ngFor = "let accs of acc  | filter: filterTerm | paginate
+              : {
+                  itemsPerPage: tableSize,
+                  currentPage: page,
+                  totalItems: count
+                };
+          let i = index
+        ">
+              <td class="lw-table-data-2">
+                {{ accs.rib }}
+              </td>
+              <td class="lw-table-data-2">
+                {{ accs.sold }}
+              </td>
+              <td class="lw-table-data-3">
+                {{ accs.openDate }}
+              </td>
+              <td class="lw-table-data-4">
+                {{ accs.state }}
+              </td>
+              <td class="lw-table-data-4">
+                {{ accs.typeAccount }}
+              </td>
+              <td class="lw-table-data-4">
+                {{ accs.interest }}
+              </td>
+              <td class="lw-table-data-4">
+                {{ accs.index_interest }}
+              </td>
+                <!--
+              <td class="lw-table-data-3 choose-btn">
+                <button class="btn btn-lg btn-outline-primary" (click)="openVerticallyCentered(content1)">view</button>
+                <ng-template #content1 let-modal>
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+                  </div>
+                
+                  <div class="modal-body">
+                    <form>
+                      <div class="mb-3">
+                        <label for="dateOfBirth">Date of birth</label>
+                        <div class="input-group">
+                          <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+                          <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  -->
+                   <!--
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+                  </div>
+                </ng-template>
+
+
+                <button class="btn btn-lg btn-outline-primary" (click)="openVerticallyCentered(content2)">UPdate</button>
+                <ng-template #content2 let-modal>
+
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="mb-3">
+                        <label for="dateOfBirth">Date of birth</label>
+                        <div class="input-group">
+                          <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+                          <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+                  </div>
+                </ng-template>
+
+              </td>
+            -->
+            <td>
+              <button (click) = "updateAcc(accs.rib)" class = "btn-first btn-submit-fill"> Update</button>
+              <button (click) = "deleteacc(accs.rib)" class = "btn-first btn-submit-fill" style="margin-left: 10px"> Delete</button>
+             </td>
+
+            </tr>
+
+          </table>
+
+          <div class="col-md-4 text-right">
+            <button class="btn btn-success btn-block" (click)="openPDF()">Download PDF</button>
+          </div>
+          <div class="d-flex justify-content-center">
+            <pagination-controls
+              previousLabel="Prev"
+              nextLabel="Next"
+              (pageChange)="onTableDataChange($event)"
+            >
+            </pagination-controls>
+          </div>
+
+        </div>
+
+        <hr>
+
+      </div>
+
+
+    </div>
+    </div>
+  </div>
+</section>
+<!--
+<div class="row">  
+  <div class="col-sm-12 btn btn-primary">  
+    Angular Sweetalert Demo  
+  </div>  
+</div>  
+<div style="padding: 5px;margin: 5px;">  
+  <button class="btn btn-info" style="margin-right: 10px;margin-left: 10px;"(click)="simpleAlert()">Simple Alert</button>  
+  <button class="btn btn-success" style="margin-right: 10px;margin-left: 10px;" (click)="alertWithSuccess()">Alert with Success</button>  
+  <button class="btn btn-primary" style="margin-right: 10px;margin-left: 10px;" (click)="confirmBox()">Confirm Box</button>  
+  <button class="btn btn-danger" style="margin-right: 10px;margin-left: 10px;" (click)="erroalert()">Error Alert</button>  
+  <button class="btn btn-warning" style="margin-right: 10px;margin-left: 10px;" (click)="topend()">Top End</button>  
+</div>
+  -->
+<app-footer></app-footer>
+
+
