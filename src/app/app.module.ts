@@ -17,6 +17,14 @@ import {GuarantorService} from "./Services/GuarantorService";
 import {HttpClientModule} from "@angular/common/http";
 import {NgxPaginationModule} from "ngx-pagination";
 import { SortDirective } from './directive/sort.directive';
+import { AccountListComponent } from './components/pages/account-list/account-list.component';
+import { AddAccountComponent } from './components/pages/add-account/add-account.component';
+import { AddTransactionComponent } from './components/pages/add-transaction/add-transaction.component';
+import { UpdateAccountComponent } from './components/pages/update-account/update-account.component';
+import { TransactionListByRibComponent } from './components/pages/transaction-list-by-rib/transaction-list-by-rib.component';
+
+import { ListaccByClientComponent } from './components/listacc-by-client/listacc-by-client.component';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +32,15 @@ import { SortDirective } from './directive/sort.directive';
     ExempleComponent,
     TableCompleteComponent,
     NgbdSortableHeader,
-    SortDirective
+    SortDirective,
+    AccountListComponent,
+    AddAccountComponent,
+    AddTransactionComponent,
+    UpdateAccountComponent,
+    TransactionListByRibComponent,
+    ListaccByClientComponent,
+   
+   
   ],
   imports: [
     HttpClientModule,
@@ -38,7 +54,10 @@ import { SortDirective } from './directive/sort.directive';
     ExempleModule,
     ReactiveFormsModule,
     Ng2SearchPipeModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+  
+
+   
   ],
   providers: [GuarantorService],
   bootstrap: [AppComponent],

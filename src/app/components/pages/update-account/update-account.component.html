@@ -1,0 +1,97 @@
+<app-header></app-header>
+<div class="overlapsec"></div>
+
+
+<breadcrumb #parent>
+  <div class="sub-header p-relative">
+    <div class="overlay overlay-bg-black"></div>
+    <div class="pattern"></div>
+    <div class="section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+
+              <div class="sub-header-content p-relative">
+                <h1 class="text-custom-white lh-default fw-600">Credit</h1>
+                <ul class="custom">
+                  <li><a class="text-custom-white">Home</a></li>
+                  <li >
+
+                      <a>Apply for loan</a>
+                  </li>
+
+                </ul>
+              </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</breadcrumb>
+<!-- Start User Details -->
+<section class="section-padding-bottom user-info-details">
+  <div class="container">
+    <div class="row">
+      <div class="offset-lg-3 col-lg-6">
+        <div class="user-info-tabs">
+          <div class="step-tab-inner">
+            <div class="heading text-center">
+              <h4 class="text-custom-black fw-600">Enter Basic Account Information</h4>
+              <p class="text-custom-black">Don't hesitate to add an acount for Bkfin's new client <sup></sup></p>
+            </div>
+            <form (ngSubmit) = "onSubmit()">
+              <div class="row">
+              
+              
+                <div class="col-12">
+                  <div class="form-group">
+                    <label class="text-custom-black fs-14 fw-600">Account sold</label>
+                    <input type="text" class ="form-control" #soldacc="ngModel"  [(ngModel)] = "Account.sold" name = "soldacc">
+                  </div>
+                </div>
+               
+              
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="text-custom-black fs-14 fw-600">state</label>
+                    <input type="text" class ="form-control" #stateacc="ngModel" [(ngModel)] = "Account.state" name = "stateacc">
+                  </div>
+
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="text-custom-black fs-14 fw-600">typeAccount</label>
+                      <input type="text" class ="form-control" #typeAccountacc="ngModel" [(ngModel)] = "Account.typeAccount" name = "typeAccountacc">
+                    </div>
+  
+                  </div>
+            
+              </div>
+              <div class="col-lg-12 text-center"> 
+              <button class = "btn-first btn-submit-fill" type ="submit">Update</button>
+              <button (click) = "goToAccountList()" class = "btn-first btn-submit-fill" > return</button>
+            </div>  
+            </form>
+           
+           
+      
+        </div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+//<app-footer></app-footer>
+

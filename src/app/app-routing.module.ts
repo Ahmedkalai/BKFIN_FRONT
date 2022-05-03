@@ -1,9 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ListaccByClientComponent } from './components/listacc-by-client/listacc-by-client.component';
+import { AccountListComponent } from './components/pages/account-list/account-list.component';
+import { AddAccountComponent } from './components/pages/add-account/add-account.component';
+import { AddTransactionComponent } from './components/pages/add-transaction/add-transaction.component';
 import {TableCompleteComponent} from "./components/pages/table-complete/table-complete.component";
+import { TransactionListByRibComponent } from './components/pages/transaction-list-by-rib/transaction-list-by-rib.component';
+import { UpdateAccountComponent } from './components/pages/update-account/update-account.component';
 
 const routes: Routes = [
   { path: '', loadChildren: () => import('./components/pages/home/home.module').then(m => m.HomeModule), data: { breadcrumb: 'Homepage' } },
+  {path: 'accounts', component: AccountListComponent},
+  {path: 'Addaccount', component: AddAccountComponent},
+  {path: 'Addtransaction', component: AddTransactionComponent},
+  {path: 'update-acc/:rib', component: UpdateAccountComponent},
+  {path: 'transactionsbyrib/:id', component: TransactionListByRibComponent},
+  {path: 'listaccfont',component:ListaccByClientComponent},
   { path: 'home-v2', loadChildren: () => import('./components/pages/hometwo/hometwo.module').then(m => m.HometwoModule), data: { breadcrumb: 'Homepage' } },
   {path: 'tab' , component : TableCompleteComponent},
   { path: 'exemple', loadChildren: () => import('./components/pages/exemple/exemple.module').then(m => m.ExempleModule), data: { breadcrumb: 'Exemple' } },
