@@ -35,7 +35,8 @@
                                             <div class="form-group">
                                                 <label class="text-left">Event Name</label>
                                                 <input type="text" name="title" class="form-control" placeholder="Name"
-                                                #title="ngModel"  [(ngModel)] = "Event.nameEvent">
+                                                #title="ngModel"  [(ngModel)] = "Event.nameEvent"
+                                                >
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
@@ -73,11 +74,11 @@
                         </div>
                     </div>
                 </div>
-            </section>
+         
 
 
 
-            <section class="section-padding bg-gray">
+            
               <div class="container" >
 
                
@@ -93,27 +94,49 @@
 </div>
 </div>
 </div>
-</section>            <section class="section-padding bg-gray">
+
+
+  <div class="container" >
+    <div class="row doctors-team-style-2" class="section-padding-top : 5px">               
+      <div class="container mt-5">
+        <div class="search p-relative">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search..."
+            [(ngModel)]="filterTerm"
+          />
+          </div>
+        </div>
+        <div class="table-responsive">
+<app-agent></app-agent>
+<div class="d-flex justify-content-center">
+  <pagination-controls
+    previousLabel="Prev"
+    nextLabel="Next"
+    (pageChange)="onTableDataChange($event)"
+  >
+  </pagination-controls>
+</div>          
+</div>           
+<hr>           
+</div>           
+</div>
+</div>
+
+
+
+
               <div class="container" >
-
-               
-
-                <div class="row doctors-team-style-2" class="section-padding-top : 5px">
-                
+                <div class="row doctors-team-style-2" class="section-padding-top : 5px">               
                   <div class="container mt-5">
-
-                   
-
                     <div class="col-sm-6" class="center" >
                       <div class="form-group">
                         <input placeholder="Agent Associated"
                         type="text" class ="form-control" #Agent="ngModel" [(ngModel)] = "Event.Agent" name = "Agent">
                       </div>
                   </div>
-
-                    
-
-
                     <div class="search p-relative">
                     <div class="form-group">
                       <input
@@ -151,7 +174,7 @@
                           <td class="lw-table-data-3">
                              {{Event.description}}
                           </td>
-                          <td class="lw-table-data-4">
+                          <td class="lw-table-data-4" style="color:red">
                               {{Event.region}}
                           </td>
             <td class="lw-table-data-4">
