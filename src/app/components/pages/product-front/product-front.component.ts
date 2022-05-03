@@ -12,14 +12,15 @@ export class ProductFrontComponent implements OnInit {
   Products:Product[];
   Product:Product=new Product();
   id:Number;
+  page: number = 1;
   constructor(private Productservice: ProductService,private router: ActivatedRoute, private route: Router) { }
 
   ngOnInit(): void {
-    this.getProducts(); 
+    this.getProducts();
     this.id = this.router.snapshot.params['id'];
   }
-  
-  
+
+
   private getProducts(){
     this.Productservice.getProductsList().subscribe(data => {
       this.Products = data;

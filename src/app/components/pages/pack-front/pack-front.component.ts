@@ -9,16 +9,17 @@ import { PackService } from 'src/app/Services/pack.service';
   styleUrls: ['./pack-front.component.css']
 })
 export class PackFrontComponent implements OnInit {
+  page: number = 1;
   packs:Pack[];
   pack:Pack=new Pack();
   constructor(private packservice: PackService,private router: ActivatedRoute, private route: Router) { }
 id:Number;
   ngOnInit(): void {
-    this.getPacks(); 
+    this.getPacks();
     this.id = this.router.snapshot.params['id'];
   }
- 
-  
+
+
   private getPacks(){
     this.packservice.getPacksListActif().subscribe(data => {
       this.packs = data;

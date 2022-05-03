@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-//import { Injectable } from '@angular/core';
+
 import { Observable } from 'rxjs';
-import { Reclamation } from 'src/Model/Reclamation';
+import {Reclamation} from '../models/Reclamation';
 
 //@Injectable({
   //providedIn: 'root'

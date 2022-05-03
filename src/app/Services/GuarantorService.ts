@@ -1,11 +1,11 @@
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Guarantor} from "../models/Guarantor";
+import {Guarantor} from '../models/Guarantor';
 
 
 export class GuarantorService{
   private baseURL = "http://localhost:8083/BKFIN/Garantor";
-  readonly PythonURL='/python'
+  readonly PythonURL='/python';
 
   constructor(private httpClient: HttpClient) { }
 

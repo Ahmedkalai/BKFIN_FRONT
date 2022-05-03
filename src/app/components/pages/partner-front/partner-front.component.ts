@@ -12,14 +12,15 @@ export class PartnerFrontComponent implements OnInit {
   Partners:Partner[];
   Partner:Partner=new Partner();
   id:Number;
+  page: number = 1;
   constructor(private Partnerservice: PartnerService,private router: ActivatedRoute, private route: Router) { }
 
   ngOnInit(): void {
-    this.getPartners(); 
+    this.getPartners();
     this.id = this.router.snapshot.params['id'];
   }
-  
-  
+
+
   private getPartners(){
     this.Partnerservice.getPartnersList().subscribe(data => {
       this.Partners = data;

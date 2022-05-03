@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Reclamation } from 'src/Model/Reclamation';
-import { ReclamationService } from 'src/Services/reclamation.service';
+import {Reclamation} from '../../../../models/Reclamation';
+import {ReclamationService} from '../../../../Services/reclamation.service';
+
 
 @Component({
   selector: 'app-update-reclamation',
@@ -25,7 +26,7 @@ export class UpdateReclamationComponent implements OnInit {
 
 
 
-    
+
 
     this.employeeService.getReclamationById(this.id).subscribe(data => {
       this.reca = data;
@@ -41,7 +42,7 @@ export class UpdateReclamationComponent implements OnInit {
   goToEmployeeList(){
     this.router.navigate(['/recclient']);
   }
-  
+
 
 }
 

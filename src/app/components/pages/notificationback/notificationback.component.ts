@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NotificationService } from 'src/Services/notification.service';
+import { NotificationService} from '../../../Services/notification.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { Notification } from 'src/Model/Notification';
+import {Notification} from '../../../models/Notification';
+
 @Component({
   selector: 'app-notificationback',
   templateUrl: './notificationback.component.html',
@@ -16,7 +17,7 @@ export class NotificationbackComponent implements OnInit {
   filterTerm!: string;
 
   listNotifications: any;
-  
+
   form = false;
   notification!: Notification;
 
@@ -44,11 +45,11 @@ export class NotificationbackComponent implements OnInit {
       this.page = 1;
       this.getNotification();
     }
-  
+
     openVerticallyCentered(content) {
       this.modalService.open(content, { centered: true });
     }
-  
+
     private getDismissReason(reason: any): string {
       if (reason === ModalDismissReasons.ESC) {
         return 'by pressing ESC';
@@ -58,9 +59,9 @@ export class NotificationbackComponent implements OnInit {
         return `with: ${reason}`;
       }
     }
-  
-  
-  
-  
+
+
+
+
 
 }

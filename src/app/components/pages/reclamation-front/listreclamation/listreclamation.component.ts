@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Reclamation } from 'src/Model/Reclamation';
-import { ReclamationService } from 'src/Services/reclamation.service';
 import { Router } from '@angular/router';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {Reclamation} from '../../../../models/Reclamation';
+import {ReclamationService} from '../../../../Services/reclamation.service';
 
 @Component({
   selector: 'app-listreclamation',
@@ -18,12 +18,12 @@ export class ListreclamationComponent implements OnInit {
   tableSizes: any = [3, 6, 9, 12];
   filterTerm!: string;
 
-  
+
   listReclamation: any;
   listReclamations: any;
   form = false;
   reclamation!: Reclamation;
-  
+
   employees: Reclamation[];
 
   constructor(private ReclamationService: ReclamationService , private router: Router, private modalService: NgbModal) { }

@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { NotificationService } from 'src/Services/notification.service';
-import { Notification } from 'src/Model/Notification';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
+import {NotificationService} from '../../../Services/notification.service';
+import {Notification} from '../../../models/Notification';
+
 @Component({
   selector: 'app-notificationbyclient',
   templateUrl: './notificationbyclient.component.html',
@@ -35,19 +36,19 @@ export class NotificationbyclientComponent implements OnInit {
       object: null,
       credit: null
     };
-    
-    
-  }
-  
 
-  
+
+  }
+
+
+
  getNotificationByClient(){
    this.notificationService.getNotificationByClient(1).subscribe(res =>{this.listNotificationss = res;
     this.chRef.detectChanges();
     console.log(this.chRef)
-    
+
    })
-   
+
    }
 
 
@@ -55,12 +56,12 @@ export class NotificationbyclientComponent implements OnInit {
    addnotif(){
      this.notificationService.addNotification().subscribe(res =>{this.not = res;
       console.log(res);
-      if (res!==null) 
+      if (res!==null)
 {
-  Swal.fire( 'you have received a payment note') 
+  Swal.fire( 'you have received a payment note')
   res == null
 }
-       
+
       console.log("testangular");
    })
   }

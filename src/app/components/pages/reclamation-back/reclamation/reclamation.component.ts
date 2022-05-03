@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Reclamation } from 'src/Model/Reclamation';
-import { ReclamationService } from 'src/Services/reclamation.service';
-//import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {ReclamationService} from '../../../../Services/reclamation.service';
+import {Reclamation} from '../../../../models/Reclamation';
 
 @Component({
   selector: 'app-reclamation',
@@ -24,14 +23,14 @@ export class ReclamationComponent implements OnInit {
   listReclamations: any;
   form = false;
   reclamation!: Reclamation;
-  
+
   employees: Reclamation[];
 
   constructor(private ReclamationService: ReclamationService , private router: Router, private modalService: NgbModal ) { }
 
   ngOnInit(): void {
     this.getAllReclamation();
-     
+
     this.reclamation = {
       idComplaint: null,
   informationText: null,
@@ -63,9 +62,9 @@ export class ReclamationComponent implements OnInit {
   updatestateEmployee(id: number){
     this.ReclamationService.ModifReclamationState(id).subscribe( data => {
       this.getAllReclamation();
-      
+
     })
-   
+
   }
 
   //editReclamationState(complaintid :number){
@@ -95,8 +94,8 @@ export class ReclamationComponent implements OnInit {
   }
 }
 
-  
-  
+
+
 
 function content(content: any, any: any) {
   throw new Error('Function not implemented.');

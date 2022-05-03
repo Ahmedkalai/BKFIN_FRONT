@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { Subject } from 'rxjs';
-import { ChatbotService } from 'src/Services/chatbot.service';
+import {ChatbotService} from '../../../Services/chatbot.service';
 
 export class Chat {
   message: any;
@@ -72,7 +72,7 @@ export class ChatbotComponent implements OnInit {
 
       // If message found send location data to MapComponent
       //this.chatbotService.send_data_to_map_component(data);
-      
+
 
       // Send Bot message
       botMessage = { message: data, isMe: false, type: 'bot' };
@@ -115,7 +115,7 @@ export class ChatbotComponent implements OnInit {
     }
   }
 
-  
+
 
 
 }
