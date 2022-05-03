@@ -25,6 +25,15 @@ import { FundComponent } from './components/pages/fund/listfund/fund.component';
 import { FormfundComponent } from './components/pages/fund/formfund/formfund.component';
 import { AgentComponent } from './components/pages/agents/agent/agent.component';
 
+import { FullCalendarModule } from '@fullcalendar/angular';
+import interactionPlugin from '@fullcalendar/interaction';
+import dayGridPlugin from '@fullcalendar/daygrid';
+
+
+FullCalendarModule.registerPlugins([ 
+  interactionPlugin,
+  dayGridPlugin
+]);
 
 @NgModule({
   declarations: [
@@ -53,7 +62,9 @@ import { AgentComponent } from './components/pages/agents/agent/agent.component'
     ExempleModule,
     ReactiveFormsModule,
     Ng2SearchPipeModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    FullCalendarModule,
+    
   ],
   providers: [GuarantorService],
   bootstrap: [AppComponent],

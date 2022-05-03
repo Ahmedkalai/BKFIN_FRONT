@@ -4,12 +4,16 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Inves } from 'src/app/models/inves';
 import {InvesService} from 'src/app/Services/inves.service';
 import Swal from 'sweetalert2';
+
+
 @Component({
   selector: 'app-inves',
   templateUrl: './inves.component.html',
   styleUrls: ['./inves.component.css']
 })
 export class InvesComponent implements OnInit {
+  
+
   listinves:any;
   form:boolean=false;
   Inves!:Inves;
@@ -104,4 +108,7 @@ export class InvesComponent implements OnInit {
   updInves(id:Number){
     this.router.navigate(['AddInves',id]);
   }
-}
+
+ 
+  }
+

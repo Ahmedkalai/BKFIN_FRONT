@@ -58,7 +58,7 @@
                                             <div class="form-group">
                                                 <label class="text-left">Event Date</label>
                                                 <input type="date" name="#" class="form-control" placeholder="Date"
-                                                #date="ngModel"  [(ngModel)] = "Event.dateEvent" >
+                                                #date="ngModel"  [(ngModel)] = "Event.dateEvent" bsDatepicker>
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -75,7 +75,25 @@
                 </div>
             </section>
 
+
+
             <section class="section-padding bg-gray">
+              <div class="container" >
+
+               
+
+                <div class="row doctors-team-style-2" >
+                  <div class="container mt-5">
+            <div class='demo-app-main'>
+              <full-calendar
+                *ngIf='calendarVisible'
+                [options]='calendarOptions'
+              ></full-calendar>
+            </div>
+</div>
+</div>
+</div>
+</section>            <section class="section-padding bg-gray">
               <div class="container" >
 
                

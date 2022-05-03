@@ -8,6 +8,9 @@ import {FilterupService} from 'src/app/Services/filterup.service'
 import { Agent } from 'src/app/models/agent';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import { HttpClient } from '@angular/common/http';
+import { CalendarOptions, DateSelectArg, EventApi, EventClickArg } from '@fullcalendar/angular';
 
 
 @Component({
@@ -16,6 +19,71 @@ import Swal from 'sweetalert2';
   styleUrls: ['./event.component.css']
 })
 export class EventComponent implements OnInit {
+ 
+
+  calendarVisible = true;
+  calendarOptions: CalendarOptions = {
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+    },
+    initialView: 'dayGridMonth',
+    // alternatively, use the `events` setting to fetch from a feed
+    weekends: true,
+    editable: true,
+    selectable: true,
+    selectMirror: true,
+    dayMaxEvents: true,
+    select: this.handleDateSelect.bind(this),
+    eventClick: this.handleEventClick.bind(this),
+    eventsSet: this.handleEvents.bind(this)
+    /* you can update a remote database when these fire:
+    eventAdd:
+    eventChange:
+    eventRemove:
+    */
+  };
+  currentEvents: EventApi[] = [];
+
+  handleCalendarToggle() {
+    this.calendarVisible = !this.calendarVisible;
+  }
+
+  handleWeekendsToggle() {
+    const { calendarOptions } = this;
+    calendarOptions.weekends = !calendarOptions.weekends;
+  }
+
+  handleDateSelect(selectInfo: DateSelectArg) {
+    const title = prompt('Please enter a new title for your event');
+    const calendarApi = selectInfo.view.calendar;
+
+    calendarApi.unselect(); // clear date selection
+
+    if (title) {
+      calendarApi.addEvent({
+        
+        title,
+        start: selectInfo.startStr,
+        end: selectInfo.endStr,
+        allDay: selectInfo.allDay
+      });
+    }
+  }
+
+  handleEventClick(clickInfo: EventClickArg) {
+    if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
+      clickInfo.event.remove();
+    }
+  }
+
+  handleEvents(events: EventApi[]) {
+    this.currentEvents = events;
+  }
+
+
+
   listEvents:any;
   listup:any;
   listAgents:any;
@@ -30,11 +98,20 @@ export class EventComponent implements OnInit {
   count: number = 0;
   tableSize: number = 6;
   tableSizes: any = [3, 6, 9, 12];
+
+  
+
   constructor(private EventService: EventService , private router: Router,
     private route:ActivatedRoute,
     private LoadupService: LoadupService ,
     private FilterupService: FilterupService ,
-    private modalService: NgbModal ) { }
+    private modalService: NgbModal ,
+    private httpClient: HttpClient ) { }
+
+    onDateClick(res) {
+      alert('You clicked on : ' + res.dateStr)
+    }
+
 
     onTableDataChange(event: any) {
       this.page = event;
@@ -69,6 +146,10 @@ export class EventComponent implements OnInit {
     }
 
   ngOnInit(): void {
+
+ 
+        
+ 
     this.id = this.route.snapshot.params['id'];
     this.getAllEvents();
     this.load();
@@ -170,8 +251,11 @@ export class EventComponent implements OnInit {
 getAllEvents() {
   this.EventService.getAllEvents().subscribe(res => this.listEvents = res)
   }
-  addEvent(){
+
+
+ addEvent(){
     this.EventService.addEvent(this.Event).subscribe(()=> this.getAllEvents());
+    
     Swal.fire({
       position: 'top-end',
       icon: 'success',
@@ -236,4 +320,5 @@ error(idEvent:any){
    //this.state=true;
   }
 
+ 
 }
