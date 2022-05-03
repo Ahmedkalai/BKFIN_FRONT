@@ -9,18 +9,20 @@ import { UserdashboardComponent } from './userdashboard.component';
 
 import { SharedModule } from '../../shared/shared.module';
 import { ContentComponent } from './content/content.component';
+import {QRCodeModule} from 'angular2-qrcode';
 
 @NgModule({
   declarations: [UserdashboardComponent, ContentComponent],
-  imports: [
-    CommonModule,
-    NgbModule,
-    ChartsModule,
-    NgCircleProgressModule.forRoot({
-      // set defaults here
-    }),
-    UserdashboardRoutingModule,
-    SharedModule
-  ]
+    imports: [
+        CommonModule,
+        NgbModule,
+        ChartsModule,
+        NgCircleProgressModule.forRoot({
+            // set defaults here
+        }),
+        UserdashboardRoutingModule,
+        SharedModule,
+        QRCodeModule
+    ]
 })
 export class UserdashboardModule { }

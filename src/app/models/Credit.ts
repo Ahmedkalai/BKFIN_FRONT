@@ -13,6 +13,7 @@ export class Credit{
   monthlyPaymentDate:Date;
   //0 PAS DE DIFFERE 1 SI CREDIT A DIFFERE TOTAL
   state:boolean;
+  differe:boolean;
   DIFF_period:number;
   //taux d'interet en année
   interestRate:number;

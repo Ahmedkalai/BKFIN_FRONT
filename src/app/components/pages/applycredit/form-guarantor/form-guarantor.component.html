@@ -1,0 +1,34 @@
+<section class="section-padding-bottom user-info-details">
+  <div class="container">
+    <div class="row">
+      <div class="offset-lg-3 col-lg-6">
+        <div class="user-info-tabs">
+          <div class="step-tab-inner">
+            <div class="heading text-center">
+              <h4 class="text-custom-black fw-600">Enter Guarant Information</h4>
+              <p class="text-custom-black">Check your business's eligibility without impacting
+                your credit.<sup>*</sup></p>
+            </div>
+            <form (ngSubmit) = "onSubmit()">
+              <div class="row">
+                <div class="col-12">
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="text-custom-black fs-14 fw-600">Select Pay statement</label>
+                      <div>
+                        <input type="file" (change)="onFileChanged($event)">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button class = "btn btn-success" type ="submit" style="margin-left: 40%;">Submit</button>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

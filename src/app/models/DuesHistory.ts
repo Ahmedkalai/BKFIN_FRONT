@@ -2,7 +2,7 @@ import {Credit} from "./Credit";
 
 export class DuesHistory{
   idDues:number;
-  DateHistory:Date;
-  SupposedDate:Date;
+  dateHistory:Date;
+  supposedDate:Date;
   credits:Credit[];
 }

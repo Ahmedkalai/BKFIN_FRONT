@@ -1,12 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {TableCompleteComponent} from "./components/pages/table-complete/table-complete.component";
+import {SimulatorComponent} from './components/pages/simulator/simulator.component';
+import {InputttComponent} from './components/pages/inputtt/inputtt.component';
 
 const routes: Routes = [
   { path: '', loadChildren: () => import('./components/pages/home/home.module').then(m => m.HomeModule), data: { breadcrumb: 'Homepage' } },
   { path: 'home-v2', loadChildren: () => import('./components/pages/hometwo/hometwo.module').then(m => m.HometwoModule), data: { breadcrumb: 'Homepage' } },
   {path: 'tab' , component : TableCompleteComponent},
-  { path: 'exemple', loadChildren: () => import('./components/pages/exemple/exemple.module').then(m => m.ExempleModule), data: { breadcrumb: 'Exemple' } },
+  { path: 'applycredit', loadChildren: () => import('./components/pages/applycredit/applycredit.module').then(m => m.ApplycreditModule), data: { breadcrumb: 'Apply for Credit' } },
+  { path: 'guarantors_back', loadChildren: () => import('./components/pages/exemple/exemple.module').then(m => m.ExempleModule), data: { breadcrumb: 'Guarantors' } },
+  { path: 'credit_back', loadChildren: () => import('./components/pages/admin-credit/admin-credit.module').then(m => m.AdminCreditModule), data: { breadcrumb: 'Credits' } },
+  { path: 'inputt' ,component :InputttComponent},
+  { path: 'simulator', loadChildren: () => import('./components/pages/simulator/simulator.module').then(m => m.SimulatorModule), data: { breadcrumb: 'Credit Simulator' } },
+  { path: 'simulator' , component : SimulatorComponent },
   { path: 'about', loadChildren: () => import('./components/pages/about/about.module').then(m => m.AboutModule), data: { breadcrumb: 'About Us' } },
   { path: 'blog', loadChildren: () => import('./components/pages/blog/blog.module').then(m => m.BlogModule), data: { breadcrumb: 'Blog Grid' } },
   { path: 'blog-sidebar', loadChildren: () => import('./components/pages/blogleft/blogleft.module').then(m => m.BlogleftModule), data: { breadcrumb: 'Blog Left' } },

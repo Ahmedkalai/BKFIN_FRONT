@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Guarantor} from "../../../models/Guarantor";
-import {GuarantorService} from "../../../Services/GuarantorService";
-import {Router} from "@angular/router";
+import {Guarantor} from '../../../models/Guarantor';
+import {GuarantorService} from '../../../Services/GuarantorService';
+import {Router} from '@angular/router';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -13,18 +13,20 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 })
 export class ExempleComponent implements OnInit {
   closeResult = '';
-  page: number = 1;
-  count: number = 0;
-  tableSize: number = 6;
+  page = 1;
+  count = 0;
+  tableSize = 6;
   tableSizes: any = [3, 6, 9, 12];
 
-  Guarantors:Guarantor[];
+  Guarantors: Guarantor[];
   filterTerm!: string;
+
+  Guarant: Guarantor ;
 
   constructor(private GuarantService: GuarantorService,
               private router: Router, private modalService: NgbModal) {
 
-//Create dummy data
+// Create dummy data
 
 
   }
@@ -63,9 +65,28 @@ export class ExempleComponent implements OnInit {
 
   ngOnInit(): void {
     this.getGuarantors();
+    this.Guarant={
+      secondnameGarantor:null,
+      nameGarantor:null,
+      salaryGarantor:null,
+      workGarantor:null,
+      urlimage:null,
+      idGarantor:null,
+      credit:null
+    };
 
 
   }
+
+  updateGuarantor(){
+
+    this.GuarantService.updateGuarantor(this.Guarant).subscribe( data => {
+        this.getGuarantors();
+        Swal.fire('Thank you...','Guarant Updated' , 'success') ;
+      },
+      error => console.log(error));
+  }
+
 
 
 
@@ -76,5 +97,18 @@ export class ExempleComponent implements OnInit {
   }
 
 
+  update(guarantorr:Guarantor) {
+    this.Guarant =guarantorr;
 
+
+  }
+
+  delete(idGarantor: any) {
+
+  }
+
+  onSubmit() {
+    this.updateGuarantor();
+
+  }
 }

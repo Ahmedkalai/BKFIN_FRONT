@@ -1,0 +1,185 @@
+<app-header ></app-header>
+<app-breadcrumb></app-breadcrumb>
+
+
+
+<section class="section-padding bg-gray">
+  <div class="container">
+    <div class="row doctors-team-style-2">
+
+      <div class="container mt-5">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search..."
+            [(ngModel)]="filterTerm"
+          />
+        </div>
+        <div class="table-responsive">
+          <table class="lw-tab-table">
+            <tr class="lw-table-row-1">
+              <th [appSort]="Credits" data-order="desc" data-name="idCredit" scope="col">IDentifiant</th>
+              <th [appSort]="Credits" data-order="desc" data-name="amount" scope="col">Montant Total </th>
+              <th [appSort]="Credits" data-order="desc" data-name="interestRate" scope="col">Taux d'interet </th>
+              <th [appSort]="Credits" data-order="desc" data-name="state" scope="col">Statut</th>
+              <th [appSort]="Credits" data-order="desc" data-name="completed" scope="col">Etat</th>
+              <th [appSort]="Credits" data-order="desc" data-name="reason" scope="col">Remarque</th>
+              <th>Actions</th>
+            </tr>
+            <tr *ngFor = "let credit of Credits  | filter: filterTerm | paginate
+              : {
+                  itemsPerPage: tableSize,
+                  currentPage: page,
+                  totalItems: count
+                };
+          let i = index
+        ">
+              <td class="lw-table-data-2"style="color: black">
+                {{ credit.idCredit }}
+              </td>
+              <td class="lw-table-data-2" style="color: black">
+                {{ credit.amount }}
+              </td>
+              <td class="lw-table-data-3" style="color: black">
+                {{ credit.interestRate}}
+              </td>
+              <td class="lw-table-data-4" >
+                <div *ngIf="credit.state==1" style="color: darkgreen"> Accepté</div>
+                <div *ngIf="credit.state==0" style="color: red" >Refusé</div>
+              </td>
+              <td class="lw-table-data-4" >
+                <div *ngIf="credit.completed==1" style="color: darkblue"> Payé</div>
+                <div *ngIf="credit.completed==0" style="color: orange"> En Cours</div>
+                <div *ngIf="credit.completed==null" style="color: black"> ------</div>
+              </td>
+              <td class="lw-table-data-4" style="color: magenta">
+
+                {{credit.reason}}
+              </td>
+
+
+              <td class="lw-table-data-3 choose-btn">
+                <button class="btn btn-primary" (click)="openVerticallyCentered(content1)" (click)="chargedues(credit.idCredit )">DuesHistory</button>
+                <ng-template #content1 let-modal>
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="mb-3">
+
+
+                        <table class="lw-tab-table">
+                          <tr class="lw-table-row-1">
+                            <th> N°</th>
+                            <th [appSort]="Dueshist" data-order="desc" data-name="supposedDate" scope="col">supposedDate</th>
+                            <th [appSort]="Dueshist" data-order="desc" data-name="dateHistory" scope="col">dateHistory</th>
+                          </tr>
+                          <tr *ngFor = "let DH of Dueshist   let i = index
+                            "  >
+                            <td class="lw-table-data-2"style="color: black">
+                              {{i+1}}
+                            </td>
+                            <td class="lw-table-data-2"style="color: black">
+                              {{ DH.supposedDate }}
+                            </td>
+                            <td class="lw-table-data-4" style="color: black">
+                              {{ DH.dateHistory }}
+                            </td>
+
+                          </tr>
+                        </table>
+
+
+
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+                  </div>
+                </ng-template>
+
+
+
+
+                <button *ngIf="credit.completed==0" class="btn btn-dark" (click)="openVerticallyCentered(content2)"  >Add Payment</button>
+
+                <ng-template #content2 let-modal>
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+
+                        <div class="input-group">
+                          <input type="date" #dateHistory="ngModel" [(ngModel)] = "dh.dateHistory" name = "DateHistory">
+<!--                          <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd"   #dateHistory="ngModel" [(ngModel)] = "dh.dateHistory" name = "DateHistory" ngbDatepicker #dp="ngbDatepicker">-->
+<!--                          <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>-->
+                        </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')" (click)="Addduesbycredit(credit.idCredit)" >Save</button>
+                  </div>
+                </ng-template>
+
+
+                <button *ngIf="credit.completed==1" class="btn btn-danger"   >Archive</button>
+
+              </td>
+
+            </tr>
+
+          </table>
+          <div class="d-flex justify-content-center">
+            <pagination-controls
+              previousLabel="Prev"
+              nextLabel="Next"
+              (pageChange)="onTableDataChange($event)"
+            >
+            </pagination-controls>
+          </div>
+
+        </div>
+        <hr>
+
+
+
+
+
+
+
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</section>
+
+
+<app-footer></app-footer>
