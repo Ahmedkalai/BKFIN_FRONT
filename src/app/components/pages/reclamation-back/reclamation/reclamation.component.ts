@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Reclamation } from 'src/Model/Reclamation';
 import { ReclamationService } from 'src/Services/reclamation.service';
 //import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-reclamation',
@@ -10,14 +11,23 @@ import { ReclamationService } from 'src/Services/reclamation.service';
   styleUrls: ['./reclamation.component.css']
 })
 export class ReclamationComponent implements OnInit {
+
+
+  closeResult = '';
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 5;
+  tableSizes: any = [3, 6, 9, 12];
+  filterTerm!: string;
+
   listReclamation: any;
   listReclamations: any;
   form = false;
   reclamation!: Reclamation;
-  closeResult! : string;
+  
   employees: Reclamation[];
 
-  constructor(private ReclamationService: ReclamationService , private router: Router ) { }
+  constructor(private ReclamationService: ReclamationService , private router: Router, private modalService: NgbModal ) { }
 
   ngOnInit(): void {
     this.getAllReclamation();
@@ -91,5 +101,32 @@ export class ReclamationComponent implements OnInit {
 function content(content: any, any: any) {
   throw new Error('Function not implemented.');
 }*/
+
+onTableDataChange(event: any) {
+  this.page = event;
+  this.getAllReclamation();
+}
+onTableSizeChange(event: any): void {
+  this.tableSize = event.target.value;
+  this.page = 1;
+  this.getAllReclamation();
+}
+
+openVerticallyCentered(content) {
+  this.modalService.open(content, { centered: true });
+}
+
+private getDismissReason(reason: any): string {
+  if (reason === ModalDismissReasons.ESC) {
+    return 'by pressing ESC';
+  } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+    return 'by clicking on a backdrop';
+  } else {
+    return `with: ${reason}`;
+  }
+}
+
+
+
 }
 

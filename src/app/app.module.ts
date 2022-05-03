@@ -21,14 +21,17 @@ import { ChatbotComponent } from './components/pages/chatbot/chatbot.component';
 
 import { ExempleComponent } from './components/pages/exemple/exemple.component';
 
+
 import {ExempleModule} from "./components/pages/exemple/exemple.module";
 import { TableCompleteComponent } from './components/pages/table-complete/table-complete.component';
 import {NgbdSortableHeader} from "./components/pages/table-complete/sortable.directive";
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
+
 import {NgxPaginationModule} from "ngx-pagination";
 import { SortDirective } from './directive/sort.directive';
+import { NotificationbackComponent } from './components/pages/notificationback/notificationback.component';
 
 
 @NgModule({
@@ -46,7 +49,8 @@ import { SortDirective } from './directive/sort.directive';
     ExempleComponent,
     TableCompleteComponent,
     NgbdSortableHeader,
-    SortDirective
+    SortDirective,
+    NotificationbackComponent
     
     
     

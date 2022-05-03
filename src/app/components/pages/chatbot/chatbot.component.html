@@ -1,28 +1,15 @@
 
-<app-header></app-header>
-<breadcrumb #parent>
-    <div class="sub-header p-relative">
-      <div class="overlay overlay-bg-black"></div>
-      <div class="pattern"></div>
-      <div class="section-padding">
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-  
-                <div class="sub-header-content p-relative">
-                  <h1 class="text-custom-white lh-default fw-600">Reclamation</h1>
-                  
-                </div>
-  
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </breadcrumb>
+<div style="margin-left: 90% ;">
+<ng-template #content let-modal >
+
+   
+    <div class="modal-body">
+        
 
 <div class="row">
-    <div class="col-md-5">
+    
+    
+    <div >
         <div class="panel panel-default">
 
             <div class="box box-success direct-chat direct-chat-success">
@@ -99,7 +86,7 @@
                                         </div>
 
                                     </ng-template>
-
+                                
                                 </div>
                                 <!-- /.direct-chat-text -->
                             </div>
@@ -145,5 +132,23 @@
 
         </div>
     </div>
-
+    
 </div>
+
+
+
+
+
+      
+    </div>
+    
+  </ng-template>
+</div>
+
+    
+    <button class="Chat-icon" id="chatbot" data-toggle="modal" data-target="#ChatBot" data-backdrop="static" data-keyboard="false "  (click)="open(content)"></button>
+
+
+
+  
+  

@@ -12,6 +12,7 @@ import {TestComponent} from './components/pages/test/test.component';
 
 
 import {TableCompleteComponent} from "./components/pages/table-complete/table-complete.component";
+import { NotificationbackComponent } from './components/pages/notificationback/notificationback.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'update-rec/:id', component: UpdateReclamationComponent},
   {path: 'reclamationback', component: ReclamationComponent},
   {path: 'chatbot', component: ChatbotComponent},
+  {path: 'notificationback', component:NotificationbackComponent},
   {path: 'home-v2', loadChildren: () => import('./components/pages/hometwo/hometwo.module').then(m => m.HometwoModule), data: { breadcrumb: 'Homepage' } },
 
   {path: 'tab' , component : TableCompleteComponent},

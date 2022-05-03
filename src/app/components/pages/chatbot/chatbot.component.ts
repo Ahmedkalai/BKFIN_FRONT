@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';;
+import { Component, OnInit } from '@angular/core';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 import { Subject } from 'rxjs';
 import { ChatbotService } from 'src/Services/chatbot.service';
 
@@ -15,7 +17,7 @@ export class Chat {
   styleUrls: ['./chatbot.component.css']
 })
 export class ChatbotComponent implements OnInit {
-
+  closeResult = '';
   startPage: number;
   paginationLimit: number;
 
@@ -23,7 +25,7 @@ export class ChatbotComponent implements OnInit {
   chats: Chat[] = [];
   message: string;
 
-  constructor(private chatbotService: ChatbotService) {
+  constructor(private chatbotService: ChatbotService,private modalService: NgbModal) {
     this.startPage = 0;
     this.paginationLimit = 3;
 
@@ -94,6 +96,26 @@ export class ChatbotComponent implements OnInit {
   showLess() {
     this.paginationLimit = Number(this.paginationLimit) - 3;
   }
+
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
+  
 
 
 }

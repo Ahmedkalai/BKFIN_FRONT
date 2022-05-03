@@ -18,7 +18,7 @@ export class NotificationService {
   getNotificationByClient(clientid: number) {
     return this.httpClient.get(`${this.API_URL}/Notification/retrieve-notificationByClient/${clientid}`);
   }
-  // addNotification(){
-    // return this.httpClient.post(`${this.API_URL}/Notification/add-notification`);
-  // }*/
+   addNotification(){
+     return this.httpClient.post(`${this.API_URL}/Notification/add-notification`,Notification);
+   }
 }

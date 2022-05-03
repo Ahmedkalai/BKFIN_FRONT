@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Reclamation } from 'src/Model/Reclamation';
 import { ReclamationService } from 'src/Services/reclamation.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -28,6 +29,7 @@ export class ReclamationFrontComponent implements OnInit {
         this.rec=value},
       error: err => console.error(err),
       complete: () => {this.verif(),
+      Swal.fire('Thank you...', 'your complaint has been sent successfully !', 'success')  ,
       this.goToEmployeeList()
       
       

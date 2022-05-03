@@ -9,8 +9,7 @@
             <div class="col-12">
   
                 <div class="sub-header-content p-relative">
-                  <h1 class="text-custom-white lh-default fw-600"> Liste of complaints</h1>
-                  
+                  <h1 class="text-custom-white lh-default fw-400">List of Notifications </h1>
                 </div>
   
             </div>
@@ -34,37 +33,33 @@
                     [(ngModel)]="filterTerm"
                   />
                 </div>
+               
                 <div class="table-responsive">
                   <table class="lw-tab-table">
                     <tr class="lw-table-row-1">
-                      <th [appSort]="listReclamation" data-order="desc" data-name="idGarantor" scope="col">informationText</th>
-              <th [appSort]="listReclamation" data-order="desc" data-name="nameGarantor" scope="col">state </th>
-              <th [appSort]="listReclamation" data-order="desc" data-name="secondnameGarantor" scope="col">dateComplaint </th>
-              <th [appSort]="listReclamation" data-order="desc" data-name="workGarantor" scope="col">object</th>
-              <th>Actions</th>
+                      <th [appSort]="listNotifications" data-order="desc" data-name="idGarantor" scope="col">Date</th>
+                      <th [appSort]="listNotifications" data-order="desc" data-name="idGarantor" scope="col">Object</th>
+                      <th [appSort]="listNotifications" data-order="desc" data-name="idGarantor" scope="col">Id Credit</th>
+
+                    
                     </tr>
-                    <tr *ngFor = "let R of listReclamations | filter: filterTerm | paginate
+                    <tr *ngFor='let p of listNotifications| filter: filterTerm | paginate
                     : {
                         itemsPerPage: tableSize,
                         currentPage: page,
                         totalItems: count
                       };
                 let i = index
-              ">
+              '>
                       <td class="lw-table-data-2">
-                        {{ R.informationText }}
+                        {{p.dateNotif}}
                       </td>
-                      <td class="lw-table-data-3">
-                        {{ R.state }}
+                      <td class="lw-table-data-2">
+                        {{p.object}}
                       </td>
-                      <td class="lw-table-data-4">
-                        {{ R.dateComplaint }}
+                      <td class="lw-table-data-2">
+                        {{p.credit}}
                       </td>
-                      <td class="lw-table-data-4">
-                        {{ R.object  }}
-                      </td>
-                      
-                      <button  *ngIf="!R.state" (click)  = "updatestateEmployee(R.idComplaint)" class = "btn btn-outline-primary"> change State</button>
                       
                     </tr>
   
@@ -86,3 +81,4 @@
     </div>
   </div>
              <app-footer></app-footer>
+

@@ -25,18 +25,32 @@
           <div class="lw-mega-tab">
             <ul ngbNav #navplans="ngbNav" class="nav lw-nav-tabs">
               <li [ngbNavItem]="1">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Search..."
+                    [(ngModel)]="filterTerm"
+                  />
+                </div>
                
                 <div class="table-responsive">
                   <table class="lw-tab-table">
                     <tr class="lw-table-row-1">
-                      <th>Date</th>
-                      <th>Object</th>
-                      <th>Id Credit</th>
+                      <th [appSort]="listNotificationss" data-order="desc" data-name="idGarantor" scope="col">Date</th>
+                      <th [appSort]="listNotificationss" data-order="desc" data-name="idGarantor" scope="col">Object</th>
+                      <th [appSort]="listNotificationss" data-order="desc" data-name="idGarantor" scope="col">Id Credit</th>
 
-                      
-  
+                    
                     </tr>
-                    <tr *ngFor='let p of listNotificationss'>
+                    <tr *ngFor='let p of listNotificationss| filter: filterTerm | paginate
+                    : {
+                        itemsPerPage: tableSize,
+                        currentPage: page,
+                        totalItems: count
+                      };
+                let i = index
+              '>
                       <td class="lw-table-data-2">
                         {{p.dateNotif}}
                       </td>
@@ -50,6 +64,14 @@
                     </tr>
   
                   </table>
+                  <div class="d-flex justify-content-center">
+                    <pagination-controls
+                      previousLabel="Prev"
+                      nextLabel="Next"
+                      (pageChange)="onTableDataChange($event)"
+                    >
+                    </pagination-controls>
+                  </div>
                 </div>
               </li>
             </ul>
