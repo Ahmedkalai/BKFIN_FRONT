@@ -1,7 +1,6 @@
-import { Product } from "./Product";
-
-export class Pack{
-    idPack:Number;
+import { Product } from "./product";
+export class Pack {
+  idPack:Number;
     packType:string;
     descriptionPack:string;
     secteurPack:string;
@@ -9,5 +8,6 @@ export class Pack{
     priceP:Number;
     imagePack:string;
     product_pack:Product[];
+
 
 }

@@ -17,6 +17,19 @@ import {GuarantorService} from "./Services/GuarantorService";
 import {HttpClientModule} from "@angular/common/http";
 import {NgxPaginationModule} from "ngx-pagination";
 import { SortDirective } from './directive/sort.directive';
+import { PartnerComponent } from './components/pages/partner/partner.component';
+import { ProductComponent } from './components/pages/product/product.component';
+import { PackComponent } from './components/pages/pack/pack.component';
+import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
+import { Cloudinary } from 'cloudinary-core';
+import { PackFrontComponent } from './components/pages/pack-front/pack-front.component';
+import { DetailsPackFrontComponent } from './components/pages/details-pack-front/details-pack-front.component';
+import { TombolaComponent } from './components/pages/tombola/tombola.component';
+import { PartnerFrontComponent } from './components/pages/partner-front/partner-front.component';
+import { DetailsPartnerFrontComponent } from './components/pages/details-partner-front/details-partner-front.component';
+import { ProductFrontComponent } from './components/pages/product-front/product-front.component';
+import { DetailsProductFrontComponent } from './components/pages/details-product-front/details-product-front.component';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +37,17 @@ import { SortDirective } from './directive/sort.directive';
     ExempleComponent,
     TableCompleteComponent,
     NgbdSortableHeader,
-    SortDirective
+    SortDirective,
+    PartnerComponent,
+    ProductComponent,
+    PackComponent,
+    PackFrontComponent,
+    DetailsPackFrontComponent,
+    TombolaComponent,
+    PartnerFrontComponent,
+    DetailsPartnerFrontComponent,
+    ProductFrontComponent,
+    DetailsProductFrontComponent
   ],
   imports: [
     HttpClientModule,
@@ -38,9 +61,10 @@ import { SortDirective } from './directive/sort.directive';
     ExempleModule,
     ReactiveFormsModule,
     Ng2SearchPipeModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'dlw3w0bei' } as CloudinaryConfiguration)
   ],
-  providers: [GuarantorService],
+  providers: [GuarantorService,Cloudinary],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

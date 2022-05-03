@@ -1,0 +1,33 @@
+<app-header></app-header>
+<app-breadcrumb></app-breadcrumb>
+
+<!-- Start Blog -->
+<section class="section-padding bg-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-12"> 
+                <div class="blog-detail padding-20" >
+                    <!-- article -->
+                    <article class="post">
+                        <div class="post-wrapper">
+                            
+                            <div class="card-body">
+                                <h5 class="card-title">Name Product : {{Product.nameProduct}}</h5>
+                                <p class="card-title">Price : {{Product.valueProduct}}</p>
+                               <p class="card-title">Price Exclusif : {{Product.valueEXC}}</p>
+                                <p class="card-title">Partner : {{Product.partner_product.namePartner}}</p>
+                                
+                                <a href="#" class="btn btn-primary" routerLink="/productf"
+                                >Back</a>
+                              </div>
+                                </div>
+                                </article>
+                 
+           </div> 
+           </div>       
+        </div>
+    </div>
+</section>
+<!-- End Blog -->
+
+<app-footer></app-footer>

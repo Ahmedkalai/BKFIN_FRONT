@@ -1,0 +1,48 @@
+<app-header></app-header>
+<app-breadcrumb></app-breadcrumb>
+
+
+<!-- Start Blog -->
+<section class="section-padding bg-gray our-articles">
+    <div class="container">
+        <div class="row">
+            <article class="col-lg-4 col-md-6 post mb-xl-30" *ngFor="let item of packs | paginate: { itemsPerPage: 6, currentPage: page }">
+                <div class="post-wrapper">
+                    <div class="blog-img animate-img">
+                        
+                            <img [src]="item.imagePack" class="full-width" alt="{{item.imagePack}}">
+                        
+                    </div>
+                    <div class="blog-meta padding-20">
+                        <div class="post-meta">
+                            <div class="author-img">
+                                <img [src]="item.imagePack" class="rounded-circle"
+                                    alt="{{item.imagePack}}">
+                            </div>
+                           
+                        </div>
+                      
+                        <div class="blog-links">
+                            <div class="card-body">
+                            <p class="card-title">Sector : {{item.secteurPack}}</p>
+                            <p class="card-title">Price : {{item.priceP}}</p>
+                             <a routerLink="/f/{{item.idPack}}" class="text-light-blue fs-14">Read
+                                More</a>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                    </article>
+               
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <nav class="mt-5">
+                    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>
+<!-- End Blog -->

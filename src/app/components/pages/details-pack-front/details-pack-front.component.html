@@ -1,0 +1,38 @@
+<app-header></app-header>
+<app-breadcrumb></app-breadcrumb>
+
+<!-- Start Blog -->
+<section class="section-padding bg-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-12"> 
+                <div class="blog-detail padding-20" >
+                    <!-- article -->
+                    <article class="post">
+                        <div class="post-wrapper">
+                            <div class="blog-img animate-img mb-xl-20">
+                                <a href="#">
+                                    <img [src]="pack.imagePack" class="image-fit" alt="{{pack.imagePack}}"  >
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Type : {{pack.packType}}</h5>
+                                <p class="card-title">Description : {{pack.descriptionPack}}</p>
+                                <p class="card-title">Sector : {{pack.secteurPack}}</p>
+                                <p class="card-title">Price : {{pack.priceP}}</p>
+                                <h5 class="card-title">List Of Products :</h5>
+                                <p class="card-text" *ngFor="let item of pack.product_pack">{{item.nameProduct}}</p>
+                                <a href="#" class="btn btn-primary" routerLink="/packf"
+                                >Back</a>
+                              </div>
+                                </div>
+                                </article>
+                 
+           </div> 
+           </div>       
+        </div>
+    </div>
+</section>
+<!-- End Blog -->
+
+<app-footer></app-footer>
