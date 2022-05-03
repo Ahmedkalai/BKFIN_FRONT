@@ -53,7 +53,7 @@ export class ForminvesComponent implements OnInit {
         Swal.fire({
           position: 'top-end',
           icon: 'success',
-          title: 'The Fund is created successfully',
+          title: 'The Investesment is created successfully',
           showConfirmButton: false,
           timer: 1500
         })
