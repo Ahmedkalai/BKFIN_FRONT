@@ -1,12 +1,12 @@
 
                <app-header></app-header>
                <app-breadcrumb></app-breadcrumb>
-             
+
                <section class="section-padding bg-gray contact-us">
                 <div class="container">
-               
+
                   <div class="row" >
-                    
+
                     <div class="col-md-4 col-sm-6" *ngFor="let unemployedpopulation of listup| paginate: { itemsPerPage: 6, currentPage: page }">
                         <div class="main-services-box p-relative mb-xl-30">
                             <div class="main-service-wrapper padding-20">
@@ -25,7 +25,7 @@
 
                     <div class="row" >
                         <div class="col-xl-5 col-lg-4 mb-md-80">
-                         
+
                             <div class="contact-form full-height align-self-center bx-wrapper bg-custom-white">
                                 <h4 class="text-custom-black fw-600">Generate New Event</h4>
                                 <p class="text-light-white no-margin">Enhancing visibility to offer the best possible services</p>
@@ -48,12 +48,12 @@
                                         </div>
                                         <div class="col-12 mb-xl-20">
                                             <div class="form-group">
-                                              
+
                                                 <label class="text-left">Event Description</label>
                                                 <textarea rows="5" name="#" class="form-control" placeholder="Write Something"
                                                 #desc="ngModel"  [(ngModel)] = "Event.description"></textarea>
-                                          
-                                               
+
+
                                             </div>
                                             <div class="form-group">
                                                 <label class="text-left">Event Date</label>
@@ -62,7 +62,7 @@
                                             </div>
                                         </div>
                                         <div class="col-12">
-                                          <button (click) = "addEvent()"  class="btn-first btn-submit text-light-blue full-width" 
+                                          <button (click) = "addEvent()"  class="btn-first btn-submit text-light-blue full-width"
                                           type ="submit" ><b>Add New Event</b></button>
                                         </div>
                                     </div>
@@ -74,14 +74,14 @@
                         </div>
                     </div>
                 </div>
-         
 
 
 
-            
+
+
               <div class="container" >
 
-               
+
 
                 <div class="row doctors-team-style-2" >
                   <div class="container mt-5">
@@ -103,7 +103,7 @@
 
 
               <div class="container" >
-                <div class="row doctors-team-style-2" >               
+                <div class="row doctors-team-style-2" >
                   <div class="container mt-5">
                     <div class="col-sm-6" class="center" >
                       <h4 class="text-custom-black fw-600">Associate Agent Event</h4>
@@ -126,11 +126,11 @@
                     <div class="table-responsive">
                       <table class="lw-tab-table" >
                         <tr class="lw-table-row-1">
-                          <th [appSort]="listEvents" data-order="desc" data-name="Event Identifier" scope="col">Event Identifier</th>
-                          <th [appSort]="listEvents" data-order="desc" data-name="Title" scope="col">Title</th>
-                          <th [appSort]="listEvents" data-order="desc" data-name="Description" scope="col">Description</th>
-                          <th [appSort]="listEvents" data-order="desc" data-name="Region" scope="col">Region</th>
-              <th [appSort]="listEvents" data-order="desc" data-name="Date" scope="col">Date</th>
+                          <th [appSort]="listEvents" data-order="desc" data-name="idEvent" scope="col">Event Identifier</th>
+                          <th [appSort]="listEvents" data-order="desc" data-name="nameEvent" scope="col">Title</th>
+                          <th [appSort]="listEvents" data-order="desc" data-name="description" scope="col">Description</th>
+                          <th [appSort]="listEvents" data-order="desc" data-name="region" scope="col">Region</th>
+              <th [appSort]="listEvents" data-order="desc" data-name="dateEvent" scope="col">Date</th>
                           <th>Actions</th>
                         </tr>
                         <tr *ngFor = "let Event of listEvents | filter: filterTerm | paginate
@@ -156,16 +156,16 @@
             <td class="lw-table-data-4">
                                 {{Event.dateEvent}}
                           </td>
-                        
-              
+
+
                                                <td class="lw-table-data-3 choose-btn">
                                                  <button  (click)="Associate(Event.idEvent,Agent.value)"
                                                  class="btn btn-outline-info"  type ="submit"><b>Assignment</b></button>
-                                           
+
                                                  <button type ="button" class="btn btn-outline-danger" (click)="error(Event.idEvent)"><b>Delete</b></button>
                                                </td>
                         </tr>
-            
+
                       </table>
                       <div class="d-flex justify-content-center">
                         <pagination-controls
@@ -174,26 +174,26 @@
                           (pageChange)="onTableDataChange($event)"
                         >
                         </pagination-controls>
-                      </div>          
-                    </div>           
-                    <hr>           
-                  </div>           
+                      </div>
+                    </div>
+                    <hr>
+                  </div>
                 </div>
               </div>
             </section>
 
-          
+
 
 <!--
-               <div  class="section-padding lw-tab-section p-relative"> 
+               <div  class="section-padding lw-tab-section p-relative">
                  <div class="container">
                    <div class="row">
                      <div class="col-12">
                        <div class="lw-mega-tab">
                          <ul ngbNav #navplans="ngbNav" class="nav lw-nav-tabs">
-                           <li [ngbNavItem]="1">                                                            
+                           <li [ngbNavItem]="1">
                                <button type ="button" class = "btn btn-danger" (click)="load()">import</button>
-                               <button type ="button" class = "btn btn-danger" (click)="filter()">filter</button>                        
+                               <button type ="button" class = "btn btn-danger" (click)="filter()">filter</button>
                            </li>
                          </ul>
                        </div>
@@ -202,5 +202,5 @@
                  </div>
                </div>
               -->
-              
+
                <app-footer></app-footer>

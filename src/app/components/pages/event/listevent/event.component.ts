@@ -296,8 +296,7 @@ error(idEvent:any){
 //this.EventService.assign(idEvent,idAgent).subscribe(()=> this.getAllEvents());
  // }
  Associate(idEvent:any,idAgent:any){
-  this.EventService.assign(idEvent,idAgent).subscribe(() => {this.getAllEvents();
-  this.get});
+  this.EventService.assign(idEvent,idAgent).subscribe(() => {this.getAllEvents()});
   Swal.fire({
     position: 'top-end',
     icon: 'success',

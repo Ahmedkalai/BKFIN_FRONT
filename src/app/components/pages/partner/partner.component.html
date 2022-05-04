@@ -18,13 +18,13 @@
               <div class="modal-body">
                 <form>
                   <div class="mb-3">
-                   
+
         <div class="form-group">
             <label>  Activite </label>
             <input type="text" class ="form-control" id = "activitePartner"
                 [(ngModel)] = "partner.activitePartner" name = "activitePartner">
         </div>
-    
+
         <div class="form-group">
             <label> Nom </label>
             <input type="text" class ="form-control" id = "namePartner"
@@ -35,7 +35,7 @@
             <input type="text" class ="form-control" id = "sectorPartner"
                 [(ngModel)] = "partner.sectorPartner" name = "sectorPartner">
         </div>
-    
+
         <div class="form-group">
             <label> Url Partner</label>
             <input type="text" class ="form-control" id = "urlPartner"
@@ -150,7 +150,7 @@
                 </ng-template>
 
 
-                <button class="btn btn-lg btn-outline-primary" (click)="openVerticallyCentered(content2)" >Update</button>
+                <button class="btn btn-lg btn-outline-success" (click)="openVerticallyCentered(content2)" >Update</button>
                 <ng-template #content2 let-modal>
                   <div class="modal-header">
                     <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
@@ -160,7 +160,7 @@
                   <div class="modal-body">
                     <form>
                       <div class="mb-3">
-                         
+
         <div class="form-group">
             <label> Acitivite </label>
             <input type="text" class ="form-control" id = "activitePartner"
@@ -192,7 +192,7 @@
                 [(ngModel)] = "p.emailPartner" name = "emailPartner">
         </div>
                         </div>
-                     
+
                     </form>
                   </div>
                   <div class="modal-footer">
@@ -200,11 +200,11 @@
                     <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
                   </div>
                 </ng-template>
-                
-                  <button class="btn btn-lg btn-outline-primary"  (click)="deletePartner(p.idPartner)">Delete</button>
-            
+
+                  <button class="btn btn-lg btn-outline-danger"  (click)="deletePartner(p.idPartner)">Delete</button>
+
               </td>
-              
+
               </tr>
 
           </table>
