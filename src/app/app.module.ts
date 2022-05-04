@@ -52,7 +52,7 @@ import { ForminvesComponent } from './components/pages/inves/forminves/forminves
 import { InvesComponent } from './components/pages/inves/listinves/inves.component';
 import { FundComponent } from './components/pages/fund/listfund/fund.component';
 import { FormfundComponent } from './components/pages/fund/formfund/formfund.component';
-import { AgentComponent } from './components/pages/agents/agent/agent.component';
+
 import { FullCalendarModule } from '@fullcalendar/angular';
 import interactionPlugin from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -76,7 +76,24 @@ import { NotificationbackComponent } from './components/pages/notificationback/n
 import {GuarantorService} from './Services/GuarantorService';
 import {ReclamationService} from './Services/reclamation.service';
 import {NotificationService} from './Services/notification.service';
-
+import { AjoutclientComponent } from './components/pages/client/ajoutclient/ajoutclient.component';
+import { LoginComponent } from './components/pages/login/login.component';
+import { MapComponent } from './components/pages/map/map.component';
+import { AuthInterceptorService } from './SharedService/AuthInterceptorService';
+import { IpAddressComponent } from './components/ip-address/ip-address.component';
+import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import { AgentDialogueComponent } from './components/pages/agent-dialogue/agent-dialogue.component';
+import { ClassificationComponent } from './components/pages/classification/classification.component';
+import { AjoutAgentComponent } from './components/pages/agent/ajout-agent/ajout-agent.component';
+import { AjoutAdminComponent } from './components/pages/admin/ajout-admin/ajout-admin.component';
+import { ClientComponent } from './components/pages/client/client.component';
+import { AgentComponent } from './components/pages/agent/agent.component';
+import { AgentService } from './UserService/agent.service';
+import { AdminService } from './UserService/admin.service';
+import { ClientService } from './UserService/client.service';
+import {  HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AdminComponent } from './components/pages/admin/admin.component';
+import { AgentKHComponent } from './components/pages/agent-kh/agent-kh.component';
 
 
 FullCalendarModule.registerPlugins([
@@ -89,8 +106,8 @@ FullCalendarModule.registerPlugins([
 
 @NgModule({
   declarations: [
-    AppComponent,
-
+    AppComponent,ClientComponent,AgentComponent,AdminComponent,AjoutclientComponent, LoginComponent, MapComponent, IpAddressComponent, AgentDialogueComponent, ClassificationComponent, AjoutAgentComponent, AjoutAdminComponent,
+    
     ReclamationFrontComponent,
     ListreclamationComponent,
     TestComponent,
@@ -138,14 +155,18 @@ FullCalendarModule.registerPlugins([
     DetailsPartnerFrontComponent,
     ProductFrontComponent,
     DetailsProductFrontComponent,
-    NotificationbackComponent
+    NotificationbackComponent,
+    AgentKHComponent
 
   ],
 
 
-
+entryComponents:[
+     AgentDialogueComponent
+  ],
 
   imports: [
+   
     HttpClientModule,
     BrowserModule,
     FormsModule,
@@ -168,14 +189,17 @@ FullCalendarModule.registerPlugins([
     QRCodeModule,
     FileUploadModule,
     CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'dlw3w0bei' } as CloudinaryConfiguration),
-    FullCalendarModule
+    FullCalendarModule,
+	 MatDialogModule
   ],
   providers: [
               GuarantorService,
               DataService,
               initialdata,
               ReclamationService ,
-               NotificationService
+               NotificationService,
+		{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
   ],
 
   bootstrap: [AppComponent],

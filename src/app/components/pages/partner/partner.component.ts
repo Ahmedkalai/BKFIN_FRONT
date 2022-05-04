@@ -89,6 +89,8 @@ export class PartnerComponent implements OnInit {
     uploadData.append('upload_preset', 'msa732u9');
     uploadData.append('file', this.selectedFile);
     uploadData.append('public_id', this.selectedFile.name );
+    uploadData.append('public_id', this.selectedFile.name );
+    
 
     this.http.post('https://api.cloudinary.com/v1_1/dlw3w0bei/image/upload', uploadData).subscribe( url => {this.urlll=url;
       this.partner.logoPartner=this.urlll.secure_url;

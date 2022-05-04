@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Agent } from 'src/app/models/agent';
-import {AgentService} from 'src/app/Services/Agentservice'
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { ModalDismissReasons, NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { Agent } from "src/app/models/agent";
+import { AgentService } from "src/app/UserService/agent.service";
+
+
 
 
 @Component({
-  selector: 'app-agent',
-  templateUrl: './agent.component.html',
-  styleUrls: ['./agent.component.css']
+  selector: 'app-agent-kh',
+  templateUrl: './agent-kh.component.html',
+  styleUrls: ['./agent-kh.component.css']
 })
-export class AgentComponent implements OnInit {
+export class AgentKHComponent implements OnInit {
   listAgents:any;
   Agent!:Agent;
   filterTerm!: string;
@@ -64,7 +66,7 @@ this.getAgents();
     
     this.Agent={ 
       idAgent:null,
-      localisation :null,
+     
       name:null,
       secondName:null,
       phoneNum:null,
@@ -84,6 +86,6 @@ this.getAgents();
 
   }
   getAgents() {
-    this.AgentService.getAgents().subscribe(res => this.listAgents = res);
+    this.AgentService.getAllAgents().subscribe((res:any) => this.listAgents = res);
     console.log(this.listAgents);}
 }

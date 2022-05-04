@@ -92,6 +92,13 @@ scrap(){
     error: err => {this.getProducts(),console.log(err)},
     complete: () => this.getProducts()
 });
+Swal.fire({
+  position: 'top-end',
+  icon: 'success',
+  title: ' Scrapping successfully',
+  showConfirmButton: false,
+  timer: 1500
+})
 }
 addProduct(Product:Product){
   this.productservice.createProduct(Product,this.idPartner).subscribe( data =>{
@@ -99,6 +106,13 @@ addProduct(Product:Product){
     this.getProducts();
   },
   error => console.log(error));
+  Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'The Product is created successfully',
+    showConfirmButton: false,
+    timer: 1500
+  })
 }
 deleteProduct(id:Number){
   Swal.fire({
@@ -131,6 +145,13 @@ deleteProduct(id:Number){
     }
     editproduct(Product:Product){
       this.productservice.updateProduct(Product,this.idPartner).subscribe(()=> this.getProducts());
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'The Product is updated successfully',
+        showConfirmButton: false,
+        timer: 1500
+      })
     }
     download(){
       this.productservice.downloadFile().subscribe( (res =>
@@ -143,6 +164,13 @@ deleteProduct(id:Number){
       this.productservice.affecterproductpack(idProduct,idPack).subscribe( data => {
           console.log(data);
             
+          })
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'The Affectation is created successfully',
+            showConfirmButton: false,
+            timer: 1500
           })
         }
 }

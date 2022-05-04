@@ -34,7 +34,7 @@ export class UpdateReclamationComponent implements OnInit {
   }
 
   onSubmit(){
-    this.employeeService.ModifReclamation(this.reca,1).subscribe( data =>{
+    this.employeeService.ModifReclamation(this.reca,44).subscribe( data =>{
       this.goToEmployeeList();
     }
     , error => console.log(error));

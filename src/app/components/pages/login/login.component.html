@@ -1,0 +1,67 @@
+<app-header></app-header>
+<div class="overlapsec"></div>
+<breadcrumb #parent>
+    <div class="sub-header p-relative">
+      <div class="overlay overlay-bg-black"></div>
+      <div class="pattern"></div>
+      <div class="section-padding">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+  
+                <div class="sub-header-content p-relative">
+                  <h1 class="text-custom-white lh-default fw-600">Client</h1>
+                  <ul class="custom">
+                    <li><a class="text-custom-white">Home</a></li>
+                    <li >
+  
+                        <a>Client</a>
+                    </li>
+  
+                  </ul>
+                </div>
+  </div></div></div></div></div></breadcrumb>
+  <body>
+       <div class="section-padding lw-tab-section p-relative">
+    <div class="container">
+      <div class="row">
+<div class="col-lg-12">
+    <div class="right-side full-height bg-border">
+        <div class="section-heading">
+            <h3 class="text-white fw-600">Make An Apply Today</h3>
+        </div>
+        <form class="form-style-2 form-style-3" #form="ngForm">
+            {{form.value | json }}
+    
+            <div class="row">
+               
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <div class="input-group"> <span class="input-group-preappend"><i class="fas fa-envelope"></i></span>
+                            <input type="email" name="username" class="form-control" placeholder="Email Address" [(ngModel)]="client.email">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <div class="input-group"> <span class="input-group-preappend"><i class="fas fa-phone-alt"></i></span>
+                            <input type="password" name="password" class="form-control"  [(ngModel)]="client.password">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <button type="submit" class="btn-first btn-submit full-width" (click)="login() ">login</button>
+                </div>
+                <div class="col-md-12">
+                    <button type="submit" class="btn-first btn-submit full-width" (click)="logout() ">logout</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</body>
+
+  <app-footer></app-footer>

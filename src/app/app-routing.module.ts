@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AgentComponent } from './components/pages/agents/agent/agent.component';
+
 import { EventComponent } from './components/pages/event/listevent/event.component';
 import { FormfundComponent } from './components/pages/fund/formfund/formfund.component';
 import { FundComponent } from './components/pages/fund/listfund/fund.component';
@@ -24,13 +24,24 @@ import { UpdateReclamationComponent } from './components/pages/reclamation-front
 import {TestComponent} from './components/pages/test/test.component';
 import {TableCompleteComponent} from './components/pages/table-complete/table-complete.component';
 import { NotificationbackComponent } from './components/pages/notificationback/notificationback.component';
-
+import { IpAddressComponent } from './components/ip-address/ip-address.component';
+import { AdminComponent } from './components/pages/admin/admin.component';
+import { AgentComponent } from './components/pages/agent/agent.component';
+import { ClientComponent } from './components/pages/client/client.component';
+import { LoginComponent } from './components/pages/login/login.component';
+import { MapComponent } from './components/pages/map/map.component';
 
 
 
 const routes: Routes = [
   { path: '', loadChildren: () => import('./components/pages/home/home.module').then(m => m.HomeModule), data: { breadcrumb: 'Homepage' } },
   {path: 'accounts', component: AccountListComponent},
+    { path:'ClientPage', component:ClientComponent},
+  { path:'AgentPage', component:AgentComponent},
+  { path:'ipAddressPage', component: IpAddressComponent},
+  { path:'AdminPage', component:AdminComponent},
+  { path:'LoginPage', component:LoginComponent},
+  { path:'MapPage', component:MapComponent},
   {path: 'Addaccount', component: AddAccountComponent},
   {path: 'Addtransaction', component: AddTransactionComponent},
   {path: 'update-acc/:rib', component: UpdateAccountComponent},

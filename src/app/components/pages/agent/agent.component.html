@@ -1,0 +1,97 @@
+<app-header></app-header>
+<div class="overlapsec"></div>
+<breadcrumb #parent>
+    <div class="sub-header p-relative">
+      <div class="overlay overlay-bg-black"></div>
+      <div class="pattern"></div>
+      <div class="section-padding">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+  
+                <div class="sub-header-content p-relative">
+                  <h1 class="text-custom-white lh-default fw-600">Agent</h1>
+                  <ul class="custom">
+                    <li><a class="text-custom-white">Home</a></li>
+                    <li >
+  
+                        <a>Agents</a>
+                    </li>
+  
+                  </ul>
+                </div>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </breadcrumb>
+  <div class="section-padding lw-tab-section p-relative">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="lw-mega-tab">
+            <ul ngbNav #navplans="ngbNav" class="nav lw-nav-tabs">
+              <li [ngbNavItem]="1">
+                <a ngbNavLink>
+                  
+                </a>
+                <div class="table-responsive">
+                    <table  class="lw-tab-table">
+                        <thead>
+                            <tr class="lw-table-row-1">
+                                <th>  id</th>
+                                <th> nom </th>
+                                <th> prenom</th>
+                                <th> password</th>
+                                <th>email</th>
+                                <th> cin</th>
+                                <th>potentiel</th>
+                                <th> performance</th>
+                                <th> classification</th>
+                                <th> donner une classification</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor = "let c of listA" >
+                                <td class="lw-table-data-2"> {{ c.idAgent }} </td>
+                                <td class="lw-table-data-2"> {{ c.name }} </td>
+                                <td class="lw-table-data-2"> {{ c.secondName }} </td>
+                                <td class="lw-table-data-2"> {{ c.password }} </td>
+                                <td class="lw-table-data-2"> {{ c.email }} </td>
+                                <td class="lw-table-data-2"> {{ c.cin }} </td>
+                                <td class="lw-table-data-2"> {{ c.potentiel }} </td>
+                                <td class="lw-table-data-2"> {{ c.performance }} </td>
+                                <td class="lw-table-data-2"> {{ c.classification }} </td>
+                                <button (click)="openDialog(c.email)" class = "btn btn-info"> Update</button>
+                                <button (click) = "delete(c.idAgent)" class = "btn btn-danger" style="margin-left: 10px"> Delete</button>
+                               <!--
+                                <td>
+                                    <button (click) = "updateEmployee(employee.id)" class = "btn btn-info"> Update</button>
+                                    <button (click) = "deleteEmployee(employee.id)" class = "btn btn-danger" style="margin-left: 10px"> Delete</button>
+                                    <button (click) = "employeeDetails(employee.id)" class = "btn btn-info" style="margin-left: 10px"> View</button>
+                                </td>
+                            
+                            <td> <button (click) = "delete(c.id)" class = "btn btn-danger" style="margin-left: 10px"> Delete</button></td>
+                        -->    
+                        </tr>
+                        </tbody>
+                    </table>
+                    <app-classification></app-classification>
+                    <app-ajout-agent></app-ajout-agent>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+         
+
+
+
+<app-footer></app-footer>
