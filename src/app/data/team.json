@@ -1,8 +1,8 @@
 [
     {
         "id": 1,
-        "photo": "assets/images/doctors/doctor3.jpg",
-        "name": "Eachann Jhon",
+        "photo": "assets/images/doctors/doctor2.jpg",
+        "name": "Ahmed Kalai",
         "designation": "Loan Advisor",
         "socialmedia": [
             {
@@ -29,9 +29,9 @@
     },
     {
         "id": 2,
-        "photo": "assets/images/doctors/doctor2.jpg",
-        "name": "Addison Smith",
-        "designation": "Business Loan Advisor",
+        "photo": "assets/images/doctors/doctor3.jpg",
+        "name": "Amine Swiden",
+        "designation": "Client Advisor",
         "socialmedia": [
             {
                 "icon": "youtube",
@@ -58,8 +58,8 @@
     {
         "id": 3,
         "photo": "assets/images/doctors/doctor4.jpg",
-        "name": "Sarah Taylor",
-        "designation": "Loan Advisor",
+        "name": "Khadija Azzouz",
+        "designation": "Investissement Advisor",
         "socialmedia": [
             {
                 "icon": "youtube",
@@ -86,8 +86,8 @@
     {
         "id": 4,
         "photo": "assets/images/doctors/doctor5.jpg",
-        "name": "Aiken Ward",
-        "designation": "Corporate Loan Advisor",
+        "name": "Bechir Jlidi",
+        "designation": "Claims Advisor",
         "socialmedia": [
             {
                 "icon": "youtube",
@@ -113,9 +113,37 @@
     },
     {
         "id": 5,
-        "photo": "assets/images/doctors/doctor3.jpg",
-        "name": "Babatunde jhon",
-        "designation": "Home Loan Advisor",
+        "photo": "assets/images/doctors/doctor6.jpg",
+        "name": "Yassin BenZekri",
+        "designation": "Partners Advisor",
+        "socialmedia": [
+            {
+                "icon": "youtube",
+                "iconclass": "youtube",
+                "url": "#"
+            },
+            {
+                "icon": "linkedin",
+                "iconclass": "linkedin",
+                "url": "#"
+            },
+            {
+                "icon": "facebook-f",
+                "iconclass": "facebook",
+                "url": "#"
+            },
+            {
+                "icon": "twitter",
+                "iconclass": "twitter",
+                "url": "#"
+            }
+        ]
+    },
+{
+        "id": 6,
+        "photo": "assets/images/doctors/doctor7.jpg",
+        "name": "Emna Lazzez",
+        "designation": "Account Advisor",
         "socialmedia": [
             {
                 "icon": "youtube",
