@@ -24,7 +24,7 @@ export class ReclamationFrontComponent implements OnInit {
 
   }
   saveEmployee(){
-    this.employeeService.addReclamation(this.reclamation,1).subscribe({
+    this.employeeService.addReclamation(this.reclamation,44).subscribe({
       next: value =>{ console.log(value),
         this.rec=value},
       error: err => console.error(err),

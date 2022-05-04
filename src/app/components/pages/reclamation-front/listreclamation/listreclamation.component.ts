@@ -32,7 +32,7 @@ export class ListreclamationComponent implements OnInit {
     this.getAllReclamation();
   }
   getAllReclamation(){
-    this.ReclamationService.getReclamationByClient(1).subscribe(res => this.listReclamation = res);
+    this.ReclamationService.getReclamationByClient(44).subscribe(res => this.listReclamation = res);
   }
 
   updateEmployee(id: number){

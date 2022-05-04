@@ -43,7 +43,7 @@ export class NotificationbyclientComponent implements OnInit {
 
 
  getNotificationByClient(){
-   this.notificationService.getNotificationByClient(1).subscribe(res =>{this.listNotificationss = res;
+   this.notificationService.getNotificationByClient(44).subscribe(res =>{this.listNotificationss = res;
     this.chRef.detectChanges();
     console.log(this.chRef)
 

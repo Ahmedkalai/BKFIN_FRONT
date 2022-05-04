@@ -1,0 +1,76 @@
+
+           
+<div class="container" >
+    <div class="row doctors-team-style-2" >               
+      <div class="container mt-5">
+        <h4 class="text-custom-black fw-600">List Agents</h4>
+        <div class="search p-relative">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search..."
+            [(ngModel)]="filterTerm"
+          />
+          </div>
+        </div>
+        <div class="table-responsive">
+ 
+ 
+ <div class="table-responsive">
+    <table class="lw-tab-table" >
+
+        <tr class="lw-table-row-1">
+            <th [appSort]="listAgents" data-order="desc" data-name="Agent Identifier" scope="col">Agent Identifier</th>
+            <th [appSort]="listAgents" data-order="desc" data-name="Name" scope="col">Name</th>
+            <th [appSort]="listAgents" data-order="desc" data-name="Second Name" scope="col">Second Name</th>
+            <th [appSort]="listAgents" data-order="desc" data-name="adresse" scope="col">Adresse</th>
+            <th [appSort]="listAgents" data-order="desc" data-name="Disponibility" scope="col">Disponibility</th>
+           
+          </tr>
+          <tr *ngFor = "let Agent of listAgents | filter: filterTerm | paginate
+            : {
+                itemsPerPage: tableSize,
+                currentPage: page,
+                totalItems: count
+              };
+        let i = index
+      ">
+
+
+      <tr *ngFor = "let Agent of listAgents">
+        <td class="lw-table-data-2">
+         {{Agent.idAgent}}
+        </td>
+        <td class="lw-table-data-2">
+            {{Agent.name}}
+          </td>
+          <td class="lw-table-data-2">
+            {{Agent.secondName}}
+          </td>
+        <td class="lw-table-data-2" style="color:red">
+          {{Agent.adresse}}
+        </td>
+        <td class="lw-table-data-3" style="background:#15124A">
+           {{Agent.state}}
+        </td>
+
+      </tr>
+
+    </table>
+    </div>
+
+
+    <div class="d-flex justify-content-center">
+        <pagination-controls
+          previousLabel="Prev"
+          nextLabel="Next"
+          (pageChange)="onTableDataChange($event)"
+        >
+        </pagination-controls>
+      </div>          
+      </div>           
+      <hr>           
+      </div>           
+      </div>
+      </div>

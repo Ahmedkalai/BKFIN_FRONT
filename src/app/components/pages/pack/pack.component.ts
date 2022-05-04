@@ -78,6 +78,13 @@ export class PackComponent implements OnInit {
   }
   editpack(p:Pack){
     this.packservice.modifPack(p,this.idProduct).subscribe();
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'The Pack is updated successfully',
+      showConfirmButton: false,
+      timer: 1500
+    })
   }
   getPack(id:Number){
     this.packservice.getPackById(id).subscribe(data => {
@@ -136,6 +143,13 @@ export class PackComponent implements OnInit {
         'error')}})}
   statePack(id:Number){
     this.packservice.updateStatePack(id).subscribe(()=> this.getPacks())
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'The  State Of Pack is updated successfully',
+      showConfirmButton: false,
+      timer: 1500
+    })
   }
 
   selectedFile: File

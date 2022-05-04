@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>Delete all elements?</h2>
+<mat-dialog-content >
+    <mat-form-field appearance="fill"> 
+
+        <select placeholder="Select performance" [(ngModel)]="performance">
+
+            <option value="below expected">
+                below expected</option>
+            <option value="moderate">
+                moderate</option>
+            <option value="above expected">
+                above expected</option>
+
+        </select>
+        <select placeholder="Select potentiel" [(ngModel)]="potentiel">
+
+            <option value="low">
+                low</option>
+            <option value="moderate">
+                moderate</option>
+            <option value="high">
+                high</option>
+
+        </select>
+
+    </mat-form-field>
+   
+</mat-dialog-content>
+
+
+<mat-dialog-actions>
+
+    <button class="mat-raised-button"
+    (click)="updateClassification(performance,potentiel)">
+ajouter classification
+</button>
+    <button class="mat-raised-button"
+            (click)="close()">
+        Close
+    </button>
+
+
+</mat-dialog-actions>
