@@ -1,7 +1,9 @@
+import { Event } from "./event";
+
 export class Agent {
 
     idAgent?:number;
-	
+	localisation?:number;
 	name?:string;
 	secondName?:string;
 	
@@ -20,4 +22,6 @@ export class Agent {
 	potentiel?:string;
 	classification?:string;
 	state?:boolean ; 
+    Event:Event[];
+
 }
