@@ -48,7 +48,7 @@ export class Form2Component implements OnInit {
   onSubmit() {
     this.credit.differe = this.differee;
     console.log(this.credit);
-    this.creditservice.createCredit(this.credit, 3, 1, 1, this.idgarant).subscribe(res => { this.retour=res ; console.log(res);
+    this.creditservice.createCredit(this.credit, 44, 1, 1, this.idgarant).subscribe(res => { this.retour=res ; console.log(res);
       Swal.fire('Thank you...', this.retour.reason, 'success') ;
       this.router.navigateByUrl('loan-dashboard');});
   }
