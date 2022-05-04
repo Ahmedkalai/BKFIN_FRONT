@@ -3,6 +3,8 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
 import {NotificationService} from '../../../Services/notification.service';
 import {Notification} from '../../../models/Notification';
+import {Client} from '../../../models/Client';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Component({
   selector: 'app-notificationbyclient',
@@ -25,7 +27,7 @@ export class NotificationbyclientComponent implements OnInit {
   not:any;
 
 
-  constructor(private notificationService: NotificationService, private modalService: NgbModal , private chRef : ChangeDetectorRef) { }
+  constructor(private notificationService: NotificationService, private modalService: NgbModal , private chRef : ChangeDetectorRef , private http: HttpClient) { }
 
   ngOnInit(): void {
     this.getNotificationByClient();
@@ -41,13 +43,19 @@ export class NotificationbyclientComponent implements OnInit {
   }
 
 
-
+  private headers: HttpHeaders;
  getNotificationByClient(){
-   this.notificationService.getNotificationByClient(44).subscribe(res =>{this.listNotificationss = res;
-    this.chRef.detectChanges();
-    console.log(this.chRef)
+   this.http.get<Client>('http://localhost:8083/BKFIN/findClientByToken' , {
+     headers: this.headers}).subscribe(res1 => {
+       console.log(res1);
+     this.notificationService.getNotificationByClient(res1.id).subscribe(res =>{this.listNotificationss = res;
+       this.chRef.detectChanges();
+       console.log(this.chRef)
 
-   })
+     })
+     }
+   );
+
 
    }
 

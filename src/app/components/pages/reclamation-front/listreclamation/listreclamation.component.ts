@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import {Reclamation} from '../../../../models/Reclamation';
 import {ReclamationService} from '../../../../Services/reclamation.service';
+import {Client} from '../../../../models/Client';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Component({
   selector: 'app-listreclamation',
@@ -26,13 +28,19 @@ export class ListreclamationComponent implements OnInit {
 
   employees: Reclamation[];
 
-  constructor(private ReclamationService: ReclamationService , private router: Router, private modalService: NgbModal) { }
+  constructor(private ReclamationService: ReclamationService , private router: Router, private modalService: NgbModal , private http: HttpClient) { }
 
   ngOnInit(): void {
     this.getAllReclamation();
   }
+  private headers: HttpHeaders;
   getAllReclamation(){
-    this.ReclamationService.getReclamationByClient(44).subscribe(res => this.listReclamation = res);
+    this.http.get<Client>('http://localhost:8083/BKFIN/findClientByToken' , {
+      headers: this.headers}).subscribe(res => {
+      console.log(res);
+    this.ReclamationService.getReclamationByClient(res.id).subscribe(res1 => this.listReclamation = res1);
+      }
+    );
   }
 
   updateEmployee(id: number){
@@ -41,7 +49,13 @@ export class ListreclamationComponent implements OnInit {
 
 
   editReclamation(reclamation : Reclamation, idclient:number){
-    this.ReclamationService.ModifReclamation(reclamation,1).subscribe();
+    this.http.get<Client>('http://localhost:8083/BKFIN/findClientByToken' , {
+      headers: this.headers}).subscribe(res => {
+        console.log(res);
+      this.ReclamationService.ModifReclamation(reclamation,res.id).subscribe();
+      }
+    );
+
 
   }
 

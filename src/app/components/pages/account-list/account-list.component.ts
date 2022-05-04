@@ -13,7 +13,7 @@ import html2canvas from 'html2canvas';
   styleUrls: ['./account-list.component.css']
 })
 export class AccountListComponent implements OnInit {
-  
+
   @ViewChild('htmlData') htmlData!: ElementRef;
   closeResult = '';
   page: number = 1;
@@ -25,7 +25,7 @@ export class AccountListComponent implements OnInit {
 
   constructor(private accService: AccountService,
     private router: Router ,private modalService: NgbModal) { }
-  
+
     onTableDataChange(event: any) {
       this.page = event;
       this.getEmployees();
@@ -42,12 +42,12 @@ export class AccountListComponent implements OnInit {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
       });
     }
-  
-  
+
+
     openVerticallyCentered(content) {
       this.modalService.open(content, { centered: true });
     }
-  
+
     private getDismissReason(reason: any): string {
       if (reason === ModalDismissReasons.ESC) {
         return 'by pressing ESC';
@@ -66,7 +66,7 @@ export class AccountListComponent implements OnInit {
       this.acc = data;
     });
   }
-  //pour la configuration des boutons pour le reste des actions 
+  //pour la configuration des boutons pour le reste des actions
 /*
   employeeDetails(id: number){
     this.router.navigate(['employee-details', id]);
@@ -75,7 +75,7 @@ export class AccountListComponent implements OnInit {
 updateAcc(rib: string){
     this.router.navigate(['update-acc', rib]);
   }
- 
+
 
   deleteacc(id: string){
    /* this.accService.deleteAccount(id).subscribe( data => {
@@ -83,92 +83,92 @@ updateAcc(rib: string){
       this.getEmployees();
     })
     */
-    Swal.fire({  
-      title: 'Are you sure want to remove?',  
-      text: 'You will not be able to recover this file!',  
-      icon: 'warning',  
-      showCancelButton: true,  
-      confirmButtonText: 'Yes, delete it!',  
-      cancelButtonText: 'No, keep it'  
-    }).then((result) => {  
-      if (result.value) {  
+    Swal.fire({
+      title: 'Are you sure want to remove?',
+      text: 'You will not be able to recover this file!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value) {
       this.accService.deleteAccount(id).subscribe( data => {
           console.log(data);
           this.getEmployees();
         })
-        Swal.fire(  
-          'Deleted!',  
-          'Your imaginary file has been deleted.',  
-          'success'  
-        )  
-      } else if (result.dismiss === Swal.DismissReason.cancel) {  
-        Swal.fire(  
-          'Cancelled',  
-          'Your imaginary file is safe :)',  
-          'error'  
-        )  
-      }  
-    })  
+        Swal.fire(
+          'Deleted!',
+          'Your imaginary file has been deleted.',
+          'success'
+        )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your imaginary file is safe :)',
+          'error'
+        )
+      }
+    })
   }
   loadbatch(){
 
     this.accService.loadbatch().subscribe( data => {
       console.log(data);
       this.getEmployees();
-  })
+  });
   }
-  
-  simpleAlert(){  
-    Swal.fire('Hello Angular');  
-  }  
-    
-  alertWithSuccess(){  
-    Swal.fire('Thank you...', 'You submitted succesfully!', 'success')  
-  }  
-  erroalert()  
-  {  
-    Swal.fire({  
-      icon: 'error',  
-      title: 'Oops...',  
-      text: 'Something went wrong!',  
-      footer: '<a href>Why do I have this issue?</a>'  
-    })  
-  }  
-  topend()  
-  {  
-    Swal.fire({  
-      position: 'top-end',  
-      icon: 'success',  
-      title: 'Your work has been saved',  
-      showConfirmButton: false,  
-      timer: 1500  
-    })  
-  }  
-  confirmBox(){  
-    Swal.fire({  
-      title: 'Are you sure want to remove?',  
-      text: 'You will not be able to recover this file!',  
-      icon: 'warning',  
-      showCancelButton: true,  
-      confirmButtonText: 'Yes, delete it!',  
-      cancelButtonText: 'No, keep it'  
-    }).then((result) => {  
-      if (result.value) {  
-        Swal.fire(  
-          'Deleted!',  
-          'Your imaginary file has been deleted.',  
-          'success'  
-        )  
-      } else if (result.dismiss === Swal.DismissReason.cancel) {  
-        Swal.fire(  
-          'Cancelled',  
-          'Your imaginary file is safe :)',  
-          'error'  
-        )  
-      }  
-    })  
-  }  
-  
+
+  simpleAlert(){
+    Swal.fire('Hello Angular');
+  }
+
+  alertWithSuccess(){
+    Swal.fire('Thank you...', 'You submitted succesfully!', 'success')
+  }
+  erroalert()
+  {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Something went wrong!',
+      footer: '<a href>Why do I have this issue?</a>'
+    })
+  }
+  topend()
+  {
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Your work has been saved',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
+  confirmBox(){
+    Swal.fire({
+      title: 'Are you sure want to remove?',
+      text: 'You will not be able to recover this file!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire(
+          'Deleted!',
+          'Your imaginary file has been deleted.',
+          'success'
+        )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your imaginary file is safe :)',
+          'error'
+        )
+      }
+    })
+  }
+
   public openPDF(): void {
     let DATA: any = document.getElementById('htmlData');
     html2canvas(DATA).then((canvas) => {
@@ -181,5 +181,5 @@ updateAcc(rib: string){
       PDF.save('ListAccountsBKFIN.pdf');
     });
   }
-  
+
 }
