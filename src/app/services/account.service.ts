@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import  { Account } from '../models/Account';
+import { ClientService } from '../UserService/client.service';
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
  
   private baseURL="http://localhost:8083/BKFIN/Account"
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient,private ClientS:ClientService) {
+    this.ClientS.findUserWithToken()
+  }
   
    
   getAccountsList(): Observable<Account[]>{
