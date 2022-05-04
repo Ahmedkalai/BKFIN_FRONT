@@ -139,10 +139,7 @@ FullCalendarModule.registerPlugins([
     ProductFrontComponent,
     DetailsProductFrontComponent,
     NotificationbackComponent
-    AppComponent,ClientComponent,AgentComponent,AdminComponent,AjoutclientComponent, LoginComponent, MapComponent, IpAddressComponent, AgentDialogueComponent, ClassificationComponent, AjoutAgentComponent, AjoutAdminComponent
-  ],
-  entryComponents:[
-     AgentDialogueComponent
+
   ],
 
 
@@ -152,7 +149,6 @@ FullCalendarModule.registerPlugins([
     HttpClientModule,
     BrowserModule,
     FormsModule,
-    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     BreadcrumbModule,
@@ -172,18 +168,14 @@ FullCalendarModule.registerPlugins([
     QRCodeModule,
     FileUploadModule,
     CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'dlw3w0bei' } as CloudinaryConfiguration),
-    FullCalendarModule,
-    MatDialogModule,
-    ReactiveFormsModule
+    FullCalendarModule
   ],
   providers: [
               GuarantorService,
               DataService,
               initialdata,
               ReclamationService ,
-               NotificationService,
-               { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
-    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+               NotificationService
   ],
 
   bootstrap: [AppComponent],
