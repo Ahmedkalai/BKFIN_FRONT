@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {  HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { Pack } from 'src/app/models/Pack';
 import { Product } from 'src/app/models/product';
@@ -93,15 +94,19 @@ export class PackComponent implements OnInit {
   }
   urlll:any;
   addpack(pack : Pack){
+
     const uploadData = new FormData();
     let current = new Date();
     let timestamp = current.getTime();
     uploadData.append('public_id', this.selectedFile.name +timestamp );
     uploadData.append('upload_preset', 'msa732u9');
     uploadData.append('file', this.selectedFile);
-    uploadData.append('public_id', this.selectedFile.name+ timestamp);
+    uploadData.append('asset_id', '685986431274889');
 
-    this.http.post('https://api.cloudinary.com/v1_1/dlw3w0bei/image/upload', uploadData).subscribe(res=> {this.urlll=res;
+
+
+
+    this.http.post(`https://api.cloudinary.com/v1_1/dlw3w0bei/image/upload`, uploadData).subscribe(res=> { this.urlll=res;
       this.pack.imagePack=this.urlll.secure_url;
       this.packservice.addPack(pack,this.idProduct).subscribe( data =>{
           console.log(data);

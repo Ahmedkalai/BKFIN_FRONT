@@ -7,9 +7,9 @@ import { Pack } from '../models/Pack';
   providedIn: 'root'
 })
 export class PackService {
-  readonly API_URL =  "http://localhost:8083/BKFIN";;
-  constructor(private httpClient: HttpClient) { }
-  
+  readonly API_URL =  'http://localhost:8083/BKFIN';;
+  constructor(private httpClient: HttpClient) { };
+
   getPacksList(): Observable<Pack[]>{
     return this.httpClient.get<Pack[]>(`${this.API_URL}/Pack/viewPacks`);
   }
