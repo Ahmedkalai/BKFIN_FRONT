@@ -1,9 +1,23 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { IpAddressComponent } from './components/ip-address/ip-address.component';
+import { AdminComponent } from './components/pages/admin/admin.component';
+import { AgentComponent } from './components/pages/agent/agent.component';
+import { ClientComponent } from './components/pages/client/client.component';
+import { LoginComponent } from './components/pages/login/login.component';
+import { MapComponent } from './components/pages/map/map.component';
+
 
 const routes: Routes = [
+
   { path: '', loadChildren: () => import('./components/pages/home/home.module').then(m => m.HomeModule), data: { breadcrumb: 'Homepage' } }, 
   { path: 'home-v2', loadChildren: () => import('./components/pages/hometwo/hometwo.module').then(m => m.HometwoModule), data: { breadcrumb: 'Homepage' } }, 
+  { path:'ClientPage', component:ClientComponent},
+  { path:'AgentPage', component:AgentComponent},
+  { path:'ipAddressPage', component: IpAddressComponent},
+  { path:'AdminPage', component:AdminComponent},
+  { path:'LoginPage', component:LoginComponent},
+  { path:'MapPage', component:MapComponent},
   { path: 'about', loadChildren: () => import('./components/pages/about/about.module').then(m => m.AboutModule), data: { breadcrumb: 'About Us' } }, 
   { path: 'blog', loadChildren: () => import('./components/pages/blog/blog.module').then(m => m.BlogModule), data: { breadcrumb: 'Blog Grid' } }, 
   { path: 'blog-sidebar', loadChildren: () => import('./components/pages/blogleft/blogleft.module').then(m => m.BlogleftModule), data: { breadcrumb: 'Blog Left' } }, 
@@ -17,8 +31,11 @@ const routes: Routes = [
   { path: 'service', loadChildren: () => import('./components/pages/service/service.module').then(m => m.ServiceModule), data: { breadcrumb: 'Service' } }, 
   { path: 'service-detail/:id', loadChildren: () => import('./components/pages/servicedetail/servicedetail.module').then(m => m.ServicedetailModule), data: { breadcrumb: 'Service Details' } }, 
   { path: 'team', loadChildren: () => import('./components/pages/team/team.module').then(m => m.TeamModule), data: { breadcrumb: 'Team' } }, 
-  { path: 'loan-dashboard', loadChildren: () => import('./components/pages/userdashboard/userdashboard.module').then(m => m.UserdashboardModule), data: { breadcrumb: 'User Dashboard' } },
+  //{ path: 'loan-dashboard', loadChildren: () => import('./components/pages/userdashboard/userdashboard.module').then(m => m.UserdashboardModule), data: { breadcrumb: 'User Dashboard' } },
+  
   { path: '**', loadChildren: () => import('./components/pages/error/error.module').then(m => m.ErrorModule), data: { breadcrumb: 'Error 404' } }
+  
+
 ];
 
 @NgModule({

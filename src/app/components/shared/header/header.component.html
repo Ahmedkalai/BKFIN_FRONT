@@ -111,20 +111,29 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="menu-item  "> <a routerLink="/loan-dashboard" class="text-custom-white">User Dashboard</a>
+                                    <li class="menu-item   menu-item-has-children"  > <a href="#" class="text-custom-white">user</a>
+                                        <ul class="custom sub-menu">
+                                           
+                                            <li class="menu-item" > <a routerLink="/AgentPage" class="text-custom-grey"  >Agent</a></li>
+                                            <li class="menu-item"  > <a routerLink="/AdminPage" class="text-custom-grey">Admin</a></li>
+                                        </ul>
                                     </li>
+                                   
+                                      
+                                    <li class="menu-item  "> <a routerLink="/MapPage" class="text-custom-white">MAP</a>
+                                    </li>
+                                    <li class="menu-item " > <a routerLink="/ClientPage" class="text-custom-white" >Client Dashboard</a></li>
                                 </ul>
                             </nav>
                             <div class="right-side">
                                 <div class="cta-btn">
-                                    <a routerLink="/contact" class="btn-first btn-submit">
-                                        Apply Today
-                                    </a>
+                                    <a routerLink="/LoginPage" class="btn-first btn-submit">sign up</a>
+                                    
                                 </div>
                             </div>
                         </div>
-                        <div class="hamburger-menu">
-                            <div class="menu-btn" [ngClass]="navmethod ? '' : 'active'" (click)="toggleNav()">
+                        <div class="hamburger-menu" >
+                            <div class="menu-btn" [ngClass]="navmethod ? '' : 'active'" (click)="toggleNav()" >
                                 <span></span>
                                 <span></span>
                                 <span></span>
