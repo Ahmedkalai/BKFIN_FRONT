@@ -104,6 +104,11 @@ export class ExempleComponent implements OnInit {
   }
 
   delete(idGarantor: any) {
+    this.GuarantService.deleteGuarantor(idGarantor).subscribe( data => {
+        this.getGuarantors();
+        Swal.fire('Thank you...','Guarant Deleted' , 'success') ;
+      },
+      error => console.log(error));
 
   }
 

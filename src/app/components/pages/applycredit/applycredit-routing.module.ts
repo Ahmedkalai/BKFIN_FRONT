@@ -7,9 +7,9 @@ import {FormGuarantorComponent} from './form-guarantor/form-guarantor.component'
 const routes: Routes = [
   { path: '', component : ApplycreditComponent,
     children: [
-      {path : '' , redirectTo : 'form1', pathMatch: 'full'},
-      { path: 'form1', component: FormGuarantorComponent },
-      { path: 'form2/:id', component: Form2Component }
+      {path : '' , redirectTo : 'form1/0', pathMatch: 'full'},
+      { path: 'form1/:idpack', component: FormGuarantorComponent },
+      { path: 'form2/:id/:idpack', component: Form2Component }
     ]}
 
 

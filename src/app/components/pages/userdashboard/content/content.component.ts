@@ -4,6 +4,8 @@ import { Label } from 'ng2-charts';
 import {CreditService} from '../../../../Services/CreditService';
 import {DuesHistory} from '../../../../models/DuesHistory';
 import {DuesHistoryService} from '../../../../Services/DuesHistoryService';
+import {Client} from '../../../../models/Client';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 
 @Component({
@@ -23,14 +25,19 @@ export class ContentComponent implements OnInit {
   lastpaymentdate:any;
 
 
-  constructor(private creditservice : CreditService , private  dhservice :DuesHistoryService) {
+  constructor(private creditservice : CreditService , private  dhservice :DuesHistoryService , private http: HttpClient) {
 
   }
+
   retour:any;
   setLoan()
   {//client id b session
-    this.creditservice.getActiveCredit(44).subscribe(res => {
-      this.retour=res;
+    this.http.get<Client>('http://localhost:8083/BKFIN/findClientByToken' , {
+      headers: this.headers}).subscribe(res => {
+      console.log(res);
+      this.clientid = res.id;
+    this.creditservice.getActiveCredit(this.clientid).subscribe(res2 => {
+      this.retour=res2;
       if(this.retour.idCredit==null)
       {}
       else {
@@ -49,11 +56,16 @@ export class ContentComponent implements OnInit {
       }
     });
 
-    this.creditservice.getLastCredit(3).subscribe(res => {
+
+
+    this.creditservice.getLastCredit(this.clientid).subscribe(res => {
       console.log(res);
       this.lastdueshistory=res.duesHistory;
       this.lastvaleuamount=res.amount;
     });
+
+      }
+    );
 
   }
 
@@ -266,10 +278,11 @@ export class ContentComponent implements OnInit {
       text4: "2 Completed",
     },
   ];
-
-
+  private headers: HttpHeaders;
+  clientid:any;
   ngOnInit(): void {
     this.setLoan();
+
 
   }
 

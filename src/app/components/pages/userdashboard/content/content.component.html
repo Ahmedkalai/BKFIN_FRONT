@@ -106,28 +106,7 @@
                                 <h4 class="text-custom-black no-margin">LOAN PROGRESS CHARTS</h4>
                             </div>
                         </div>
-                        <div class="col-lg-8 col-md-6">
-                            <div class="right-side">
-                                <div class="pie-chart-box">
-                                    <div class="active-border activeBorder">
-                                        <div class="circle circlestyle">
-                                            <circle-progress [percent]="(payedamount/(mensualite*12))*100" [showInnerStroke]="true"
-                                                [showSubtitle]="false" [radius]="30" [outerStrokeWidth]="5"
-                                                [innerStrokeWidth]="5" [innerStrokeColor]="'#0070ba'" [space]="'-5'"
-                                                [outerStrokeColor]="'#11c391'" [animation]="true"
-                                                [animationDuration]="2000"></circle-progress>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="line-chart-box">
-                                    <div class="graph">
-                                        <canvas baseChart [datasets]="smallChartData" [labels]="smallChartLabels"
-                                            [options]="smallChartOptions" [chartType]="smallChartType">
-                                        </canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
                 <div class="dashboard-second-sec-large" #collapse="ngbCollapse" [(ngbCollapse)]="isMenuCollapsed">

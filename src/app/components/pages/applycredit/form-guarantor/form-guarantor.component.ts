@@ -1,12 +1,13 @@
 import {Component, Input, NgZone, OnInit} from '@angular/core';
 import {GuarantorService} from "../../../../Services/GuarantorService";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from '@angular/router';
 import {Guarantor} from "../../../../models/Guarantor";
 import {Credit} from '../../../../models/Credit';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Cloudinary} from '@cloudinary/angular-5.x';
 import {FileUploader, FileUploaderOptions} from 'ng2-file-upload';
 import Swal from 'sweetalert2';
+import {Client} from '../../../../models/Client';
 @Component({
   selector: 'app-form-guarantor',
   templateUrl: './form-guarantor.component.html',
@@ -16,13 +17,17 @@ export class FormGuarantorComponent implements OnInit {
 
   Guarant: Guarantor ;
   credit :Credit;
+  idpack:number=0;
 
 
   @Input()
   responses: Array<any>;
-  constructor(private guarantorService: GuarantorService , private router: Router , private http: HttpClient) {
-
+  constructor(private guarantorService: GuarantorService , private router: Router , private http: HttpClient,private route :ActivatedRoute) {
+    this.idpack=this.route.snapshot.params['idpack'];
   }
+
+
+
 
 
 
@@ -38,6 +43,7 @@ export class FormGuarantorComponent implements OnInit {
       idGarantor:null,
       credit:null
     };
+
 
 
   }
@@ -66,7 +72,7 @@ export class FormGuarantorComponent implements OnInit {
               // tslint:disable-next-line:triple-equals
                 if (res=="okkkkkkkkkkkkkkkkkk")
                 {
-                  this.router.navigateByUrl('applycredit/form2/' + data1.idGarantor);
+                  this.router.navigateByUrl('applycredit/form2/' + data1.idGarantor + '/' + this.idpack);
                 }
                 else if (res=="fail")
                 { Swal.fire('Error', 'Error Invalid type of Pay Statement ', 'warning') ;
