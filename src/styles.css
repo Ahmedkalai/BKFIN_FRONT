@@ -396,3 +396,6 @@ circle-progress svg text tspan{
     -webkit-animation: none;-moz-animation: none;-ms-animation: none;animation: none;
     cursor: pointer;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+

@@ -1,0 +1,10 @@
+{
+    "/ipAddressPage": {
+        "target": " https://jsonip.com/ipAddressPage ",
+        "logLevel": "debug",
+        "secure": false,
+       " changeOrigin": true
+        
+       
+    }
+  }
