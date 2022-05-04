@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AgentComponent } from './components/pages/agents/agent/agent.component';
 import { EventComponent } from './components/pages/event/listevent/event.component';
 import { FormfundComponent } from './components/pages/fund/formfund/formfund.component';
 import { FundComponent } from './components/pages/fund/listfund/fund.component';

@@ -22,7 +22,7 @@ export class AgentComponent implements OnInit {
   tableSizes: any = [3, 6, 9, 12];
 
 
-
+  
   constructor(private AgentService: AgentService , private router: Router,
      private modalService: NgbModal) { }
 
@@ -61,10 +61,10 @@ export class AgentComponent implements OnInit {
   ngOnInit(): void {
 
 this.getAgents();
-
-    this.Agent={
+    
+    this.Agent={ 
       idAgent:null,
-
+      localisation :null,
       name:null,
       secondName:null,
       phoneNum:null,
