@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BreadcrumbModule } from 'angular-crumbs';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReclamationFrontComponent } from './components/pages/reclamation-front/reclamation-front.component';
@@ -52,7 +52,7 @@ import { ForminvesComponent } from './components/pages/inves/forminves/forminves
 import { InvesComponent } from './components/pages/inves/listinves/inves.component';
 import { FundComponent } from './components/pages/fund/listfund/fund.component';
 import { FormfundComponent } from './components/pages/fund/formfund/formfund.component';
-import { AgentComponent } from './components/pages/agents/agent/agent.component';
+import { AgentComponent } from './components/pages/agent/agent.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import interactionPlugin from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -76,6 +76,18 @@ import { NotificationbackComponent } from './components/pages/notificationback/n
 import {GuarantorService} from './Services/GuarantorService';
 import {ReclamationService} from './Services/reclamation.service';
 import {NotificationService} from './Services/notification.service';
+import {AgentDialogueComponent} from './components/pages/agent-dialogue/agent-dialogue.component';
+import {ClientComponent} from './components/pages/client/client.component';
+import {AdminComponent} from './components/pages/admin/admin.component';
+import {AjoutAdminComponent} from './components/pages/admin/ajout-admin/ajout-admin.component';
+import {AjoutAgentComponent} from './components/pages/agent/ajout-agent/ajout-agent.component';
+import {ClassificationComponent} from './components/pages/classification/classification.component';
+import {IpAddressComponent} from './components/ip-address/ip-address.component';
+import {MapComponent} from './components/pages/map/map.component';
+import {LoginComponent} from './components/pages/login/login.component';
+import {AjoutclientComponent} from './components/pages/client/ajoutclient/ajoutclient.component';
+import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from '@angular/material/dialog';
+import {AuthInterceptorService} from './SharedService/AuthInterceptorService';
 
 
 
@@ -90,7 +102,7 @@ FullCalendarModule.registerPlugins([
 @NgModule({
   declarations: [
     AppComponent,
-
+    AgentComponent,
     ReclamationFrontComponent,
     ListreclamationComponent,
     TestComponent,
@@ -121,7 +133,6 @@ FullCalendarModule.registerPlugins([
     ForminvesComponent,
     DetailinvesComponent,
     EventComponent,
-    AgentComponent,
     AccountListComponent,
     AddAccountComponent,
     AddTransactionComponent,
@@ -138,16 +149,22 @@ FullCalendarModule.registerPlugins([
     DetailsPartnerFrontComponent,
     ProductFrontComponent,
     DetailsProductFrontComponent,
-    NotificationbackComponent
-    AppComponent,ClientComponent,AgentComponent,AdminComponent,AjoutclientComponent, LoginComponent, MapComponent, IpAddressComponent, AgentDialogueComponent, ClassificationComponent, AjoutAgentComponent, AjoutAdminComponent
+    NotificationbackComponent,
+    ClientComponent,
+    AdminComponent,
+    AjoutclientComponent,
+    LoginComponent,
+    MapComponent,
+    IpAddressComponent,
+    AgentDialogueComponent,
+    ClassificationComponent,
+    AjoutAgentComponent,
+    AjoutAdminComponent
+
   ],
   entryComponents:[
      AgentDialogueComponent
   ],
-
-
-
-
   imports: [
     HttpClientModule,
     BrowserModule,
