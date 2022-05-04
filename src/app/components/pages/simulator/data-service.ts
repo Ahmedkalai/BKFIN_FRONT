@@ -168,7 +168,8 @@ export class DataService {
 
   public setInitValues(): void {
     this.creditService.Simulate(this.principalValue, this.loanValue, this.interestValue/100).subscribe(res => {
-      this.emi=res.mensualité;
+      console.log(res);
+      this.emi=res.mensualite;
       this.princ = this.principalValue;
       this.tent = this.yearTenure ? (this.loanValue * 12) : this.loanValue;
       this.dataUnits = [];
