@@ -9,9 +9,9 @@
       <button class="btn btn-lg btn-outline-primary" (click)="download()"  >PDF</button>
       <br>
       <br>
-     
-     <div class="container mt-5">
-        
+      <button (click) = "scrap()" class="btn btn-lg btn-outline-primary"> Scrap Product</button>
+      <div class="container mt-5">
+
         <button class="btn btn-lg btn-outline-primary" (click)="openVerticallyCentered(content3)"  >Add Product</button>
         <ng-template #content3 let-modal>
           <div class="modal-header">
@@ -25,35 +25,62 @@
                 <div class="form-group">
                   <label>  Nom Produit </label>
                   <input type="text" class ="form-control" id = "nameProduct"
-                      [(ngModel)] = "Product.nameProduct" name = "nameProduct">
-              </div>
-          
-              <div class="form-group">
+                         [(ngModel)] = "Product.nameProduct" name = "nameProduct">
+                </div>
+
+                <div class="form-group">
                   <label> Prix </label>
                   <input type="text" class ="form-control" id = "valueProduct"
-                      [(ngModel)] = "Product.valueProduct" name = "valueProduct">
-              </div>
-              <div class="form-group">
+                         [(ngModel)] = "Product.valueProduct" name = "valueProduct">
+                </div>
+                <div class="form-group">
                   <label for="exampleFormControlSelect1">Partner</label>
                   <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="idPartner" name="idPartner">
-                  <option *ngFor="let p of partners" value="{{p.idPartner}}">{{p.namePartner}}</option>
+                    <option *ngFor="let p of partners" value="{{p.idPartner}}">{{p.namePartner}}</option>
                   </select>
-                </div> 
-            </div>
+                </div>
+              </div>
             </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')" (click)="addProduct(Product)">Add</button>
-          <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
-        </div>
-      </ng-template>
-      <br>
-      <br>
-      <br>
-      <button (click) = "scrap()" class="btn btn-lg btn-outline-primary"> Scrap Product</button>
-      <br>
-      <br>
-  
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')" (click)="addProduct(Product)">Add</button>
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+          </div>
+        </ng-template>
+        <br>
+        <br>
+        <br>
+        <button class="btn btn-lg btn-outline-primary" (click)="openVerticallyCentered(content5)"  >Affect Product</button>
+        <ng-template #content5 let-modal>
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Affect Product</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')" ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <div class="form-group">
+                  <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="idProduct" name="idProduct">
+                    <option *ngFor="let p of products" value="{{p.idProduct}}">{{p.nameProduct}}</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="idPack" name="idPack">
+                    <option *ngFor="let pack of packs" value="{{pack.idPack}}">{{pack.packType}}</option>
+                  </select>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')" (click)="affecter(idProduct,idPack)">Affect</button>
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+          </div>
+        </ng-template>
+        <br>
+        <br>
+
         <div class="form-group">
           <input
             type="text"
@@ -95,7 +122,7 @@
               <td class="lw-table-data-5">
                 {{ p.partner_product.namePartner }}
               </td>
-             
+
               <td class="lw-table-data-3 choose-btn">
                 <button class="btn btn-lg btn-outline-primary" (click)="openVerticallyCentered(content1)">View</button>
                 <ng-template #content1 let-modal>
@@ -109,15 +136,15 @@
                       <div class="mb-3">
                         <div>
                           <div>
-                              <label> <b> Nom Produit : </b></label> {{p.nameProduct}}
+                            <label> <b> Nom Produit : </b></label> {{p.nameProduct}}
                           </div>
                           <div>
-                              <label> <b> Prix : </b></label> {{p.valueProduct}}
+                            <label> <b> Prix : </b></label> {{p.valueProduct}}
                           </div>
                           <div>
-                              <label> <b> Partenaire : </b></label> {{p.partner_product.namePartner}}
+                            <label> <b> Partenaire : </b></label> {{p.partner_product.namePartner}}
                           </div>
-                      </div>
+                        </div>
                       </div>
                     </form>
                   </div>
@@ -137,27 +164,27 @@
                   <div class="modal-body">
                     <form>
                       <div class="mb-3">
-                        
-        <div class="form-group">
-          <label> Nom Produit </label>
-          <input type="text" class ="form-control" id = "nameProduct"
-              [(ngModel)] = "p.nameProduct" name = "nameProduct">
-      </div>
-  
-      <div class="form-group">
-          <label> Prix</label>
-          <input type="text" class ="form-control" id = "valueProduct"
-              [(ngModel)] = "p.valueProduct" name = "valueProduct">
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Partner</label>
-      <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="idPartner" name="idPartner">
-          <option *ngFor="let partner of partners" value="{{p.partner_product.namePartner}}">{{partner.namePartner}}</option>
-          </select>
-      </div> 
-       
+
+                        <div class="form-group">
+                          <label> Nom Produit </label>
+                          <input type="text" class ="form-control" id = "nameProduct"
+                                 [(ngModel)] = "p.nameProduct" name = "nameProduct">
                         </div>
-                     
+
+                        <div class="form-group">
+                          <label> Prix</label>
+                          <input type="text" class ="form-control" id = "valueProduct"
+                                 [(ngModel)] = "p.valueProduct" name = "valueProduct">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect1">Partner</label>
+                          <select class="form-control" id="exampleFormControlSelect1"[(ngModel)]="idPartner" name="idPartner">
+                            <option *ngFor="let partner of partners" value="{{p.partner_product.namePartner}}">{{partner.namePartner}}</option>
+                          </select>
+                        </div>
+
+                      </div>
+
                     </form>
                   </div>
                   <div class="modal-footer">
@@ -165,12 +192,12 @@
                     <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
                   </div>
                 </ng-template>
-                
+
                 <button class="btn btn-lg btn-outline-danger"  (click)="deleteProduct(p.idProduct)">Delete</button>
-            
+
               </td>
-              
-              </tr>
+
+            </tr>
 
           </table>
           <div class="d-flex justify-content-center">
