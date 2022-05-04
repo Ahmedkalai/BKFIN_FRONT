@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { Account } from 'src/app/models/Account';
 import blogbox from '../../../../data/blog.json';
 import { AccountService } from 'src/app/services/account.service';
+import { ClientService } from 'src/app/UserService/client.service';
+import { Client } from 'src/app/models/Client';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-listacc-by-client',
@@ -12,15 +15,25 @@ import { AccountService } from 'src/app/services/account.service';
 export class ListaccByClientComponent implements OnInit {
   rib : string ='' ; 
   acc: Account[];
-  constructor(private accService: AccountService  , private router: Router ) { }
+  constructor(private accService: AccountService ,private ClientS:ClientService , private router: Router ,private httpClient : HttpClient ) { }
   
   ngOnInit(): void {
+    this.ClientS.findUserWithToken();
     this.getAcc(1);
     this.invokeStripe();
+   
   }
+  private headers: HttpHeaders;
+
   private getAcc (id : number){
-      this.accService.getaccountsbyidclient(id).subscribe(data => {
-      this.acc = data;
+    this.httpClient.get<Client>("http://localhost:8083/BKFIN/findClientByToken" , {
+      headers: this.headers}).subscribe(res => {
+        console.log(res.id);
+        this.accService.getaccountsbyidclient(res.id).subscribe(data => {
+          this.acc = data;
+       });
+     
+      
     });
   }
  

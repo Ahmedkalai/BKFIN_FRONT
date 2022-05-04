@@ -15,6 +15,7 @@ export class ClientService {
   constructor(private httpClient:HttpClient,private tokenStorage: TokenStorageService){ }
   
   get activeUser(): Client {
+    
     return this._activeUser;
   }
 
@@ -36,9 +37,10 @@ export class ClientService {
     this.headers = new HttpHeaders({
       Authorization: 'Bearer ' + this.tokenStorage.getToken(),
     });
-    return this.httpClient.get<Client>("http://localhost:8083/BKFIN/" + 'findClientByToken', {
+    return this.httpClient.get<Client>("http://localhost:8083/BKFIN/findClientByToken" , {
       headers: this.headers
     }).subscribe((user:Client) => {
+      
       this._activeUser = user
       console.log(this._activeUser.id);
     });
