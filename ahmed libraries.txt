@@ -1,9 +1,10 @@
 @angular/ej2 for design 
 @angular /ej2 chart and grid //
 @angular paginator for pagination in table
+@cloudinary
+@sort
+@search
 @angular/ngbootstrap 
 @angular/chart.js
 @angular/qrcode
-@ng mail firebase
 @ng datapicker
-@cloudinary
