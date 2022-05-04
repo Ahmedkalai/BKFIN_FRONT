@@ -19,7 +19,7 @@ import { CalendarOptions, DateSelectArg, EventApi, EventClickArg } from '@fullca
   styleUrls: ['./event.component.css']
 })
 export class EventComponent implements OnInit {
- 
+
 
   calendarVisible = true;
   calendarOptions: CalendarOptions = {
@@ -63,7 +63,7 @@ export class EventComponent implements OnInit {
 
     if (title) {
       calendarApi.addEvent({
-        
+
         title,
         start: selectInfo.startStr,
         end: selectInfo.endStr,
@@ -99,7 +99,7 @@ export class EventComponent implements OnInit {
   tableSize: number = 6;
   tableSizes: any = [3, 6, 9, 12];
 
-  
+
 
   constructor(private EventService: EventService , private router: Router,
     private route:ActivatedRoute,
@@ -129,12 +129,12 @@ export class EventComponent implements OnInit {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
       });
     }
-  
-  
+
+
     openVerticallyCentered(content) {
       this.modalService.open(content, { centered: true });
     }
-  
+
     private getDismissReason(reason: any): string {
       if (reason === ModalDismissReasons.ESC) {
         return 'by pressing ESC';
@@ -147,16 +147,16 @@ export class EventComponent implements OnInit {
 
   ngOnInit(): void {
 
- 
-        
- 
+
+
+
     this.id = this.route.snapshot.params['id'];
     this.getAllEvents();
     this.load();
     this.filter();
     //console.log(this.listup);
 
-    this.Agent={ 
+    this.Agent={
       idAgent:null,
       name:null,
       secondName:null,
@@ -175,7 +175,7 @@ export class EventComponent implements OnInit {
       state:null,
         Event:null}
 
-        
+
   this.Event ={
       idEvent:null,
       nameEvent: null,
@@ -184,7 +184,7 @@ export class EventComponent implements OnInit {
       description:null,
       Agent:null
     }
-    
+
   this.unemployedpopulation={
     population_id: null,
     regions:  null,
@@ -200,54 +200,54 @@ export class EventComponent implements OnInit {
   inactive_Population:  null,
     activity_rate:  null,
  unemployment_rate:  null,
-   
+
     unemployed_Néant: null,
-   
+
     unemployed_Primary:  null,
-   
+
    unemployed_Secondary:  null,
-   
-   
+
+
    unemployed_faculty:  null,
-   
+
    unemployed_Agriculture_fishing:  null,
-   
+
     unemployed_Mines_energy:  null,
-   
+
     unemployed_manufacturing_Industry:  null,
-   
+
     unemployed_Building_public_works:  null,
-   
+
  unemployed_Commerce:  null,
    unemployed_Transport:  null,
-   
+
     unemployed_Education_health_administrative_services:  null,
-   
+
    unemployed_Other_services:  null,
-   
+
     unemployed_Undeclared:  null,
-   
+
     unemployed_15_19_years_Age:  null,
-   
+
     unemployed_20_24_years_Age:  null,
-   
+
     unemployed_25_29_years_Age: null,
-   
+
    unemployed_30_34_years_Age:  null,
-   
+
     unemployed_35_39_years_Age:  null,
-   
+
     unemployed_40_44_years_Age:  null,
-   
+
     unemployed_45_49_years_Age:  null,
-   
+
     unemployed_50_59_years_Age:  null,
-   
+
    unemployed_60plus_years:  null,
   }
-  
+
   }
-  
+
 getAllEvents() {
   this.EventService.getAllEvents().subscribe(res => this.listEvents = res)
   }
@@ -255,7 +255,7 @@ getAllEvents() {
 
  addEvent(){
     this.EventService.addEvent(this.Event).subscribe(()=> this.getAllEvents());
-    
+
     Swal.fire({
       position: 'top-end',
       icon: 'success',
@@ -296,7 +296,8 @@ error(idEvent:any){
 //this.EventService.assign(idEvent,idAgent).subscribe(()=> this.getAllEvents());
  // }
  Associate(idEvent:any,idAgent:any){
-  this.EventService.assign(idEvent,idAgent).subscribe(()=> this.getAllEvents());
+  this.EventService.assign(idEvent,idAgent).subscribe(() => {this.getAllEvents();
+  this.get});
   Swal.fire({
     position: 'top-end',
     icon: 'success',
@@ -305,12 +306,12 @@ error(idEvent:any){
     timer: 1500
   })
 }
-  
+
   load(){
     this.LoadupService.load().subscribe( data => {
       console.log(data);
     })
-  
+
   }
  //state:boolean=false;
   filter(){
@@ -320,5 +321,5 @@ error(idEvent:any){
    //this.state=true;
   }
 
- 
+
 }
