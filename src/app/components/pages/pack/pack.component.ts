@@ -47,6 +47,10 @@ export class PackComponent implements OnInit {
     });
   }
 
+  prixpacks(){
+    this.packservice.affectPrice().subscribe(()=> this.getPacks());
+  }
+
 
   openVerticallyCentered(content) {
     this.modalService.open(content, { centered: true });
