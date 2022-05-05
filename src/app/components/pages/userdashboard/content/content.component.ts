@@ -34,7 +34,7 @@ export class ContentComponent implements OnInit {
   {//client id b session
     this.http.get<Client>('http://localhost:8083/BKFIN/findClientByToken' , {
       headers: this.headers}).subscribe(res => {
-      console.log(res);
+      //console.log(res);
       this.clientid = res.id;
     this.creditservice.getActiveCredit(this.clientid).subscribe(res2 => {
       this.retour=res2;
@@ -59,6 +59,7 @@ export class ContentComponent implements OnInit {
 
 
     this.creditservice.getLastCredit(this.clientid).subscribe(res => {
+      console.log("history");
       console.log(res);
       this.lastdueshistory=res.duesHistory;
       this.lastvaleuamount=res.amount;

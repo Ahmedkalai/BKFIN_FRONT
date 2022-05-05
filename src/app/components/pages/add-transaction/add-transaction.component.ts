@@ -13,20 +13,20 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class AddTransactionComponent implements OnInit {
   @ViewChild('myModalClose') modalClose;
-  rib : string ='' ; 
+  rib : string ='' ;
   code:number=0;
   trs: Transaction ;
   acc: Account[];
   constructor(private transactionsService: TransactionService, private accServ : AccountService , private router: Router,private modalService: NgbModal ) {
-   this.acc=[]; 
+   this.acc=[];
    this.trs={};
   }
 
   ngOnInit(): void {
-    
-   this.getEmployees(); 
 
-   
+   this.getEmployees();
+
+
     /*
 
     this.transactions={
@@ -34,12 +34,12 @@ export class AddTransactionComponent implements OnInit {
     sold : null,
     interest : null,
     index_interest : null,
-    openDate : null , 
-    state : null , 
-    typetransactions : null , 
-    transactions : null 
- 
-  
+    openDate : null ,
+    state : null ,
+    typetransactions : null ,
+    transactions : null
+
+
    */
   }
   // tslint:disable-next-line:typedef
@@ -47,38 +47,38 @@ export class AddTransactionComponent implements OnInit {
     console.log(this.trs);
     this.transactionsService.createtransactions(this.trs).subscribe( data => {
       console.log(data);
-      //this.trs={}; 
+      //this.trs={};
      // this.goTotransactionsList();
-    }) ; 
-    console.log(this.trs); 
-    
+    }) ;
+    console.log(this.trs);
+
   }
   apptransactions(){
     console.log(this.trs);
     this.transactionsService.apptransaction(this.code,this.trs).subscribe( data => {
       console.log(data);
-      //this.trs={}; 
+      //this.trs={};
      // this.goTotransactionsList();
-    }) ; 
-    console.log(this.trs); 
+    }) ;
+    console.log(this.trs);
    // this.modalClose.nativeElement.click();
-  } 
+  }
   addtransactions(content){
     this.transactionsService.addtransaction(this.trs).subscribe( data => {
       console.log(data);
-      //this.trs={}; 
+      //this.trs={};
      // this.goTotransactionsList();
-    }) ; 
+    }) ;
     this.openVerticallyCentered(content)
-    console.log(this.trs); 
+    console.log(this.trs);
   }
    getEmployees(){
-    this.accServ.getaccountsbyidclient(1).subscribe(data => {
+    this.accServ.getaccountsbyidclient(44).subscribe(data => {
       this.acc = data;
      // JSON.stringify(this.acc)
      console.log(this.acc)
     });
-    
+
 
   }
 
@@ -94,13 +94,13 @@ export class AddTransactionComponent implements OnInit {
     //il faut recuperer tout l'objet passer par le form et l'envoyer vers l'autre page
    // this.router.navigate(['apptr']);
   }
-  
+
   verify(i:number)
   {
 
     this.router.navigate(['transactionsbyrib',i]);
   }
- 
+
   search(id:string)
   {
 
@@ -109,6 +109,6 @@ export class AddTransactionComponent implements OnInit {
   openVerticallyCentered(content) {
     this.modalService.open(content, { centered: true });
   }
-  
-  
+
+
 }
